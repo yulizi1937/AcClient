@@ -1,5 +1,6 @@
 package thereisnospon.acclient.modules.show_code;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,82 +11,81 @@ import android.widget.LinearLayout;
 
 import com.orhanobut.logger.Logger;
 
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import thereisnospon.acclient.R;
+import thereisnospon.acclient.databinding.FragmentShowcodeBinding;
 import thereisnospon.acclient.modules.settings.Settings;
-import thereisnospon.codeview.CodeView;
 import thereisnospon.codeview.CodeViewTheme;
 
 /**
  * Created by yzr on 16/8/2.
  */
-public class CodeFragment extends Fragment implements CodeContact.View{
+public final class CodeFragment extends Fragment implements CodeContact.View {
 
 
-    CodeContact.Presenter presenter;
+	private CodeContact.Presenter presenter;
 
 
-    public static final CodeViewTheme []themes=new CodeViewTheme[]{
-           CodeViewTheme.ANDROIDSTUDIO,CodeViewTheme.ARDUINO_LIGHT,CodeViewTheme.DEFAULT,
-            CodeViewTheme.GITHUB,CodeViewTheme.MONOKAI_SUBLIME,CodeViewTheme.OBSIDIAN,
-            CodeViewTheme.SOLARIZED_DARK,CodeViewTheme.SOLARIZED_LIGHT,
-    };
+	private static final CodeViewTheme[] THEMES = new CodeViewTheme[] { CodeViewTheme.ANDROIDSTUDIO,
+	                                                                   CodeViewTheme.ARDUINO_LIGHT,
+	                                                                   CodeViewTheme.DEFAULT,
+	                                                                   CodeViewTheme.GITHUB,
+	                                                                   CodeViewTheme.MONOKAI_SUBLIME,
+	                                                                   CodeViewTheme.OBSIDIAN,
+	                                                                   CodeViewTheme.SOLARIZED_DARK,
+	                                                                   CodeViewTheme.SOLARIZED_LIGHT, };
 
-   @BindView(R.id.codeView) CodeView codeView;
 
-    String id;
-    String code;
+	String id;
+	String code;
+	private FragmentShowcodeBinding mBinding;
 
-    public static CodeFragment newInstance(String id){
-        CodeFragment fragment=new CodeFragment();
-        fragment.id=id;
-        return fragment;
-    }
+	public static CodeFragment newInstance(String id) {
+		CodeFragment fragment = new CodeFragment();
+		fragment.id = id;
+		return fragment;
+	}
 
-    public static CodeFragment newCodeInstance(String code){
-        CodeFragment fragment=new CodeFragment();
-        fragment.code=code;
-        return fragment;
-    }
+	public static CodeFragment newCodeInstance(String code) {
+		CodeFragment fragment = new CodeFragment();
+		fragment.code = code;
+		return fragment;
+	}
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_showcode,container,false);
-        ButterKnife.bind(this,view);
-        initCodeView(view);
-        presenter=new CodePresenter(this);
-        showCode();
-        return view;
-    }
+	@Nullable
+	@Override
+	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+		mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_showcode, container, false);
+		initCodeView(mBinding.getRoot());
+		presenter = new CodePresenter(this);
+		showCode();
+		return mBinding.getRoot();
+	}
 
-    void showCode(){
-        if(code!=null){
-            codeView.showCode(code);
-        }else if (id!=null){
-            presenter.loadCode(id);
-        }
-    }
+	void showCode() {
+		if (code != null) {
+			mBinding.codeView.showCode(code);
+		} else if (id != null) {
+			presenter.loadCode(id);
+		}
+	}
 
-    void initCodeView(View view){
-        Settings settings=Settings.getInstance();
-        int index= settings.getTheme();
-        codeView.setTheme(themes[index]);
-        codeView.fillColor();
-        LinearLayout linearLayout=(LinearLayout)view.findViewById(R.id.code_back);
-        linearLayout.setBackgroundColor(codeView.getCodeBackgroundColor());
-    }
+	void initCodeView(View view) {
+		Settings settings = Settings.getInstance();
+		int index = settings.getTheme();
+		mBinding.codeView.setTheme(THEMES[index]);
+		mBinding.codeView.fillColor();
+		LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.code_back);
+		linearLayout.setBackgroundColor(mBinding.codeView.getCodeBackgroundColor());
+	}
 
-    @Override
-    public void onSuccess(String code) {
-        codeView.showCode(code);
-        Logger.d(code);
-    }
+	@Override
+	public void onSuccess(String code) {
+		mBinding.codeView.showCode(code);
+		Logger.d(code);
+	}
 
-    @Override
-    public void onFailure(String err) {
-        Logger.d(err);
-    }
+	@Override
+	public void onFailure(String err) {
+		Logger.d(err);
+	}
 }
