@@ -61,4 +61,4 @@
 
 
 
-下载: https://github.com/Thereisnospon/AcClient/releases/tag/0.1
+下载: http://www.coolapk.com/apk/thereisnospon.acclient
