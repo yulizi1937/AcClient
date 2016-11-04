@@ -6,7 +6,6 @@ repositories {
 
 def buildNumber = 'bld' + (System.env.BUILD_NUMBER ?: 'SNAPSHOT')
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileOptions {
@@ -76,9 +75,6 @@ dependencies {
     compile "com.android.support:appcompat-v7:${appCompat}"
     compile "com.android.support:cardview-v7:${appCompat}"
 
-    apt 'com.jakewharton:butterknife-compiler:8.0.1'
-    compile 'com.jakewharton:butterknife:8.0.1'
-    compile 'com.jakewharton:butterknife:8.0.1'
 
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'com.aurelhubert:ahbottomnavigation:1.1.8'
