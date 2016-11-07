@@ -5,12 +5,12 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
+import android.support.transition.AutoTransition;
+import android.support.transition.Scene;
+import android.support.transition.Transition;
+import android.support.transition.TransitionManager;
+import android.support.transition.TransitionSet;
 import android.support.v7.app.AppCompatActivity;
-import android.transition.AutoTransition;
-import android.transition.Scene;
-import android.transition.Transition;
-import android.transition.TransitionManager;
-import android.transition.TransitionSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -20,7 +20,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.event.Arg;
@@ -28,22 +27,14 @@ import thereisnospon.acclient.modules.problem_list.HdojActivity;
 import thereisnospon.acclient.utils.SpUtil;
 import thereisnospon.acclient.widget.TransitiionListenerAdapter;
 
-public class LoginActivity extends AppCompatActivity implements LoginContact.View{
-
-
-
-    Scene index;
-    Scene login;
+public final class LoginActivity extends AppCompatActivity implements LoginContact.View{
+    private Scene index;
+    private Scene login;
+    private String id;
+    private String pass;
+    private String nickname;
 
     ViewGroup sceneRoot;
-
-    void initScene(){
-        sceneRoot=(ViewGroup) findViewById(R.id.scene_root);
-        index=Scene.getSceneForLayout(sceneRoot,R.layout.activity_hello_scene_index,this);
-        login=Scene.getSceneForLayout(sceneRoot,R.layout.activity_hello_scene_login,this);
-    }
-
-
     ImageView helloLogo;
     TextView helloTitle;
     LinearLayout loginLinear;
@@ -52,6 +43,15 @@ public class LoginActivity extends AppCompatActivity implements LoginContact.Vie
     EditText loginPass;
     CheckBox remember;
     Button registerButton;
+
+    void initScene(){
+        sceneRoot=(ViewGroup) findViewById(R.id.scene_root);
+        index= Scene.getSceneForLayout(sceneRoot, R.layout.activity_hello_scene_index, this);
+        login= Scene.getSceneForLayout(sceneRoot,R.layout.activity_hello_scene_login,this);
+    }
+
+
+
 
 
     private boolean rememberPas=false;
@@ -106,9 +106,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContact.Vie
     }
 
 
-    private String id;
-    private String pass;
-    private String nickname;
+
 
 
     @Override
