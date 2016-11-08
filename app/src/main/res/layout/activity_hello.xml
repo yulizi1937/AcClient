@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    >
 
-    tools:context="thereisnospon.acclient.modules.login.LoginActivity">
+    <data class="LoginActivityBinding"/>
 
-
-
-    <FrameLayout   android:id="@+id/scene_root"
+    <FrameLayout
+        android:id="@+id/scene_root"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <include layout="@layout/activity_hello_scene_index"></include>
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        tools:context="thereisnospon.acclient.modules.login.LoginActivity">
+
+
+        <include
+            android:id="@+id/activity_hello_scene_index"
+            layout="@layout/activity_hello_scene_index"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
     </FrameLayout>
-
-
-
-
-
-</LinearLayout>
+</layout>

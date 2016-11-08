@@ -14,13 +14,14 @@ import thereisnospon.acclient.databinding.RegisterActivityBinding;
 
 public final class RegisterActivity extends AppCompatActivity implements LoginContact.View {
 
+	private static final int LAYOUT = R.layout.activity_register;
 	private RegisterActivityBinding mBinding;
 	private LoginContact.Presenter presenter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_register);
+		setContentView(LAYOUT);
 		mBinding = DataBindingUtil.setContentView(this, R.layout.activity_register);
 		mBinding.registerButton.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -58,7 +59,7 @@ public final class RegisterActivity extends AppCompatActivity implements LoginCo
 
 	@Override
 	public void onRegisterSuccess(String userName) {
-		Snackbar.make(mBinding.helloLogo, "注册成功:" + userName, Snackbar.LENGTH_SHORT)
+		Snackbar.make(mBinding.sceneRoot, "注册成功:" + userName, Snackbar.LENGTH_SHORT)
 		        .setAction("返回登陆", new View.OnClickListener() {
 			        @Override
 			        public void onClick(View v) {
@@ -74,7 +75,7 @@ public final class RegisterActivity extends AppCompatActivity implements LoginCo
 		Logger.d(error);
 		mBinding.check.setVisibility(View.VISIBLE);
 		presenter.loadCheckCode();
-		Snackbar.make(mBinding.helloLogo, error, Snackbar.LENGTH_SHORT)
+		Snackbar.make(mBinding.sceneRoot, error, Snackbar.LENGTH_SHORT)
 		        .show();
 	}
 

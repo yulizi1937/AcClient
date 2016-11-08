@@ -32,7 +32,7 @@
             android:launchMode="singleTask"
             android:name=".modules.settings.SettingActivity"
             android:label="设置" />
-        <activity android:name=".modules.submmit.SubmmitAnwserActivity" android:launchMode="singleTask" />
+        <activity android:name=".modules.submit.SubmmitAnwserActivity" android:launchMode="singleTask" />
         <activity
             android:name=".modules.rank.RankActivity"
             android:launchMode="singleTask"

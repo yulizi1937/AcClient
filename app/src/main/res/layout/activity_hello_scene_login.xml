@@ -1,106 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/activity_hello_scene"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context="thereisnospon.acclient.modules.login.LoginActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
 
-
-
-    <LinearLayout
-        android:layout_centerInParent="true"
-        android:layout_marginTop="5dp"
-        android:alpha="1"
-        android:id="@+id/scene_ll"
-        android:layout_gravity="center"
-        android:orientation="vertical"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/hello_logo"
-            android:layout_gravity="top|center"
-            android:src="@mipmap/ic_launcher"
-            android:layout_width="150dp"
-            android:layout_height="150dp" />
-        <TextView
-            android:id="@+id/hello_title"
-            android:layout_marginTop="20dp"
-            android:textColor="#ffffff"
-            android:layout_marginBottom="20dp"
-            android:textSize="27sp"
-            android:layout_gravity="center"
-            android:text="AcClient"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/colorPrimary"
+        android:scrollbars="none">
 
 
         <LinearLayout
-            android:visibility="visible"
-            android:id="@+id/login_linear"
-            android:orientation="vertical"
+            android:id="@+id/scene_ll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:alpha="1"
+            android:orientation="vertical"
+            tools:context="thereisnospon.acclient.modules.login.LoginActivity">
 
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="top|center"
+                android:src="@mipmap/ic_launcher"/>
 
-            <EditText
-                android:id="@+id/login_id"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:paddingRight="10dp"
-                android:textColorHint="#ffffff"
-                android:hint="username"
-                android:textColor="#ffffff"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <EditText
-                android:id="@+id/login_pass"
-                android:inputType="textPassword"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:paddingRight="10dp"
-                android:textColorHint="#ffffff"
-                android:hint="password"
-                android:textColor="#ffffff"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/login_button"
-                android:textColor="#ffffff"
-                android:text="Login"
-                android:background="@color/colorPrimaryDark"
-                android:layout_width="match_parent"
-                android:layout_marginBottom="5dp"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/register_button"
-                android:textColor="#ffffff"
-                android:text="Register"
-                android:background="@color/colorPrimaryDark"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-
-            <CheckBox
-                android:id="@+id/login_remember"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="right"
+            <TextView
+                android:id="@+id/hello_title"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:text="AcClient"
+                android:textColor="#ffffff"
+                android:textSize="27sp"/>
+
+
+            <LinearLayout
+                android:id="@+id/login_linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <android.support.design.widget.TextInputLayout
+                    style="@style/TextInputLayout.Normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/login_id"
+                        style="@style/LoginEditText"
+                        android:hint="username"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    style="@style/TextInputLayout.Warning"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/login_pass"
+                        style="@style/LoginPassword"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/login_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimaryDark"
+                        android:text="Login"
+                        android:textColor="#ffffff"/>
+
+                    <Button
+                        android:id="@+id/register_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/colorPrimaryDark"
+                        android:text="Register"
+                        android:textColor="#ffffff"/>
+                </LinearLayout>
+
+                <CheckBox
+                    android:id="@+id/login_remember"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|end"/>
+            </LinearLayout>
 
 
         </LinearLayout>
 
-    </LinearLayout>
-
-
-
-
-</RelativeLayout>
+    </ScrollView>
+</layout>

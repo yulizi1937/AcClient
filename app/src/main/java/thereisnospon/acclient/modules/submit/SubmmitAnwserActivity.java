@@ -1,4 +1,4 @@
-package thereisnospon.acclient.modules.submmit;
+package thereisnospon.acclient.modules.submit;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;

@@ -1,23 +1,5 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="cardViewColor">@color/cardViewColor</item>
-    </style>
-
-
-    <style name="AppThemeNight" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="cardViewColor">@color/cardViewColor</item>
-        <item name="preferenceFragmentListStyle">@style/list</item>
-    </style>
-
 
     <attr name="preferenceFragmentListStyle" format="reference"></attr>
 
@@ -32,14 +14,11 @@
     <style name="AppThemeNightNoactionBar" parent="AppThemeNoActionBar">
         <item name="colorAccent">@color/colorPrimary</item>
         <item name="colorPrimary">@color/colorAccent</item>
-       <item name="preferenceFragmentListStyle">@style/list</item>
+        <item name="preferenceFragmentListStyle">@style/list</item>
     </style>
 
     <color name="codeEditBack">#fdf6e3</color>
     <color name="codeEditText">#657b83</color>
-
-
-
 
 
     <style name="cardStyle">
@@ -55,31 +34,30 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="cardViewColor">@color/cardViewColor</item>
-        <item name="codeEditTextColor"> @color/codeEditText</item>
+        <item name="codeEditTextColor">@color/codeEditText</item>
         <item name="codeEditBackground">@color/codeEditBack</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
 
     <style name="MySearchViewStyle" parent="Widget.AppCompat.SearchView">
         <!--<item name="queryBackground">...</item>  -->
-    <!---->
+        <!---->
         <!--<item name="submitBackground">...</item>  -->
-    <!---->
+        <!---->
         <!--<item name="closeIcon">...</item>  -->
-    <!---->
+        <!---->
         <!--<item name="searchIcon">...</item>  -->
-    <!---->
+        <!---->
         <!--<item name="goIcon">...</item>  -->
-    <!---->
+        <!---->
         <!--<item name="voiceIcon">...</item>  -->
-    <!---->
+        <!---->
         <!--<item name="commitIcon">...</item>  -->
-    <!---->
+        <!---->
         <!--<item name="suggestionRowLayout">...</item>-->
 
     </style>
@@ -102,4 +80,34 @@
         <item name="contentPadding">5dp</item>
     </style>
 
+    <style name="LoginEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:minLines">1</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textColorHint">@color/colorWhite</item>
+    </style>
+
+    <style name="LoginPassword" parent="LoginEditText">
+        <item name="android:fontFamily">null</item>
+        <item name="android:inputType">textPassword</item>
+        <item name="android:hint">password</item>
+    </style>
+
+    <style name="TextAppearance.App.TextInputLayout.Hint" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/colorGreen</item>
+    </style>
+
+    <style name="TextInputLayout">
+    </style>
+
+    <style name="TextInputLayout.Normal">
+        <item name="hintTextAppearance">@style/TextAppearance.App.TextInputLayout.Hint</item>
+    </style>
+
+    <style name="TextInputLayout.Warning">
+    </style>
 </resources>

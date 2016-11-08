@@ -12,9 +12,7 @@ import android.view.ViewGroup;
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.base.fragment.WebViewFragment;
 import thereisnospon.acclient.event.Arg;
-import thereisnospon.acclient.event.Event;
-import thereisnospon.acclient.event.EventCode;
-import thereisnospon.acclient.modules.submmit.SubmmitAnwserActivity;
+import thereisnospon.acclient.modules.submit.SubmmitAnwserActivity;
 
 /**
  * Created by yzr on 16/6/6.

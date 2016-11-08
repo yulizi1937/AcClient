@@ -3,6 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorGreen">#81C784</color>
+    <color name="colorTransparent">@android:color/transparent</color>
 
     <color name="cardViewColor">#fff</color>
     <color name="backgroundColor">#E0E5EA</color>
