@@ -59,8 +59,8 @@ public final class RegisterActivity extends AppCompatActivity implements LoginCo
 
 	@Override
 	public void onRegisterSuccess(String userName) {
-		Snackbar.make(mBinding.sceneRoot, "注册成功:" + userName, Snackbar.LENGTH_SHORT)
-		        .setAction("返回登陆", new View.OnClickListener() {
+		Snackbar.make(mBinding.sceneRoot, getString(R.string.hello_register_successfully) + userName, Snackbar.LENGTH_SHORT)
+		        .setAction(R.string.hello_return_to_login, new View.OnClickListener() {
 			        @Override
 			        public void onClick(View v) {
 				        finish();

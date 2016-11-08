@@ -50,6 +50,8 @@
     <string name="scroll_behavior">thereisnospon.acclient.widget.ScrollToTopBehavior</string>
 
 
+    <string name="lbl_cancel">Cancel</string>
+
     <string name="hello_hint_username">username</string>
     <string name="hello_hint_password">password</string>
     <string name="hello_btn_login">Login</string>
@@ -57,4 +59,9 @@
     <string name="hello_check_password">check password</string>
     <string name="hello_check_code">check code</string>
     <string name="hello_email_address">email</string>
+    <string name="hello_login_unsuccessfully">Login unsuccessfully.</string>
+    <string name="hello_remember_password">Remember password</string>
+    <string name="hello_register_successfully">You have registered successfully: </string>
+    <string name="hello_return_to_login">Return to login.</string>
+
 </resources>

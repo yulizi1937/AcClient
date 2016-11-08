@@ -13,7 +13,6 @@ import android.support.transition.TransitionManager;
 import android.support.transition.TransitionSet;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.CompoundButton;
 
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.databinding.ActivityHelloSceneIndexBinding;
@@ -91,13 +90,15 @@ public final class LoginActivity extends AppCompatActivity implements LoginConta
 				startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
 			}
 		});
-		mLoginBinding.loginRemember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+		mLoginBinding.loginRemember.setOnClickListener(new View.OnClickListener() {
 			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				rememberPas = isChecked;
-				if (isChecked) {
-					Snackbar.make(mBinding.sceneRoot, "记住密码,以后不用登陆", Snackbar.LENGTH_SHORT)
-					        .setAction("取消", new View.OnClickListener() {
+			public void onClick(View view) {
+				mLoginBinding.loginRemember.setChecked(!mLoginBinding.loginRemember.isChecked());
+
+				rememberPas = 	mLoginBinding.loginRemember.isChecked();
+				if (rememberPas) {
+					Snackbar.make(mBinding.sceneRoot, R.string.hello_remember_password, Snackbar.LENGTH_SHORT)
+					        .setAction(R.string.lbl_cancel, new View.OnClickListener() {
 						        @Override
 						        public void onClick(View v) {
 							        mLoginBinding.loginRemember.setChecked(false);
@@ -114,7 +115,6 @@ public final class LoginActivity extends AppCompatActivity implements LoginConta
 				                                             .toString();
 				LoginActivity.this.pass = mLoginBinding.loginPass.getText()
 				                                                 .toString();
-				// Toast.makeText(LoginActivity.this,id+pass+"",Toast.LENGTH_SHORT).show();
 				presenter.login(id, pass);
 			}
 		});
@@ -189,7 +189,7 @@ public final class LoginActivity extends AppCompatActivity implements LoginConta
 		if (!isShowLoginUI) {
 			shoLoginUI();
 		} else {
-			Snackbar.make(mBinding.sceneRoot, "登陆失败", Snackbar.LENGTH_SHORT)
+			Snackbar.make(mBinding.sceneRoot, R.string.hello_login_unsuccessfully, Snackbar.LENGTH_SHORT)
 			        .show();
 		}
 	}

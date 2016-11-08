@@ -75,11 +75,17 @@
                         android:text="@string/hello_btn_register"/>
                 </LinearLayout>
 
-                <CheckBox
+
+                <CheckedTextView
                     android:id="@+id/login_remember"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right|end"/>
+                    android:layout_height="match_parent"
+                    android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+                    android:layout_gravity="center" android:gravity="center"
+                    android:checked="false"
+                    android:textColor="@color/colorAccent"
+                    android:text="@string/hello_remember_password"/>
+
             </LinearLayout>
 
 
