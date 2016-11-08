@@ -80,7 +80,7 @@
         <item name="contentPadding">5dp</item>
     </style>
 
-    <style name="LoginEditText">
+    <style name="HelloEditText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textCursorDrawable">@null</item>
@@ -91,23 +91,55 @@
         <item name="android:textColorHint">@color/colorWhite</item>
     </style>
 
-    <style name="LoginPassword" parent="LoginEditText">
+    <style name="HelloPassword" parent="HelloEditText">
         <item name="android:fontFamily">null</item>
         <item name="android:inputType">textPassword</item>
-        <item name="android:hint">password</item>
+        <item name="android:hint">@string/hello_hint_password</item>
     </style>
 
     <style name="TextAppearance.App.TextInputLayout.Hint" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/colorGreen</item>
     </style>
 
-    <style name="TextInputLayout">
+    <style name="HelloTextInputLayout">
     </style>
 
-    <style name="TextInputLayout.Normal">
+    <style name="HelloTextInputLayout.Normal">
         <item name="hintTextAppearance">@style/TextAppearance.App.TextInputLayout.Hint</item>
     </style>
 
-    <style name="TextInputLayout.Warning">
+    <style name="HelloTextInputLayout.Warning">
+    </style>
+
+    <style name="HelloButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="HelloButton.Login">
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="HelloButton.Register">
+        <item name="android:textColor">@color/colorGreen</item>
+    </style>
+
+    <style name="HelloTitle">
+        <item name="android:text">@string/app_name</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">27sp</item>
+    </style>
+
+    <style name="HelloLogo">
+        <item name="android:src">@mipmap/ic_launcher</item>
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_gravity">top|center</item>
     </style>
 </resources>

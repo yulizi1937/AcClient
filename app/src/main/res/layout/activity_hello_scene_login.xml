@@ -19,21 +19,10 @@
             tools:context="thereisnospon.acclient.modules.login.LoginActivity">
 
             <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_gravity="top|center"
-                android:src="@mipmap/ic_launcher"/>
+                style="@style/HelloLogo"/>
 
             <TextView
-                android:id="@+id/hello_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="20dp"
-                android:text="AcClient"
-                android:textColor="#ffffff"
-                android:textSize="27sp"/>
+                style="@style/HelloTitle"/>
 
 
             <LinearLayout
@@ -44,24 +33,24 @@
                 android:visibility="visible">
 
                 <android.support.design.widget.TextInputLayout
-                    style="@style/TextInputLayout.Normal"
+                    style="@style/HelloTextInputLayout.Normal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <EditText
                         android:id="@+id/login_id"
-                        style="@style/LoginEditText"
-                        android:hint="username"/>
+                        style="@style/HelloEditText"
+                        android:hint="@string/hello_hint_username"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
-                    style="@style/TextInputLayout.Warning"
+                    style="@style/HelloTextInputLayout.Warning"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <EditText
                         android:id="@+id/login_pass"
-                        style="@style/LoginPassword"/>
+                        style="@style/HelloPassword"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <LinearLayout
@@ -72,20 +61,14 @@
 
                     <Button
                         android:id="@+id/login_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/colorPrimaryDark"
-                        android:text="Login"
-                        android:textColor="#ffffff"/>
+                        style="@style/HelloButton.Login"
+                        android:text="@string/hello_btn_login"/>
 
                     <Button
                         android:id="@+id/register_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/HelloButton.Register"
                         android:layout_marginTop="5dp"
-                        android:background="@color/colorPrimaryDark"
-                        android:text="Register"
-                        android:textColor="#ffffff"/>
+                        android:text="@string/hello_btn_register"/>
                 </LinearLayout>
 
                 <CheckBox

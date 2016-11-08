@@ -32,47 +32,47 @@
                     android:src="@mipmap/ic_launcher"/>
 
                 <android.support.design.widget.TextInputLayout
-                    style="@style/TextInputLayout.Normal"
+                    style="@style/HelloTextInputLayout.Normal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <EditText
                         android:id="@+id/register_id"
-                        style="@style/LoginEditText"
-                        android:hint="username"/>
+                        style="@style/HelloEditText"
+                        android:hint="@string/hello_hint_username"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
-                    style="@style/TextInputLayout.Normal"
+                    style="@style/HelloTextInputLayout.Normal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <EditText
                         android:id="@+id/register_email"
-                        style="@style/LoginEditText"
-                        android:hint="email"
+                        style="@style/HelloEditText"
+                        android:hint="@string/hello_email_address"
                         android:inputType="textEmailAddress"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
-                    style="@style/TextInputLayout.Warning"
+                    style="@style/HelloTextInputLayout.Warning"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <EditText
                         android:id="@+id/register_pass1"
-                        style="@style/LoginPassword"/>
+                        style="@style/HelloPassword"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
-                    style="@style/TextInputLayout.Warning"
+                    style="@style/HelloTextInputLayout.Warning"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <EditText
                         android:id="@+id/register_pass2"
-                        style="@style/LoginPassword"
-                        android:hint="check password"/>
+                        style="@style/HelloPassword"
+                        android:hint="@string/hello_check_password"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <FrameLayout
@@ -84,8 +84,8 @@
 
                     <EditText
                         android:id="@+id/check_code_text"
-                        style="@style/LoginPassword"
-                        android:hint="check code"
+                        style="@style/HelloPassword"
+                        android:hint="@string/hello_check_code"
                         android:inputType="textPassword"/>
 
                     <ImageView
@@ -100,11 +100,8 @@
 
                 <Button
                     android:id="@+id/register_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/colorPrimaryDark"
-                    android:text="Register"
-                    android:textColor="#ffffff"/>
+                    style="@style/HelloButton.Register"
+                    android:text="@string/hello_btn_register"/>
 
                 <LinearLayout
                     android:layout_width="0dp"
