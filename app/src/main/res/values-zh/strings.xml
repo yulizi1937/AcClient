@@ -1,0 +1,10 @@
+<resources>
+
+    <string name="hello_hint_username">账号</string>
+    <string name="hello_hint_password">密码</string>
+    <string name="hello_btn_login">登录</string>
+    <string name="hello_btn_register">注册</string>
+    <string name="hello_check_password">检查密码</string>
+    <string name="hello_check_code">核对号</string>
+    <string name="hello_email_address">邮件地址</string>
+</resources>

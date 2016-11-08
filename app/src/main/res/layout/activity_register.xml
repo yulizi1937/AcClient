@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:appandroid="http://schemas.android.com/apk/res-auto"
     >
 
     <data class="RegisterActivityBinding"/>
@@ -78,7 +79,7 @@
                 <FrameLayout
                     android:id="@+id/check"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:visibility="gone">
 
@@ -88,13 +89,13 @@
                         android:hint="@string/hello_check_code"
                         android:inputType="textPassword"/>
 
-                    <ImageView
+                    <ImageButton
                         android:id="@+id/check_code_img"
+                        android:background="@color/colorTransparent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|right|center_vertical"
-                        android:src="@drawable/right_arrow"
-                        android:tint="@color/colorAccent"/>
+                        appandroid:srcCompat="@drawable/ic_check_code" />
 
                 </FrameLayout>
 
