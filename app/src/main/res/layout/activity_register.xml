@@ -102,6 +102,7 @@
                 <Button
                     android:id="@+id/register_button"
                     style="@style/HelloButton.Register"
+                    android:layout_gravity="right|end"
                     android:text="@string/hello_btn_register"/>
 
                 <LinearLayout

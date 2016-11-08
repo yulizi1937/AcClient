@@ -112,9 +112,11 @@
     </style>
 
     <style name="HelloButton">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/selector_item_background</item>
+        <item name="android:foreground">@drawable/selector_item_background</item>
     </style>
 
     <style name="HelloButton.Login">
