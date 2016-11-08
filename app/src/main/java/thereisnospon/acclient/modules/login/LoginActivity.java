@@ -126,7 +126,7 @@ public final class LoginActivity extends AppCompatActivity implements LoginConta
 		handler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				if (checkRemebered()) {
+				if (checkRemembered()) {
 					presenter.login(id, pass);
 				} else {
 					shoLoginUI();
@@ -140,7 +140,7 @@ public final class LoginActivity extends AppCompatActivity implements LoginConta
 	}
 
 
-	private boolean checkRemebered() {
+	private boolean checkRemembered() {
 		SpUtil sp = SpUtil.getInstance();
 		this.id = sp.getString(SpUtil.NAME);
 		this.pass = sp.getString(SpUtil.PASS);
