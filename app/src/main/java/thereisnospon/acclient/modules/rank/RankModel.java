@@ -24,8 +24,6 @@ public class RankModel implements RankContact.Model {
         currentPage=1;
     }
 
-
-
     @Override
     public List<RankItem> loadRankItems() {
         currentPage=1;

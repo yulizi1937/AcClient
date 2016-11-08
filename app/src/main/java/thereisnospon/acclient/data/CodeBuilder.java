@@ -23,10 +23,8 @@ public class CodeBuilder {
     }
     private static Element getTexrs(Document document){
         Elements elements=document.getElementsByTag("textarea");
-        Logger.d(elements.first().text());
         if(elements==null||elements.size()==0)
             return null;
         else return elements.first();
     }
-
 }

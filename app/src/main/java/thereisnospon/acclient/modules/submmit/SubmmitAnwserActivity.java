@@ -90,6 +90,8 @@ public class SubmmitAnwserActivity extends BaseActivity implements View.OnClickL
             }
             @Override
             public void failure(String msg) {
+
+                Logger.e(msg);
                 Msg.t("提交失败");
             }
         });
