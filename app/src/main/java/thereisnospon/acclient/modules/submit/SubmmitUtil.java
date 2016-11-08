@@ -1,19 +1,13 @@
-package thereisnospon.acclient.modules.submmit;
-
-import com.orhanobut.logger.Logger;
+package thereisnospon.acclient.modules.submit;
 
 import java.io.IOException;
-import java.util.List;
 
 import okhttp3.Response;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action;
-import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 import thereisnospon.acclient.api.HdojApi;
-import thereisnospon.acclient.data.SubmmitStatus;
 import thereisnospon.acclient.utils.StringCall;
 import thereisnospon.acclient.utils.net.HttpUtil;
 

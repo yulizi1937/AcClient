@@ -25,7 +25,7 @@ import thereisnospon.acclient.modules.search_people.SearchPeopleActivity;
 import thereisnospon.acclient.modules.settings.SettingActivity;
 import thereisnospon.acclient.modules.settings.Settings;
 import thereisnospon.acclient.modules.show_code.CodeActivity;
-import thereisnospon.acclient.modules.submmit.SubmmitAnwserActivity;
+import thereisnospon.acclient.modules.submit.SubmmitAnwserActivity;
 import thereisnospon.acclient.modules.submmit_status.SubmmitStatusActivity;
 import thereisnospon.acclient.modules.user_detail.UserDetailActivity;
 import thereisnospon.acclient.utils.SpUtil;
