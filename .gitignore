@@ -35,7 +35,4 @@ captures/
 *~
 
 # Android Studio workspace.xml file
-workspace.xml
-.idea/workspace.xml
-./idea/misc.xml
-.idea/misc.xml
+
