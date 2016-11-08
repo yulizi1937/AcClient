@@ -94,7 +94,6 @@
     <style name="HelloPassword" parent="HelloEditText">
         <item name="android:fontFamily">null</item>
         <item name="android:inputType">textPassword</item>
-        <item name="android:hint">@string/hello_hint_password</item>
     </style>
 
     <style name="TextAppearance.App.TextInputLayout.Hint" parent="@android:style/TextAppearance">

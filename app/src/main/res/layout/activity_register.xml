@@ -35,30 +35,32 @@
                 <android.support.design.widget.TextInputLayout
                     style="@style/HelloTextInputLayout.Normal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hello_hint_username">
 
                     <EditText
                         android:id="@+id/register_id"
                         style="@style/HelloEditText"
-                        android:hint="@string/hello_hint_username"/>
+                        />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
                     style="@style/HelloTextInputLayout.Normal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hello_email_address">
 
                     <EditText
                         android:id="@+id/register_email"
                         style="@style/HelloEditText"
-                        android:hint="@string/hello_email_address"
                         android:inputType="textEmailAddress"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
                     style="@style/HelloTextInputLayout.Warning"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hello_hint_password">
 
                     <EditText
                         android:id="@+id/register_pass1"
@@ -68,12 +70,12 @@
                 <android.support.design.widget.TextInputLayout
                     style="@style/HelloTextInputLayout.Warning"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hello_hint_password">
 
                     <EditText
                         android:id="@+id/register_pass2"
-                        style="@style/HelloPassword"
-                        android:hint="@string/hello_check_password"/>
+                        style="@style/HelloPassword" />
                 </android.support.design.widget.TextInputLayout>
 
                 <FrameLayout
@@ -91,11 +93,11 @@
 
                     <ImageButton
                         android:id="@+id/check_code_img"
-                        android:background="@color/colorTransparent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end|right|center_vertical"
-                        appandroid:srcCompat="@drawable/ic_check_code" />
+                        android:background="@color/colorTransparent"
+                        appandroid:srcCompat="@drawable/ic_check_code"/>
 
                 </FrameLayout>
 

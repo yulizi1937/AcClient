@@ -35,17 +35,18 @@
                 <android.support.design.widget.TextInputLayout
                     style="@style/HelloTextInputLayout.Normal"
                     android:layout_width="match_parent"
+                    android:hint="@string/hello_hint_username"
                     android:layout_height="wrap_content">
 
                     <EditText
                         android:id="@+id/login_id"
-                        style="@style/HelloEditText"
-                        android:hint="@string/hello_hint_username"/>
+                        style="@style/HelloEditText"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
                     style="@style/HelloTextInputLayout.Warning"
                     android:layout_width="match_parent"
+                    android:hint="@string/hello_hint_password"
                     android:layout_height="wrap_content">
 
                     <EditText
@@ -80,11 +81,12 @@
                     android:id="@+id/login_remember"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_gravity="end|right"
                     android:checkMark="?android:attr/listChoiceIndicatorMultiple"
-                    android:layout_gravity="center" android:gravity="center"
                     android:checked="false"
-                    android:textColor="@color/colorAccent"
-                    android:text="@string/hello_remember_password"/>
+                    android:gravity="center"
+                    android:text="@string/hello_remember_password"
+                    android:textColor="@color/colorAccent"/>
 
             </LinearLayout>
 
