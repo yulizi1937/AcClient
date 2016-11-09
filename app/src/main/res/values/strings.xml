@@ -68,5 +68,6 @@
     <string name="hello_no_empty_password">Password is required.</string>
     <string name="hello_password_not_equal">Passwords are not equal.</string>
     <string name="hello_password_short">More than 6 characters.</string>
+    <string name="hello_register_unsuccessfully">Registered unsuccessfully.</string>
 
 </resources>

@@ -1,6 +1,14 @@
 package thereisnospon.acclient.modules.hello;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.text.TextUtils;
+
+import net.steamcrafted.loadtoast.LoadToast;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -22,6 +30,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 import thereisnospon.acclient.AppApplication;
+import thereisnospon.acclient.R;
 import thereisnospon.acclient.api.HdojApi;
 import thereisnospon.acclient.event.Event;
 import thereisnospon.acclient.event.EventCode;
@@ -38,6 +47,25 @@ import thereisnospon.acclient.utils.net.cookie.PresistentCookieStroe;
 public final class HelloUtil {
 
 	private HelloUtil() {
+	}
+
+	static LoadToast createLoadToast(@NonNull  Activity activity) {
+		Context cxt = activity.getApplicationContext();
+		return new LoadToast(activity).setBackgroundColor(ActivityCompat.getColor(cxt, R.color.colorGreen))
+		                          .setProgressColor(ActivityCompat.getColor(cxt, R.color.colorPrimaryDark))
+		                          .setTextColor(ActivityCompat.getColor(cxt, R.color.colorWhite))
+		                          .setTranslationY(HelloUtil.getActionBarHeight(cxt));
+	}
+
+	static int getActionBarHeight(Context cxt) {
+		int[] abSzAttr;
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+			abSzAttr = new int[] { android.R.attr.actionBarSize };
+		} else {
+			abSzAttr = new int[] { R.attr.actionBarSize };
+		}
+		TypedArray a = cxt.obtainStyledAttributes(abSzAttr);
+		return a.getDimensionPixelSize(0, -1);
 	}
 
 	public abstract static class LoginCall extends Subscriber<String> {

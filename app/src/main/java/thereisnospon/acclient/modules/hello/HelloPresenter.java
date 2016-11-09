@@ -15,143 +15,176 @@ import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.utils.StringCall;
 
+import static thereisnospon.acclient.modules.hello.ErrorConstants.NO_EMPTY_PASSWORD;
+import static thereisnospon.acclient.modules.hello.ErrorConstants.NO_EMPTY_USERNAME;
+import static thereisnospon.acclient.modules.hello.ErrorConstants.PASSWORD_NOT_EQUAL;
+import static thereisnospon.acclient.modules.hello.ErrorConstants.PASSWORD_SHORT;
+import static thereisnospon.acclient.modules.hello.ErrorConstants.REGISTER_UNSUCCESSFULLY;
+import static thereisnospon.acclient.modules.hello.ErrorConstants.WRONG_EMAIL;
+
 /**
  * Created by yzr on 16/10/30.
  */
 
-class HelloPresenter implements HelloContact.Presenter {
+final class HelloPresenter implements HelloContact.Presenter {
 
 
-    private final HelloContact.Model model;
-    private final HelloContact.View view;
+	private final HelloContact.Model model;
+	private final HelloContact.View view;
 
-    HelloPresenter(HelloContact.View view) {
-        this.view = view;
-        this.model=new HelloModel();
-    }
+	HelloPresenter(HelloContact.View view) {
+		this.view = view;
+		this.model = new HelloModel();
+	}
 
-    @Override
-    public void login(final String name, final String message) {
+	@Override
+	public void login(final String name, final String password) {
+		view.beforeLogin();
+		if (!loginCheck(name, password)) {
+			return;
+		}
 
-        Observable.just(name)
-                .observeOn(Schedulers.io())
-                .map(new Func1<String, String>() {
-                    @Override
-                    public String call(String s) {
-                        return model.login(name,message);
-                    }
-                })
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new StringCall() {
-                    @Override
-                    public void success(String nickName) {
-                        view.onLoginSuccess(nickName);
-                    }
+		Observable.just(name)
+		          .observeOn(Schedulers.io())
+		          .map(new Func1<String, String>() {
+			          @Override
+			          public String call(String s) {
+				          return model.login(name, password);
+			          }
+		          })
+		          .observeOn(AndroidSchedulers.mainThread())
+		          .subscribe(new StringCall() {
+			          @Override
+			          public void success(String nickName) {
+				          view.onLoginSuccess(nickName);
+			          }
 
-                    @Override
-                    public void failure(String msg) {
-                        view.onLoginFailure(msg);
-                    }
-                });
+			          @Override
+			          public void failure(String msg) {
+				          view.onLoginFailure(msg);
+			          }
+		          });
 
-    }
+	}
 
-    @Override
-    public void register(final String name, final String email, final String password, final String checkPassword, final String check) {
-        if(!check(name,email,password,checkPassword)){
-            return;
-        }
-        Observable.just(name)
-                .observeOn(Schedulers.io())
-                .map(new Func1<String, String>() {
-                    @Override
-                    public String call(String s) {
-                        return model.register(name,email,password,checkPassword,check);
-                    }
-                })
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new StringCall() {
-                    @Override
-                    public void success(String nickName) {
-                        view.onRegisterSuccess(nickName);
-                    }
+	@Override
+	public void register(final String name, final String email, final String password, final String checkPassword, final String check) {
+		view.beforeRegister();
+		if (!regCheck(name, email, password, checkPassword)) {
+			return;
+		}
+		Observable.just(name)
+		          .observeOn(Schedulers.io())
+		          .map(new Func1<String, String>() {
+			          @Override
+			          public String call(String s) {
+				          return model.register(name, email, password, checkPassword, check);
+			          }
+		          })
+		          .observeOn(AndroidSchedulers.mainThread())
+		          .subscribe(new StringCall() {
+			          @Override
+			          public void success(String nickName) {
+				          view.onRegisterSuccess(nickName);
+			          }
 
-                    @Override
-                    public void failure(String msg) {
-                        view.onRegisterFailure("注册失败");
-                    }
-                });
-    }
-
-
-    private static final String CHECK_EMAIL_REGEX="^(\\w)+(\\.\\w+)*@(\\w)+((\\.\\w+)+)$";
-    private static final Pattern pattern;
-    static {
-        pattern=Pattern.compile(CHECK_EMAIL_REGEX);
-    }
+			          @Override
+			          public void failure(String msg) {
+				          view.onUserInputFailure(AppApplication.context.getString(R.string.hello_register_unsuccessfully), REGISTER_UNSUCCESSFULLY);
+			          }
+		          });
+	}
 
 
-    private static boolean checkEmail(String email){
-        return email!=null&&pattern.matcher(email).matches();
-    }
+	private static final String CHECK_EMAIL_REGEX = "^(\\w)+(\\.\\w+)*@(\\w)+((\\.\\w+)+)$";
+	private static final Pattern pattern;
 
 
-    private boolean check(String name, String email, String password, String checkPassword){
-        Context cxt = AppApplication.context;
-        if(TextUtils.isEmpty(name)){
-            view.onRegisterFailure(cxt.getString(R.string.hello_no_empty_username));
-            return false;
-        }
-
-        if(!checkEmail(email)){
-            view.onRegisterFailure(cxt.getString(R.string.hello_wrong_email));
-            return false;
-        }
-
-        if(TextUtils.isEmpty(password)){
-           view.onRegisterFailure(cxt.getString(R.string.hello_no_empty_password));
-            return false;
-        }
-
-        if(!password.equals(checkPassword)){
-            view.onRegisterFailure(cxt.getString(R.string.hello_password_not_equal));
-            return false;
-        }
-
-        if(password.length()<6){
-            view.onRegisterFailure(cxt.getString(R.string.hello_password_short));
-            return false;
-        }
-
-        return true;
-    }
+	static {
+		pattern = Pattern.compile(CHECK_EMAIL_REGEX);
+	}
 
 
-    @Override
-    public void loadCheckCode() {
-        Observable.just(1)
-                .observeOn(Schedulers.io())
-                .map(new Func1<Integer, Bitmap>() {
-                    @Override
-                    public Bitmap call(Integer integer) {
-                        return model.checkCode();
-                    }
-                })
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<Bitmap>() {
-                    @Override
-                    public void call(Bitmap bitmap) {
-                        if (bitmap != null) {
-                            view.onCheckCode(bitmap);
-                        } else {
-                            view.onCheckCodeErr("null");
-                        }
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        view.onCheckCodeErr(throwable.getMessage());
-                    }
-                });
-    }
+	private static boolean checkEmail(String email) {
+		return email != null && pattern.matcher(email)
+		                               .matches();
+	}
+
+
+	private boolean regCheck(String name, String email, String password, String checkPassword) {
+		Context cxt = AppApplication.context;
+		if (TextUtils.isEmpty(name)) {
+			view.onUserInputFailure(cxt.getString(R.string.hello_no_empty_username), NO_EMPTY_USERNAME);
+			return false;
+		}
+
+		if (!checkEmail(email)) {
+			view.onUserInputFailure(cxt.getString(R.string.hello_wrong_email), WRONG_EMAIL);
+			return false;
+		}
+
+		if (TextUtils.isEmpty(password)) {
+			view.onUserInputFailure(cxt.getString(R.string.hello_no_empty_password), NO_EMPTY_PASSWORD);
+			return false;
+		}
+
+		if (!password.equals(checkPassword)) {
+			view.onUserInputFailure(cxt.getString(R.string.hello_password_not_equal), PASSWORD_NOT_EQUAL);
+			return false;
+		}
+
+		if (password.length() < 6) {
+			view.onUserInputFailure(cxt.getString(R.string.hello_password_short), PASSWORD_SHORT);
+			return false;
+		}
+
+		return true;
+	}
+
+	private boolean loginCheck(String name, String password) {
+		Context cxt = AppApplication.context;
+		if (TextUtils.isEmpty(name)) {
+			view.onUserInputFailure(cxt.getString(R.string.hello_no_empty_username), NO_EMPTY_USERNAME);
+			return false;
+		}
+
+		if (TextUtils.isEmpty(password)) {
+			view.onUserInputFailure(cxt.getString(R.string.hello_no_empty_password), NO_EMPTY_PASSWORD);
+			return false;
+		}
+
+		if (password.length() < 6) {
+			view.onUserInputFailure(cxt.getString(R.string.hello_password_short), PASSWORD_SHORT);
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public void loadCheckCode() {
+		Observable.just(1)
+		          .observeOn(Schedulers.io())
+		          .map(new Func1<Integer, Bitmap>() {
+			          @Override
+			          public Bitmap call(Integer integer) {
+				          return model.checkCode();
+			          }
+		          })
+		          .observeOn(AndroidSchedulers.mainThread())
+		          .subscribe(new Action1<Bitmap>() {
+			          @Override
+			          public void call(Bitmap bitmap) {
+				          if (bitmap != null) {
+					          view.onCheckCode(bitmap);
+				          } else {
+					          view.onCheckCodeErr("null");
+				          }
+			          }
+		          }, new Action1<Throwable>() {
+			          @Override
+			          public void call(Throwable throwable) {
+				          view.onCheckCodeErr(throwable.getMessage());
+			          }
+		          });
+	}
 }

@@ -10,13 +10,18 @@ interface HelloContact {
 
 
 	interface View {
+
+		void beforeLogin();
+
+		void beforeRegister();
+
 		void onLoginSuccess(String userName);
 
 		void onLoginFailure(String error);
 
 		void onRegisterSuccess(String userName);
 
-		void onRegisterFailure(String error);
+		void onUserInputFailure(String error, @ErrorConstants.Value int errorType);
 
 		void onCheckCode(Bitmap bitmap);
 

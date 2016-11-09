@@ -11,7 +11,6 @@ import android.support.transition.Scene;
 import android.support.transition.Transition;
 import android.support.transition.TransitionManager;
 import android.support.transition.TransitionSet;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import thereisnospon.acclient.R;
@@ -22,11 +21,13 @@ import thereisnospon.acclient.modules.problem_list.HdojActivity;
 import thereisnospon.acclient.utils.SpUtil;
 import thereisnospon.acclient.widget.TransitiionListenerAdapter;
 
-public final class LoginActivity extends AppCompatActivity implements HelloContact.View {
+import static thereisnospon.acclient.modules.hello.ErrorConstants.NO_EMPTY_PASSWORD;
+import static thereisnospon.acclient.modules.hello.ErrorConstants.NO_EMPTY_USERNAME;
+
+public final class LoginActivity extends BasicActivity{
 	private static final int LAYOUT = R.layout.activity_hello;
 	private static final int DURATION = 500;
 	private Scene login;
-	private HelloContact.Presenter presenter;
 
 	private String id;
 	private String pass;
@@ -130,14 +131,14 @@ public final class LoginActivity extends AppCompatActivity implements HelloConta
 				if (checkRemembered()) {
 					presenter.login(id, pass);
 				} else {
-					shoLoginUI();
+					showLoginUI();
 				}
 			}
 		}, 1000);
 	}
 
 	private void reLogin() {
-		shoLoginUI();
+		showLoginUI();
 	}
 
 
@@ -151,7 +152,7 @@ public final class LoginActivity extends AppCompatActivity implements HelloConta
 	}
 
 
-	private void shoLoginUI() {
+	private void showLoginUI() {
 		isShowLoginUI = true;
 		TransitionSet transitionSet = new TransitionSet();
 		transitionSet.addTransition(new AutoTransition());
@@ -169,6 +170,7 @@ public final class LoginActivity extends AppCompatActivity implements HelloConta
 
 	@Override
 	public void onLoginSuccess(String userName) {
+		mLoadToast.success();
 		SpUtil sp = SpUtil.getInstance();
 		nickname = userName;
 		if (rememberPas) {
@@ -188,10 +190,12 @@ public final class LoginActivity extends AppCompatActivity implements HelloConta
 	@Override
 	public void onLoginFailure(String error) {
 		if (!isShowLoginUI) {
-			shoLoginUI();
+			showLoginUI();
 		} else {
 			Snackbar.make(mBinding.sceneRoot, R.string.hello_login_unsuccessfully, Snackbar.LENGTH_SHORT)
 			        .show();
+			mLoadToast.setText(getApplicationContext().getString(R.string.hello_login_unsuccessfully));
+			mLoadToast.error();
 		}
 	}
 
@@ -201,7 +205,22 @@ public final class LoginActivity extends AppCompatActivity implements HelloConta
 	}
 
 	@Override
-	public void onRegisterFailure(String error) {
+	public void onUserInputFailure(String error, @ErrorConstants.Value int errorType) {
+		switch (errorType) {
+			case NO_EMPTY_USERNAME:
+				mLoginBinding.loginIdContainer.setError(error);
+				break;
+			case NO_EMPTY_PASSWORD:
+				mLoginBinding.loginPassContainer.setError(error);
+				break;
+			case ErrorConstants.PASSWORD_NOT_EQUAL:
+			case ErrorConstants.PASSWORD_SHORT:
+			case ErrorConstants.WRONG_EMAIL:
+			case ErrorConstants.REGISTER_UNSUCCESSFULLY:
+				break;
+		}
+		mLoadToast.setText(error);
+		mLoadToast.error();
 	}
 
 	@Override
