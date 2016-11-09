@@ -1,4 +1,4 @@
-package thereisnospon.acclient.modules.login;
+package thereisnospon.acclient.modules.hello;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -19,13 +19,13 @@ import thereisnospon.acclient.utils.StringCall;
  * Created by yzr on 16/10/30.
  */
 
-public class LoginPresenter implements LoginContact.Presenter {
+class HelloPresenter implements HelloContact.Presenter {
 
 
-    LoginContact.Model model;
-    LoginContact.View view;
+    HelloContact.Model model;
+    HelloContact.View view;
 
-    public LoginPresenter(LoginContact.View view) {
+    public HelloPresenter(HelloContact.View view) {
         this.view = view;
         this.model=new LoginModel();
     }

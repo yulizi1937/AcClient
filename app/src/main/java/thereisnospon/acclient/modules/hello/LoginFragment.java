@@ -1,4 +1,4 @@
-package thereisnospon.acclient.modules.login;
+package thereisnospon.acclient.modules.hello;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import android.view.ViewGroup;
  * Created by yzr on 16/10/30.
  */
 
-public class LoginFragment extends Fragment  implements LoginContact.View{
+public class LoginFragment extends Fragment  implements HelloContact.View{
 
 
 

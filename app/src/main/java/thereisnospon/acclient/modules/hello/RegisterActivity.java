@@ -1,4 +1,4 @@
-package thereisnospon.acclient.modules.login;
+package thereisnospon.acclient.modules.hello;
 
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
@@ -12,11 +12,11 @@ import com.orhanobut.logger.Logger;
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.databinding.RegisterActivityBinding;
 
-public final class RegisterActivity extends AppCompatActivity implements LoginContact.View {
+public final class RegisterActivity extends AppCompatActivity implements HelloContact.View {
 
 	private static final int LAYOUT = R.layout.activity_register;
 	private RegisterActivityBinding mBinding;
-	private LoginContact.Presenter presenter;
+	private HelloContact.Presenter presenter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public final class RegisterActivity extends AppCompatActivity implements LoginCo
 				presenter.loadCheckCode();
 			}
 		});
-		presenter = new LoginPresenter(this);
+		presenter = new HelloPresenter(this);
 	}
 
 	public void register() {

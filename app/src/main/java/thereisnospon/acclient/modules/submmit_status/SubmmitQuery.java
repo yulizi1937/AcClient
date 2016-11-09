@@ -1,8 +1,5 @@
 package thereisnospon.acclient.modules.submmit_status;
 
-import thereisnospon.acclient.data.SubmmitStatus;
-import thereisnospon.acclient.modules.login.LoginContact;
-
 /**
  * Created by yzr on 16/7/30.
  */

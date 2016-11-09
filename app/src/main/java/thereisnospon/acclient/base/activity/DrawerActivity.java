@@ -16,7 +16,7 @@ import thereisnospon.acclient.R;
 import thereisnospon.acclient.event.Arg;
 import thereisnospon.acclient.modules.about.AboutActivity;
 import thereisnospon.acclient.modules.discuss.DiscussActivity;
-import thereisnospon.acclient.modules.login.LoginActivity;
+import thereisnospon.acclient.modules.hello.LoginActivity;
 import thereisnospon.acclient.modules.problem_list.HdojActivity;
 import thereisnospon.acclient.modules.rank.RankActivity;
 import thereisnospon.acclient.modules.settings.SettingActivity;

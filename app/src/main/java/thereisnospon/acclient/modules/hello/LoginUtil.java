@@ -1,8 +1,7 @@
-package thereisnospon.acclient.modules.login;
+package thereisnospon.acclient.modules.hello;
 
 import android.text.TextUtils;
 
-import org.greenrobot.eventbus.Subscribe;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -11,7 +10,6 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.net.URI;
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import okhttp3.Cookie;

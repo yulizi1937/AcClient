@@ -1,9 +1,7 @@
-package thereisnospon.acclient.modules.login;
+package thereisnospon.acclient.modules.hello;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-
-import com.orhanobut.logger.Logger;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -14,20 +12,15 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import okhttp3.Response;
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 import thereisnospon.acclient.api.HdojApi;
 import thereisnospon.acclient.utils.net.HttpUtil;
 import thereisnospon.acclient.utils.net.request.IRequest;
-import thereisnospon.acclient.utils.net.request.PostRequest;
 
 /**
  * Created by yzr on 16/10/30.
  */
 
-public class LoginModel implements LoginContact.Model {
+public class LoginModel implements HelloContact.Model {
 
 
     /**

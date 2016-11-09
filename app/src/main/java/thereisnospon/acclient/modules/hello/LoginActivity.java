@@ -1,4 +1,4 @@
-package thereisnospon.acclient.modules.login;
+package thereisnospon.acclient.modules.hello;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -23,11 +23,11 @@ import thereisnospon.acclient.modules.problem_list.HdojActivity;
 import thereisnospon.acclient.utils.SpUtil;
 import thereisnospon.acclient.widget.TransitiionListenerAdapter;
 
-public final class LoginActivity extends AppCompatActivity implements LoginContact.View {
+public final class LoginActivity extends AppCompatActivity implements HelloContact.View {
 	private static final int LAYOUT = R.layout.activity_hello;
 	private static final int DURATION = 500;
 	private Scene login;
-	private LoginContact.Presenter presenter;
+	private HelloContact.Presenter presenter;
 
 	private String id;
 	private String pass;
@@ -68,7 +68,7 @@ public final class LoginActivity extends AppCompatActivity implements LoginConta
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mBinding = DataBindingUtil.setContentView(this, LAYOUT);
-		presenter = new LoginPresenter(this);
+		presenter = new HelloPresenter(this);
 		initScene();
 		initView();
 		Intent intent = getIntent();

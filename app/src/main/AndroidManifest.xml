@@ -38,7 +38,7 @@
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize"
             android:label="用户列表" />
-        <activity android:name=".modules.login.LoginActivity" android:launchMode="singleTask">
+        <activity android:name=".modules.hello.LoginActivity" android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -48,7 +48,7 @@
         <activity android:name=".modules.about.AboutActivity" android:launchMode="singleTask" android:label="关于" />
         <activity android:name=".modules.discuss.DiscussActivity" android:launchMode="singleTask" android:label="题目讨论" />
         <activity android:name=".modules.note.NoteActivity" android:launchMode="singleTask" android:label="笔记"/>
-        <activity android:name=".modules.login.RegisterActivity" android:windowSoftInputMode="adjustResize" android:launchMode="singleTask" android:label="注册"> </activity>
+        <activity android:name=".modules.hello.RegisterActivity" android:windowSoftInputMode="adjustResize" android:launchMode="singleTask" android:label="注册"> </activity>
     </application>
 
 </manifest>

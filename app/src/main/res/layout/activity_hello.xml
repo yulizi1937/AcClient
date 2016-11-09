@@ -13,7 +13,7 @@
         android:background="@color/colorPrimary"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        tools:context="thereisnospon.acclient.modules.login.LoginActivity">
+        tools:context="thereisnospon.acclient.modules.hello.LoginActivity">
 
 
         <include
