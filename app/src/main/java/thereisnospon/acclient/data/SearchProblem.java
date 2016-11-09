@@ -11,6 +11,8 @@ import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by yzr on 16/6/7.
@@ -49,19 +51,42 @@ public class SearchProblem extends ProblemItem
             return list;
         }
 
+
+        public static final String IMG_REGX="src=\"images/([\\S\\s]+?.gif)\"";
+
+        private static int getStatus(Element element){
+            if(element==null||element.html()==null)
+                return ProblemItem.UN_KNOW;
+            String html=element.html();
+            Pattern pattern=Pattern.compile(IMG_REGX);
+            Matcher matcher=pattern.matcher(html);
+            if(matcher.find()){
+                String img=matcher.group(1);
+                if(img.equals("ac"))
+                    return ProblemItem.ACCEPTED;
+                else return ProblemItem.UN_SOLVED;
+            }
+            return ProblemItem.UN_SUBMMIT;
+        }
+
+
         private static SearchProblem getWithLogin(Element tr){
             Elements tds=tr.getElementsByTag("td");
+            int status=getStatus(tds.get(0));
             int id=Integer.parseInt(tds.get(1).text());
             String title=tds.get(2).text();
             String author=tds.get(3).text();
             String source=tds.get(4).text();
             String str=tds.get(5).text();
             String nums[]=str.split("[\\(\\)/%]");
+
             if(nums.length!=4)
                 return null;
             int accepted=Integer.parseInt(nums[1]);
             int submission=Integer.parseInt(nums[2]);
             SearchProblem problem=new SearchProblem(id,title,author,source,accepted,submission);
+            problem.setStatus(status);
+            Logger.e(status+"");
             return problem;
         }
         private static SearchProblem getWithout(Element tr){
@@ -77,6 +102,7 @@ public class SearchProblem extends ProblemItem
             int accepted=Integer.parseInt(nums[1]);
             int submission=Integer.parseInt(nums[2]);
             SearchProblem problem=new SearchProblem(id,title,author,source,accepted,submission);
+            problem.setStatus(ProblemItem.UN_KNOW);
             return problem;
         }
         private static SearchProblem get(Element tr){

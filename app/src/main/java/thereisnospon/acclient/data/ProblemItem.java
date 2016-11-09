@@ -51,4 +51,21 @@ public class ProblemItem {
         this.submmision = submmision;
     }
 
+    private int status;
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public static final int UN_KNOW=-1;
+    public static final int ACCEPTED=5;
+    public static final int UN_SOLVED=6;
+    public static final int UN_SUBMMIT=0;
+
+
+
 }

@@ -7,7 +7,7 @@
         android:layout_height="match_parent"
         >
 
-
+            <data class="FragmentUserDetailBinding"></data>
         <include
             android:id="@+id/fragment_user_detail"
             layout="@layout/fragment_user_detail">

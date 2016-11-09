@@ -62,8 +62,6 @@ public class SearchPeopleItem
             String school=tds.get(4).text();
             int accepted=Integer.parseInt(tds.get(5).text());
             return new SearchPeopleItem(rank,nation,id,name,school,accepted);
-
-
         }
 
 
