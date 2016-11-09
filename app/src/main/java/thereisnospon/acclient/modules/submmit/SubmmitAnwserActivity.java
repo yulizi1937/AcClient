@@ -22,8 +22,7 @@ import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+
 import rx.functions.Action1;
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.base.activity.BaseActivity;
@@ -33,6 +32,7 @@ import thereisnospon.acclient.event.Event;
 import thereisnospon.acclient.event.Msg;
 import thereisnospon.acclient.modules.settings.Settings;
 import thereisnospon.acclient.modules.show_code.CodeActivity;
+import thereisnospon.acclient.modules.submit.SubmmitUtil;
 import thereisnospon.acclient.modules.submmit_status.SubmmitQuery;
 import thereisnospon.acclient.modules.submmit_status.SubmmitStatusActivity;
 import thereisnospon.acclient.utils.SpUtil;
@@ -101,7 +101,7 @@ public class SubmmitAnwserActivity extends BaseActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submmit_anwser);
-        ButterKnife.bind(this);
+       // ButterKnife.bind(this);
         initView();
         resolveId();
     }

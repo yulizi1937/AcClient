@@ -1,6 +1,6 @@
 package thereisnospon.acclient.widget;
 
-import android.transition.Transition;
+import android.support.transition.Transition;
 
 /**
  * Created by yzr on 16/10/30.

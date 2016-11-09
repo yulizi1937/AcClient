@@ -1,30 +1,22 @@
 package thereisnospon.acclient.modules.problem_detail;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import org.greenrobot.eventbus.EventBus;
-
-import butterknife.ButterKnife;
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.base.activity.DrawerActivity;
 import thereisnospon.acclient.event.Arg;
-import thereisnospon.acclient.event.Event;
-import thereisnospon.acclient.event.EventCode;
 import thereisnospon.acclient.modules.discuss.DiscussActivity;
 
-public class ShowProblemActivity extends DrawerActivity {
+public final class ShowProblemActivity extends DrawerActivity {
 
-    int id;
+    private int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_problem);
-        ButterKnife.bind(this);
         initDrawer();
         id=getIntent().getIntExtra(Arg.LOAD_PROBLEM_DETAIL,1000);
         getSupportFragmentManager()

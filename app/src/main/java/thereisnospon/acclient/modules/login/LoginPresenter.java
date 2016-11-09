@@ -1,12 +1,8 @@
 package thereisnospon.acclient.modules.login;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.util.regex.Pattern;
 
@@ -15,6 +11,8 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
+import thereisnospon.acclient.AppApplication;
+import thereisnospon.acclient.R;
 import thereisnospon.acclient.utils.StringCall;
 
 /**
@@ -99,29 +97,29 @@ public class LoginPresenter implements LoginContact.Presenter {
 
 
     public  boolean check(String name,String email,String password,String checkPassword){
-
+        Context cxt = AppApplication.context;
         if(TextUtils.isEmpty(name)){
-            view.onRegisterFailure("用户名不能为空！");
+            view.onRegisterFailure(cxt.getString(R.string.hello_no_empty_username));
             return false;
         }
 
         if(!checkEmail(email)){
-            view.onRegisterFailure("邮箱错误！");
+            view.onRegisterFailure(cxt.getString(R.string.hello_wrong_email));
             return false;
         }
 
         if(TextUtils.isEmpty(password)){
-           view.onRegisterFailure("密码不能为空！");
+           view.onRegisterFailure(cxt.getString(R.string.hello_no_empty_password));
             return false;
         }
 
         if(!password.equals(checkPassword)){
-            view.onRegisterFailure("两次密码不同");
+            view.onRegisterFailure(cxt.getString(R.string.hello_password_not_equal));
             return false;
         }
 
         if(password.length()<6){
-            view.onRegisterFailure("密码长度至少为6");
+            view.onRegisterFailure(cxt.getString(R.string.hello_password_short));
             return false;
         }
 

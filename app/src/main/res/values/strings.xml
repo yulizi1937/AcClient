@@ -48,4 +48,25 @@
         "}"
     </string>
     <string name="scroll_behavior">thereisnospon.acclient.widget.ScrollToTopBehavior</string>
+
+
+    <string name="lbl_cancel">Cancel</string>
+
+    <string name="hello_hint_username">username</string>
+    <string name="hello_hint_password">password</string>
+    <string name="hello_btn_login">Login</string>
+    <string name="hello_btn_register">Register</string>
+    <string name="hello_check_password">check password</string>
+    <string name="hello_check_code">check code</string>
+    <string name="hello_email_address">email</string>
+    <string name="hello_login_unsuccessfully">Login unsuccessfully.</string>
+    <string name="hello_remember_password">Remember password</string>
+    <string name="hello_register_successfully">You have registered successfully: </string>
+    <string name="hello_return_to_login">Return to login.</string>
+    <string name="hello_no_empty_username">Username is required.</string>
+    <string name="hello_wrong_email">Wrong email</string>
+    <string name="hello_no_empty_password">Password is required.</string>
+    <string name="hello_password_not_equal">Passwords are not equal.</string>
+    <string name="hello_password_short">More than 6 characters.</string>
+
 </resources>
