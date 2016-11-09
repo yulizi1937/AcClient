@@ -18,7 +18,7 @@ import thereisnospon.acclient.event.Arg;
 import thereisnospon.acclient.event.Msg;
 import thereisnospon.acclient.modules.hello.LoginActivity;
 
-import thereisnospon.acclient.modules.hello.LoginUtil;
+import thereisnospon.acclient.modules.hello.HelloUtil;
 import thereisnospon.acclient.modules.problem_list.HdojActivity;
 import thereisnospon.acclient.modules.rank.RankActivity;
 import thereisnospon.acclient.modules.search_people.SearchPeopleActivity;
@@ -113,7 +113,7 @@ public class DebugActivity extends DrawerActivity implements ListView.OnItemClic
             goToLogin();
             return;
         }
-        LoginUtil.login(userName, password, new LoginUtil.LoginCall() {
+        HelloUtil.login(userName, password, new HelloUtil.LoginCall() {
             @Override
             public void success(String nickName) {
                 setTitle(nickName);

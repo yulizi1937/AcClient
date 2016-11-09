@@ -22,12 +22,12 @@ import thereisnospon.acclient.utils.StringCall;
 class HelloPresenter implements HelloContact.Presenter {
 
 
-    HelloContact.Model model;
-    HelloContact.View view;
+    private final HelloContact.Model model;
+    private final HelloContact.View view;
 
-    public HelloPresenter(HelloContact.View view) {
+    HelloPresenter(HelloContact.View view) {
         this.view = view;
-        this.model=new LoginModel();
+        this.model=new HelloModel();
     }
 
     @Override
@@ -85,18 +85,18 @@ class HelloPresenter implements HelloContact.Presenter {
 
 
     private static final String CHECK_EMAIL_REGEX="^(\\w)+(\\.\\w+)*@(\\w)+((\\.\\w+)+)$";
-    private static Pattern pattern;
+    private static final Pattern pattern;
     static {
         pattern=Pattern.compile(CHECK_EMAIL_REGEX);
     }
 
 
-    public static boolean checkEmail(String email){
+    private static boolean checkEmail(String email){
         return email!=null&&pattern.matcher(email).matches();
     }
 
 
-    public  boolean check(String name,String email,String password,String checkPassword){
+    private boolean check(String name, String email, String password, String checkPassword){
         Context cxt = AppApplication.context;
         if(TextUtils.isEmpty(name)){
             view.onRegisterFailure(cxt.getString(R.string.hello_no_empty_username));

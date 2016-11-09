@@ -15,7 +15,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import thereisnospon.acclient.R;
-import thereisnospon.acclient.databinding.ActivityHelloSceneIndexBinding;
 import thereisnospon.acclient.databinding.ActivityHelloSceneLoginBinding;
 import thereisnospon.acclient.databinding.LoginActivityBinding;
 import thereisnospon.acclient.event.Arg;
@@ -36,7 +35,6 @@ public final class LoginActivity extends AppCompatActivity implements HelloConta
 	private volatile boolean isShowLoginUI = false;
 
 	private LoginActivityBinding mBinding;
-	private ActivityHelloSceneIndexBinding mIndexBinding;
 	private ActivityHelloSceneLoginBinding mLoginBinding;
 
 

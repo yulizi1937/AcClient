@@ -38,7 +38,7 @@ public final class RegisterActivity extends AppCompatActivity implements HelloCo
 		presenter = new HelloPresenter(this);
 	}
 
-	public void register() {
+	private void register() {
 
 		String id = mBinding.registerId.getText()
 		                               .toString();

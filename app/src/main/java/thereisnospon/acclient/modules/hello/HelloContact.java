@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
  * Created by yzr on 16/10/30.
  */
 
-public interface HelloContact {
+interface HelloContact {
 
 
 	interface View {
