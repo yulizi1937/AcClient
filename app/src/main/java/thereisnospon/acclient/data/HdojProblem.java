@@ -22,6 +22,7 @@ public class HdojProblem extends ProblemItem
         super(id,title,acceptedNum,submissionNum);
         this.solved = solved;
         this.tag=tag;
+        setTag(tag);
     }
 
     public static class Builder
@@ -73,5 +74,6 @@ public class HdojProblem extends ProblemItem
 
     public void setTag(int tag) {
         this.tag = tag;
+        setStatus(tag);
     }
 }

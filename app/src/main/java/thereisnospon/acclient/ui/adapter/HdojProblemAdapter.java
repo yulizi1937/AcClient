@@ -3,6 +3,7 @@ package thereisnospon.acclient.ui.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,6 +49,13 @@ public final class HdojProblemAdapter extends NormalSwipeAdapter<HdojProblem> {
 		vh.mBinding.problemAc.setText(String.valueOf(problem.getAccepted()));
 		vh.mBinding.problemSubmmit.setText(String.valueOf(problem.getSubmmision()));
 		vh.mBinding.executePendingBindings();
+		if(problem.getStatus()==ProblemItem.ACCEPTED){
+			vh.mBinding.problemId.setText(String.valueOf(problem.getId())+"\t(AC)");
+			vh.mBinding.problemId.setTextColor(Color.parseColor("#4CAF50"));
+		}else if(problem.getStatus()==ProblemItem.UN_SOLVED){
+			vh.mBinding.problemId.setTextColor(Color.parseColor("#FFAB40"));
+			vh.mBinding.problemId.setText(String.valueOf(problem.getId())+"\t(UAC)");
+		}
 	}
 
 	private void goToProblemDetail(Context context, int id) {

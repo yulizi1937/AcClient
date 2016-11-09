@@ -35,6 +35,7 @@ captures/
 *~
 
 # Android Studio workspace.xml file
+
 workspace.xml
 .idea/workspace.xml
 ./idea/misc.xml
@@ -42,4 +43,5 @@ workspace.xml
 .idea/
 *.iml
 .DS_Store
+
 
