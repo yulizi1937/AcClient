@@ -53,6 +53,9 @@ public final class LoginActivity extends AppCompatActivity implements LoginConta
 	@Override
 	protected void onRestoreInstanceState(Bundle savedInstanceState) {
 		super.onRestoreInstanceState(savedInstanceState);
+		if (savedInstanceState == null) {
+			return;
+		}
 		id = savedInstanceState.getString("id");
 		pass = savedInstanceState.getString("pass");
 		nickname = savedInstanceState.getString("nickname");
@@ -95,7 +98,7 @@ public final class LoginActivity extends AppCompatActivity implements LoginConta
 			public void onClick(View view) {
 				mLoginBinding.loginRemember.setChecked(!mLoginBinding.loginRemember.isChecked());
 
-				rememberPas = 	mLoginBinding.loginRemember.isChecked();
+				rememberPas = mLoginBinding.loginRemember.isChecked();
 				if (rememberPas) {
 					Snackbar.make(mBinding.sceneRoot, R.string.hello_remember_password, Snackbar.LENGTH_SHORT)
 					        .setAction(R.string.lbl_cancel, new View.OnClickListener() {

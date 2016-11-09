@@ -12,9 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import jp.wasabeef.recyclerview.animators.ScaleInAnimator;
+import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.data.UserInfo;
-import thereisnospon.acclient.databinding.FragmentUserDetailWrapperBinding;
+import thereisnospon.acclient.databinding.UserDetailBinding;
 import thereisnospon.acclient.event.Arg;
 import thereisnospon.acclient.modules.submmit_status.SubmmitQuery;
 import thereisnospon.acclient.modules.submmit_status.SubmmitStatusActivity;
@@ -26,33 +27,42 @@ import thereisnospon.acclient.ui.adapter.ProblemNodeAdapter;
 public final class UserDetailFragment extends Fragment implements UserDetailContact.View {
 	private static final String TAG = "UserDetailFragment";
 	private UserDetailContact.Presenter presenter;
-	private FragmentUserDetailWrapperBinding mBinding;
-
-
+	private UserDetailBinding mBinding;
 	private String id;
 
 	public static UserDetailFragment newInstance(String id) {
-		UserDetailFragment fragment = new UserDetailFragment();
+		UserDetailFragment fragment = (UserDetailFragment) UserDetailFragment.instantiate(AppApplication.context, UserDetailFragment.class.getName());
 		fragment.id = id;
 		return fragment;
 	}
 
-	private void initView() {
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putString("id", id);
+	}
 
+	@Override
+	public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+		super.onViewStateRestored(savedInstanceState);
+		if (savedInstanceState != null) {
+			id = savedInstanceState.getString("id");
+		}
 	}
 
 	@Nullable
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_user_detail_wrapper, container, false);
-		presenter = new UserDetailPresenter(this);
-		presenter.loadUser(id);
-		return mBinding.getRoot();
+		View view = inflater.inflate( R.layout.fragment_user_detail_wrapper, container, false);
+		mBinding = DataBindingUtil.bind(view);
+		return view;
 	}
 
 	@Override
 	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
+		presenter = new UserDetailPresenter(this);
+		presenter.loadUser(id);
 		mBinding.fragmentUserDetail.userCardSubmission.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -72,12 +82,12 @@ public final class UserDetailFragment extends Fragment implements UserDetailCont
 		mBinding.fragmentUserDetail.userInfoNickname.setText(userInfo.getName());
 		mBinding.fragmentUserDetail.userDetail.setText(userInfo.getDes());
 		mBinding.fragmentUserDetail.userLocal.setText(userInfo.getSchool());
-		mBinding.fragmentUserDetail.userRank.setText(userInfo.getRank() + "");
-		mBinding.fragmentUserDetail.userSubmmision.setText(userInfo.getSubmission() + "");
-		mBinding.fragmentUserDetail.userSubmmit.setText(userInfo.getSubmitted() + "");
-		mBinding.fragmentUserDetail.userTime.setText(userInfo.getRegsiterDate() + "");
-		mBinding.fragmentUserDetail.userSolved.setText(userInfo.getSolved() + "");
-		mBinding.fragmentUserDetail.userAc.setText(userInfo.getAccepted() + "");
+		mBinding.fragmentUserDetail.userRank.setText(String.valueOf(userInfo.getRank()));
+		mBinding.fragmentUserDetail.userSubmmision.setText(String.valueOf(userInfo.getSubmission()));
+		mBinding.fragmentUserDetail.userSubmmit.setText(String.valueOf(userInfo.getSubmitted()));
+		mBinding.fragmentUserDetail.userTime.setText(String.valueOf(userInfo.getRegsiterDate()));
+		mBinding.fragmentUserDetail.userSolved.setText(String.valueOf(userInfo.getSolved()));
+		mBinding.fragmentUserDetail.userAc.setText(String.valueOf(userInfo.getAccepted()));
 		ProblemNodeAdapter adapter = new ProblemNodeAdapter(id, userInfo.getAcceptedNodeList(), userInfo.getUnacceptedNodeList());
 		mBinding.usernodeRecycle.setAdapter(adapter);
 		mBinding.usernodeRecycle.setItemAnimator(new ScaleInAnimator());
