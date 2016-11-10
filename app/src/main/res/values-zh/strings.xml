@@ -32,5 +32,15 @@
     <string name="navi_other">其它</string>
     <string name="navi_share">分享</string>
     <string name="navi_by_page">按页数</string>
-    <string name="navi_by_id">按ID</string>
+    <string name="navi_by_id">指定题号</string>
+
+    <string name="search_by_problem_id">指定题号：</string>
+    <string name="search_problem_by_page">前往页数：</string>
+    <string name="search_by_wrong_page">页数不正确</string>
+    <string name="search_by_wrong_id">id错误</string>
+    <string name="search_pressback_return">再按一次返回键回到桌面</string>
+
+    <string name="share_app_subject">分享一个有用的APP</string>
+    <string name="share_app_text">我发现了一个可以在手机上刷题(HduOj)的app,大家快来看看吧!</string>
+    <string name="share_app">分享</string>
 </resources>

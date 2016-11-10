@@ -82,15 +82,15 @@ public final class HdojActivity extends SearchActivity {
         View view=LayoutInflater.from(this).inflate(R.layout.alert_goto_page,null);
         final EditText editText=(EditText)view.findViewById(R.id.to_page);
         AlertDialog dialog=
-                builder.setTitle("前往页数：")
+                builder.setTitle(R.string.search_problem_by_page)
                 .setView(view)
-                .setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         goToPage(editText.getText().toString());
                     }
                 })
-                .setNegativeButton("取消",null)
+                .setNegativeButton(android.R.string.cancel,null)
                 .setCancelable(true)
                 .create();
         dialog.show();
@@ -103,7 +103,7 @@ public final class HdojActivity extends SearchActivity {
             changeFragment(HdojProblemFragment.newInstance(page));
         }catch (NumberFormatException e){
             ViewGroup decor=(ViewGroup)getWindow().getDecorView();
-            Toast.makeText(this,"页数不正确",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.search_by_wrong_page, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -114,15 +114,15 @@ public final class HdojActivity extends SearchActivity {
         View view=LayoutInflater.from(this).inflate(R.layout.alert_goto_page,null);
         final EditText editText=(EditText)view.findViewById(R.id.to_page);
         AlertDialog dialog=
-                builder.setTitle("指定题号：")
+                builder.setTitle(R.string.search_by_problem_id)
                         .setView(view)
-                        .setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 gotToId(editText.getText().toString());
                             }
                         })
-                        .setNegativeButton("取消",null)
+                        .setNegativeButton(android.R.string.cancel,null)
                         .setCancelable(true)
                         .create();
         dialog.show();
@@ -135,7 +135,7 @@ public final class HdojActivity extends SearchActivity {
             intent.putExtra(Arg.LOAD_PROBLEM_DETAIL,id);
             startActivity(intent);
         }catch (NumberFormatException e){
-            Toast.makeText(this,"id错误",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.search_by_wrong_id, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -165,8 +165,8 @@ public final class HdojActivity extends SearchActivity {
         if(keyCode==KeyEvent.KEYCODE_BACK){
             if(first&&Settings.getInstance().ifExitConfirm()){
                 first=false;
-                Snackbar.make(getDrawer(),"再按一次返回键回到桌面",Snackbar.LENGTH_SHORT)
-                        .setAction("确认", new View.OnClickListener() {
+                Snackbar.make(getDrawer(), R.string.search_pressback_return, Snackbar.LENGTH_SHORT)
+                        .setAction(android.R.string.ok, new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
 

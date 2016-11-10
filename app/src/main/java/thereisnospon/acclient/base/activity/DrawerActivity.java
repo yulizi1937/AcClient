@@ -3,6 +3,7 @@ package thereisnospon.acclient.base.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -87,8 +88,8 @@ public  abstract class DrawerActivity extends ThemeActivity
         headerView.findViewById(R.id.btn_logout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                closeDrawer();
                 LoginActivity.showInstance(DrawerActivity.this, true);
+                ActivityCompat.finishAfterTransition(DrawerActivity.this);
             }
         });
     }
@@ -157,10 +158,10 @@ public  abstract class DrawerActivity extends ThemeActivity
     private void share(){
         Intent intent=new Intent(Intent.ACTION_SEND);
         intent.setType("image/*");
-        intent.putExtra(Intent.EXTRA_SUBJECT, "分享一个有用的APP");
-        intent.putExtra(Intent.EXTRA_TEXT, "我发现了一个可以在手机上刷题(HduOj)的app,大家快来看看吧!");
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(Intent.createChooser(intent, "分享"));
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_app_subject));
+        intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_app_text));
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(Intent.createChooser(intent, getString(R.string.share_app)));
     }
 
 

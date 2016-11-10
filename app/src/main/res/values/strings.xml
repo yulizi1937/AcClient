@@ -82,6 +82,15 @@
     <string name="navi_personal">Personal</string>
     <string name="navi_other">Other</string>
     <string name="navi_share">Share</string>
-    <string name="navi_by_page">By page</string>
-    <string name="navi_by_id">By id</string>
+    <string name="navi_by_page">Find problem by page</string>
+    <string name="navi_by_id">Find problem by id</string>
+
+    <string name="search_by_problem_id">Find problem by id: </string>
+    <string name="search_problem_by_page">Find problem(s) at page:</string>
+    <string name="search_by_wrong_page">Wrong page number</string>
+    <string name="search_by_wrong_id">Wrong Id</string>
+    <string name="search_pressback_return">One more press on back and return to desktop.</string>
+    <string name="share_app_subject">This APP is useful, I want to share with you.</string>
+    <string name="share_app_text">You can use this app to solve programming problems and win points.</string>
+    <string name="share_app">Share</string>
 </resources>

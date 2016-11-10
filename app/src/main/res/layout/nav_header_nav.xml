@@ -30,6 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|right|center_vertical"
         android:background="@color/colorTransparent"
+        android:contentDescription="@string/navi_logout"
         android:src="@drawable/ic_exit_to_app_black_24dp"/>
 
 </LinearLayout>

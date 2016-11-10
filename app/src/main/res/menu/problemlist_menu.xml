@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+      xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/ab_search"
@@ -10,18 +10,15 @@
         app:showAsAction="always"/>
 
     <item
-    android:id="@+id/menu_problem_go_page"
-    android:orderInCategory="20"
-    app:showAsAction="never"
-    android:title="@string/navi_by_page">
+        android:id="@+id/menu_problem_go_page"
+        android:orderInCategory="20"
+        android:title="@string/navi_by_page"
+        app:showAsAction="never"/>
 
-</item>
     <item
         android:id="@+id/menu_problem_go_id"
         android:orderInCategory="20"
-        app:showAsAction="never"
-        android:title="@string/navi_by_id">
-
-    </item>
+        android:title="@string/navi_by_id"
+        app:showAsAction="never"/>
 
 </menu>
