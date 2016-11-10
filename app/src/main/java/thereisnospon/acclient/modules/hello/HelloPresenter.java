@@ -1,14 +1,12 @@
 package thereisnospon.acclient.modules.hello;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.text.TextUtils;
 
 import java.util.regex.Pattern;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 import thereisnospon.acclient.AppApplication;
@@ -162,29 +160,6 @@ final class HelloPresenter implements HelloContact.Presenter {
 
 	@Override
 	public void loadCheckCode() {
-		Observable.just(1)
-		          .observeOn(Schedulers.io())
-		          .map(new Func1<Integer, Bitmap>() {
-			          @Override
-			          public Bitmap call(Integer integer) {
-				          return model.checkCode();
-			          }
-		          })
-		          .observeOn(AndroidSchedulers.mainThread())
-		          .subscribe(new Action1<Bitmap>() {
-			          @Override
-			          public void call(Bitmap bitmap) {
-				          if (bitmap != null) {
-					          view.onCheckCode(bitmap);
-				          } else {
-					          view.onCheckCodeErr("null");
-				          }
-			          }
-		          }, new Action1<Throwable>() {
-			          @Override
-			          public void call(Throwable throwable) {
-				          view.onCheckCodeErr(throwable.getMessage());
-			          }
-		          });
+		model.checkCode(AppApplication.context, view.getCheckCodeImageHolder());
 	}
 }

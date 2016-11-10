@@ -1,7 +1,10 @@
 package thereisnospon.acclient.modules.hello;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.content.Context;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -9,7 +12,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 import okhttp3.Response;
 import thereisnospon.acclient.api.HdojApi;
@@ -132,21 +134,11 @@ final class HelloModel implements HelloContact.Model {
 
 
 	@Override
-	public Bitmap checkCode() {
-
-		try {
-			Response response = HttpUtil.getInstance()
-			                            .get(HdojApi.CHECK_CODE)
-			                            .execute();
-			if (!response.isSuccessful()) {
-				return null;
-			}
-			InputStream inputStream = response.body()
-			                                  .byteStream();
-			return BitmapFactory.decodeStream(inputStream);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public void checkCode(Context cxt, ImageView imageView) {
+		Glide.with(cxt)
+		     .load(HdojApi.CHECK_CODE)
+		     .diskCacheStrategy(DiskCacheStrategy.ALL)
+		     .crossFade()
+		     .into(imageView);
 	}
 }

@@ -1,7 +1,9 @@
 package thereisnospon.acclient.modules.hello;
 
 import android.graphics.Bitmap;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
@@ -57,5 +59,10 @@ public abstract class BasicActivity extends AppCompatActivity implements HelloCo
 
 	@Override
 	public void onRegisterSuccess(String userName) {
+	}
+
+	@Override
+	public @Nullable  ImageView getCheckCodeImageHolder() {
+		return null;
 	}
 }

@@ -1,6 +1,9 @@
 package thereisnospon.acclient.modules.hello;
 
+import android.content.Context;
 import android.graphics.Bitmap;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
 
 /**
  * Created by yzr on 16/10/30.
@@ -26,6 +29,8 @@ interface HelloContact {
 		void onCheckCode(Bitmap bitmap);
 
 		void onCheckCodeErr(String error);
+
+		@Nullable ImageView getCheckCodeImageHolder();
 	}
 
 	interface Presenter {
@@ -41,7 +46,7 @@ interface HelloContact {
 
 		String register(String name, String email, String password, String chechPassword, String checkcode);
 
-		Bitmap checkCode();
+		void checkCode(Context cxt, ImageView imageView);
 	}
 
 }

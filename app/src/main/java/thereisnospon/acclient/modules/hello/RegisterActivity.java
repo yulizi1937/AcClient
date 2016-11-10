@@ -6,10 +6,12 @@ import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.orhanobut.logger.Logger;
 
@@ -118,6 +120,12 @@ public final class RegisterActivity extends BasicActivity {
 		        .show();
 	}
 
+	@Nullable
+	@Override
+	public ImageView getCheckCodeImageHolder() {
+		return mBinding.checkCodeImg;
+	}
+
 	public static final class AfterRegisterCloseFragment extends AppCompatDialogFragment {
 		private static final String EXTRAS_NAME = AfterRegisterCloseFragment.class.getName() + ".EXTRAS.name";
 
@@ -133,6 +141,7 @@ public final class RegisterActivity extends BasicActivity {
 			// Use the Builder class for convenient dialog construction
 			android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(getActivity());
 			builder.setTitle(R.string.hello_btn_register)
+			       .setCancelable(false)
 			       .setMessage(getString(R.string.hello_register_successfully) + getArguments().getString(EXTRAS_NAME))
 			       .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 				       public void onClick(DialogInterface dialog, int id) {
