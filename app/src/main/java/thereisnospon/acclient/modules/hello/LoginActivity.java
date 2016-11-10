@@ -11,6 +11,7 @@ import android.support.transition.Scene;
 import android.support.transition.Transition;
 import android.support.transition.TransitionManager;
 import android.support.transition.TransitionSet;
+import android.support.v4.app.ActivityCompat;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -198,6 +199,7 @@ public final class LoginActivity extends BasicActivity {
 			sp.putString(SpUtil.NICKNAME, nickname);
 		}
 		HdojActivity.showInstance(this);
+		ActivityCompat.finishAfterTransition(this);
 	}
 
 	@Override
