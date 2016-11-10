@@ -191,7 +191,7 @@ public final class LoginActivity extends BasicActivity {
 		if (!isShowLoginUI) {
 			showLoginUI();
 		} else {
-			Snackbar.make(mBinding.sceneRoot, R.string.hello_login_unsuccessfully, Snackbar.LENGTH_SHORT)
+			Snackbar.make(mBinding.sceneRoot, error, Snackbar.LENGTH_LONG)
 			        .show();
 			mLoadToast.setText(getApplicationContext().getString(R.string.hello_login_unsuccessfully));
 			mLoadToast.error();

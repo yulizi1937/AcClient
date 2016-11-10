@@ -115,5 +115,7 @@ public final class RegisterActivity extends BasicActivity {
 	@Override
 	public void onCheckCodeErr(String error) {
 		mBinding.checkCodeImg.setImageBitmap(null);
+		Snackbar.make(mBinding.sceneRoot, error, Snackbar.LENGTH_LONG)
+		        .show();
 	}
 }

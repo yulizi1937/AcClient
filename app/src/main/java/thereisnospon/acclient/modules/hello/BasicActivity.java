@@ -13,8 +13,8 @@ import static thereisnospon.acclient.modules.hello.HelloUtil.createLoadToast;
  * Created by xzhao on 09.11.16.
  */
 public abstract class BasicActivity extends AppCompatActivity implements HelloContact.View {
-	protected LoadToast mLoadToast;
-	protected HelloContact.Presenter presenter;
+	@SuppressWarnings("WeakerAccess") protected LoadToast mLoadToast;
+	@SuppressWarnings("WeakerAccess") protected HelloContact.Presenter presenter;
 
 	private void createToast() {
 		if (mLoadToast == null) {

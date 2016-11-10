@@ -65,7 +65,9 @@ public final class HelloUtil {
 			abSzAttr = new int[] { R.attr.actionBarSize };
 		}
 		TypedArray a = cxt.obtainStyledAttributes(abSzAttr);
-		return a.getDimensionPixelSize(0, -1);
+		int ret =  a.getDimensionPixelSize(0, -1);
+		a.recycle();
+		return  ret;
 	}
 
 	public abstract static class LoginCall extends Subscriber<String> {
