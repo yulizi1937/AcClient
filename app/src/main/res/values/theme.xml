@@ -8,7 +8,7 @@
         <item name="cardViewColor">@color/cardViewColor</item>
         <item name="codeEditTextColor">@color/codeEditText</item>
         <item name="codeEditBackground">@color/codeEditBack</item>
-        <item name="android:windowBackground">@color/colorGrey</item>
+        <item name="android:windowBackground">@color/colorWhite</item>
         <item name="android:backgroundDimEnabled">false</item>
     </style>
 
