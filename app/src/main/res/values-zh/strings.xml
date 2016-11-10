@@ -18,4 +18,17 @@
     <string name="hello_password_not_equal">两次密码不同。</string>
     <string name="hello_password_short">密码长度至少为6。</string>
     <string name="hello_register_unsuccessfully">注册失败！</string>
+
+    <string name="navi_problem_list">题目列表</string>
+    <string name="navi_settings">设置</string>
+    <string name="navi_user_list">用户列表</string>
+    <string name="navi_about">关于</string>
+    <string name="navi_topic_discuss">题目讨论</string>
+    <string name="navi_notice">笔记</string>
+    <string name="navi_register">注册</string>
+    <string name="navi_search">搜索</string>
+    <string name="navi_relogin">退出</string>
+    <string name="navi_personal">个人信息</string>
+    <string name="navi_other">其它</string>
+    <string name="navi_share">分享</string>
 </resources>

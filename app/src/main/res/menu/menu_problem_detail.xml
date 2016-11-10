@@ -4,7 +4,7 @@
 <item
     android:id="@+id/problem_discuss"
     app:showAsAction="always"
-    android:title="讨论">
+    android:title="@string/navi_topic_discuss">
 
 </item>
 </menu>

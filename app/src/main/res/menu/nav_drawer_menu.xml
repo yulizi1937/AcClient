@@ -6,22 +6,22 @@
     <item
         android:id="@+id/menu_problem"
         android:icon="@drawable/ic_event_note_black_24dp"
-        android:title="题目列表" />
+        android:title="@string/navi_problem_list" />
 
     <item
         android:id="@+id/menu_user"
         android:icon="@drawable/ic_people_black_24dp"
-        android:title="用户列表" />
+        android:title="@string/navi_user_list" />
 
     <item
         android:id="@+id/menu_relogin"
         android:icon="@drawable/ic_exit_to_app_black_24dp"
-        android:title="重新登陆" />
+        android:title="@string/navi_relogin" />
 
     <item
         android:id="@+id/menu_info"
         android:icon="@drawable/ic_account_circle_black_24dp"
-        android:title="个人信息" />
+        android:title="@string/navi_personal" />
 
         <!--<item-->
             <!--android:id="@+id/menu_note"-->
@@ -31,25 +31,25 @@
     <item
         android:id="@+id/menu_contest"
         android:icon="@drawable/ic_toys_black_24dp"
-        android:title="题目讨论" >
+        android:title="@string/navi_topic_discuss" >
     </item>
 
 </group>
 
-    <item android:title="其它">
+    <item android:title="@string/navi_other">
         <menu>
             <item
                 android:id="@+id/menu_share"
                 android:icon="@drawable/ic_share_black_24dp"
-                android:title="分享" />
+                android:title="@string/navi_share" />
             <item
                 android:id="@+id/menu_about"
                 android:icon="@drawable/ic_info_black_24dp"
-                android:title="关于" />
+                android:title="@string/navi_about" />
             <item
                 android:id="@+id/menu_setting"
                 android:icon="@drawable/ic_settings_applications_black_24dp"
-                android:title="设置" />
+                android:title="@string/navi_settings" />
 
         </menu>
     </item>
