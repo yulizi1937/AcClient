@@ -1,5 +1,6 @@
 package thereisnospon.acclient.modules.hello;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -10,7 +11,11 @@ import android.support.transition.Scene;
 import android.support.transition.Transition;
 import android.support.transition.TransitionManager;
 import android.support.transition.TransitionSet;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
 
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.databinding.ActivityHelloSceneLoginBinding;
@@ -80,6 +85,17 @@ public final class LoginActivity extends BasicActivity {
 	private void initScene() {
 		Scene.getSceneForLayout(mBinding.sceneRoot, R.layout.activity_hello_scene_index, this);
 		mLoginBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.activity_hello_scene_login, mBinding.sceneRoot, false);
+		mLoginBinding.setDoneListener(	new TextView.OnEditorActionListener() {
+			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+				if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+					InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+					imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+					mLoginBinding.loginButton.performClick();
+					return true;
+				}
+				return false;
+			}
+		});
 		login = new Scene(mBinding.sceneRoot, mLoginBinding.getRoot());
 	}
 
@@ -191,7 +207,7 @@ public final class LoginActivity extends BasicActivity {
 		if (!isShowLoginUI) {
 			showLoginUI();
 		} else {
-			Snackbar.make(mBinding.sceneRoot, error, Snackbar.LENGTH_LONG)
+			Snackbar.make(mBinding.sceneRoot,error, Snackbar.LENGTH_LONG)
 			        .show();
 			mLoadToast.setText(getApplicationContext().getString(R.string.hello_login_unsuccessfully));
 			mLoadToast.error();
