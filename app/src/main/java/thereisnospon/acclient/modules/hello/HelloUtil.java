@@ -6,6 +6,10 @@ import android.content.res.TypedArray;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatDialogFragment;
 import android.text.TextUtils;
 
 import net.steamcrafted.loadtoast.LoadToast;
@@ -39,6 +43,8 @@ import thereisnospon.acclient.utils.net.HttpUtil;
 import thereisnospon.acclient.utils.net.callback.StringCallback;
 import thereisnospon.acclient.utils.net.cookie.PresistentCookieStroe;
 
+import static android.text.TextUtils.isEmpty;
+
 /**
  * Created by yzr on 16/6/5.
  */
@@ -49,12 +55,12 @@ public final class HelloUtil {
 	private HelloUtil() {
 	}
 
-	static LoadToast createLoadToast(@NonNull  Activity activity) {
+	static LoadToast createLoadToast(@NonNull Activity activity) {
 		Context cxt = activity.getApplicationContext();
 		return new LoadToast(activity).setBackgroundColor(ActivityCompat.getColor(cxt, R.color.colorGreen))
-		                          .setProgressColor(ActivityCompat.getColor(cxt, R.color.colorPrimaryDark))
-		                          .setTextColor(ActivityCompat.getColor(cxt, R.color.colorWhite))
-		                          .setTranslationY(HelloUtil.getActionBarHeight(cxt));
+		                              .setProgressColor(ActivityCompat.getColor(cxt, R.color.colorPrimaryDark))
+		                              .setTextColor(ActivityCompat.getColor(cxt, R.color.colorWhite))
+		                              .setTranslationY(HelloUtil.getActionBarHeight(cxt));
 	}
 
 	static int getActionBarHeight(Context cxt) {
@@ -65,9 +71,9 @@ public final class HelloUtil {
 			abSzAttr = new int[] { R.attr.actionBarSize };
 		}
 		TypedArray a = cxt.obtainStyledAttributes(abSzAttr);
-		int ret =  a.getDimensionPixelSize(0, -1);
+		int ret = a.getDimensionPixelSize(0, -1);
 		a.recycle();
-		return  ret;
+		return ret;
 	}
 
 	public abstract static class LoginCall extends Subscriber<String> {
@@ -281,4 +287,17 @@ public final class HelloUtil {
 	}
 
 
+	static void showDialogFragment(@NonNull FragmentManager mgr, @NonNull AppCompatDialogFragment dlgFrg, String tagName) {
+		FragmentTransaction fragmentTransaction = mgr.beginTransaction();
+		// Ensure that there's only one dialog to the user.
+		Fragment prev = mgr.findFragmentByTag("dlg");
+		if (prev != null) {
+			fragmentTransaction.remove(prev);
+		}
+
+		dlgFrg.show(fragmentTransaction,
+		            isEmpty(tagName) ?
+		            "dlg" :
+		            tagName);
+	}
 }

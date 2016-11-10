@@ -61,7 +61,7 @@
     <string name="hello_email_address">email</string>
     <string name="hello_login_unsuccessfully">Login unsuccessfully.</string>
     <string name="hello_remember_password">Remember password</string>
-    <string name="hello_register_successfully">You have registered successfully: </string>
+    <string name="hello_register_successfully">Well, you\'ve registered successfully: </string>
     <string name="hello_return_to_login">Return to login.</string>
     <string name="hello_no_empty_username">Username is required.</string>
     <string name="hello_wrong_email">Wrong email</string>
