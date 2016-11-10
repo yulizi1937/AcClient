@@ -7,7 +7,7 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorGreen">#81C784</color>
     <color name="colorTransparent">@android:color/transparent</color>
-
+    <color name="colorGrey">#9E9E9E</color>
     <color name="cardViewColor">#fff</color>
     <color name="backgroundColor">#E0E5EA</color>
 </resources>

@@ -1,6 +1,7 @@
 package thereisnospon.acclient.modules.hello;
 
 import android.content.Context;
+import android.support.graphics.drawable.AnimatedVectorDrawableCompat;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -14,9 +15,12 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 
 import okhttp3.Response;
+import thereisnospon.acclient.R;
 import thereisnospon.acclient.api.HdojApi;
 import thereisnospon.acclient.utils.net.HttpUtil;
 import thereisnospon.acclient.utils.net.request.IRequest;
+
+import static com.bumptech.glide.load.DecodeFormat.PREFER_RGB_565;
 
 /**
  * Created by yzr on 16/10/30.
@@ -135,10 +139,19 @@ final class HelloModel implements HelloContact.Model {
 
 	@Override
 	public void checkCode(Context cxt, ImageView imageView) {
+		AnimatedVectorDrawableCompat animatedVectorDrawableCompat = AnimatedVectorDrawableCompat.create(cxt, R.drawable.ic_animated_loading_pb);
+		imageView.setImageDrawable(animatedVectorDrawableCompat);
+		AnimatedVectorDrawableCompat dr = (AnimatedVectorDrawableCompat) imageView.getDrawable();
+		dr.start();
+
 		Glide.with(cxt)
 		     .load(HdojApi.CHECK_CODE)
+		     .asBitmap()
+		     .format(PREFER_RGB_565)
+		     .placeholder(dr)
+		     .dontAnimate()
+		     .skipMemoryCache(true)
 		     .diskCacheStrategy(DiskCacheStrategy.ALL)
-		     .crossFade()
 		     .into(imageView);
 	}
 }
