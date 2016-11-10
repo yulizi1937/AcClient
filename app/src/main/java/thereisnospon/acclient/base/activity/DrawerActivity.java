@@ -84,7 +84,13 @@ public  abstract class DrawerActivity extends ThemeActivity
         View  headerView=navigationView.getHeaderView(0);
         TextView textView=(TextView) headerView.findViewById(R.id.drawer_header_name);
         textView.setText(util.getString(SpUtil.NICKNAME));
-
+        headerView.findViewById(R.id.btn_logout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                closeDrawer();
+                LoginActivity.showInstance(DrawerActivity.this, true);
+            }
+        });
     }
 
 
@@ -118,10 +124,6 @@ public  abstract class DrawerActivity extends ThemeActivity
             case R.id.menu_problem:
                 intent=new Intent(this,HdojActivity.class);
                 break;
-            case R.id.menu_relogin:
-                intent=new Intent(this, LoginActivity.class);
-                intent.putExtra(Arg.RE_LOGIN,true);
-                break;
             case R.id.menu_user:
                 intent=new Intent(this, RankActivity.class);
                 break;
@@ -140,12 +142,16 @@ public  abstract class DrawerActivity extends ThemeActivity
                 break;*/
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        closeDrawer();
         if(intent!=null){
             startActivity(intent);
         }
         return true;
+    }
+
+    private void closeDrawer() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
     }
 
     private void share(){

@@ -5,7 +5,7 @@
     <item
         android:id="@+id/ab_search"
         android:orderInCategory="10"
-        android:title="action_search"
+        android:title="@string/navi_search"
         app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="always"/>
 
@@ -13,14 +13,14 @@
     android:id="@+id/menu_problem_go_page"
     android:orderInCategory="20"
     app:showAsAction="never"
-    android:title="按页数">
+    android:title="@string/navi_by_page">
 
 </item>
     <item
         android:id="@+id/menu_problem_go_id"
         android:orderInCategory="20"
         app:showAsAction="never"
-        android:title="按ID">
+        android:title="@string/navi_by_id">
 
     </item>
 

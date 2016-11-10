@@ -78,9 +78,10 @@
     <string name="navi_notice">Notice</string>
     <string name="navi_register">Register</string>
     <string name="navi_search">Search</string>
-    <string name="navi_relogin">Logout</string>
+    <string name="navi_logout">Logout</string>
     <string name="navi_personal">Personal</string>
     <string name="navi_other">Other</string>
     <string name="navi_share">Share</string>
-
+    <string name="navi_by_page">By page</string>
+    <string name="navi_by_id">By id</string>
 </resources>

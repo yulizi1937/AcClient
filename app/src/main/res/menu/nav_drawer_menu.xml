@@ -14,11 +14,6 @@
         android:title="@string/navi_user_list" />
 
     <item
-        android:id="@+id/menu_relogin"
-        android:icon="@drawable/ic_exit_to_app_black_24dp"
-        android:title="@string/navi_relogin" />
-
-    <item
         android:id="@+id/menu_info"
         android:icon="@drawable/ic_account_circle_black_24dp"
         android:title="@string/navi_personal" />

@@ -1,5 +1,6 @@
 package thereisnospon.acclient.modules.hello;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -26,6 +27,9 @@ import thereisnospon.acclient.modules.problem_list.HdojActivity;
 import thereisnospon.acclient.utils.SpUtil;
 import thereisnospon.acclient.widget.TransitiionListenerAdapter;
 
+import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
+import static android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP;
+import static android.os.Bundle.EMPTY;
 import static thereisnospon.acclient.modules.hello.ErrorConstants.NO_EMPTY_PASSWORD;
 import static thereisnospon.acclient.modules.hello.ErrorConstants.NO_EMPTY_USERNAME;
 
@@ -43,6 +47,13 @@ public final class LoginActivity extends BasicActivity {
 	private LoginActivityBinding mBinding;
 	private ActivityHelloSceneLoginBinding mLoginBinding;
 
+
+	public static void showInstance(Activity cxt, boolean relogin) {
+		Intent intent = new Intent(cxt,LoginActivity.class);
+		intent.putExtra(Arg.RE_LOGIN, relogin);
+		intent.setFlags(FLAG_ACTIVITY_SINGLE_TOP | FLAG_ACTIVITY_CLEAR_TOP);
+		ActivityCompat.startActivity(cxt, intent, EMPTY);
+	}
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
@@ -86,10 +97,10 @@ public final class LoginActivity extends BasicActivity {
 	private void initScene() {
 		Scene.getSceneForLayout(mBinding.sceneRoot, R.layout.activity_hello_scene_index, this);
 		mLoginBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.activity_hello_scene_login, mBinding.sceneRoot, false);
-		mLoginBinding.setDoneListener(	new TextView.OnEditorActionListener() {
+		mLoginBinding.setDoneListener(new TextView.OnEditorActionListener() {
 			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 				if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-					InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+					InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 					imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 					mLoginBinding.loginButton.performClick();
 					return true;
@@ -207,7 +218,7 @@ public final class LoginActivity extends BasicActivity {
 		if (!isShowLoginUI) {
 			showLoginUI();
 		} else {
-			Snackbar.make(mBinding.sceneRoot,error, Snackbar.LENGTH_LONG)
+			Snackbar.make(mBinding.sceneRoot, error, Snackbar.LENGTH_LONG)
 			        .show();
 			mLoadToast.setText(getApplicationContext().getString(R.string.hello_login_unsuccessfully));
 			mLoadToast.error();

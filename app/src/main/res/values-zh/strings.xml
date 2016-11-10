@@ -27,8 +27,10 @@
     <string name="navi_notice">笔记</string>
     <string name="navi_register">注册</string>
     <string name="navi_search">搜索</string>
-    <string name="navi_relogin">退出</string>
+    <string name="navi_logout">退出</string>
     <string name="navi_personal">个人信息</string>
     <string name="navi_other">其它</string>
     <string name="navi_share">分享</string>
+    <string name="navi_by_page">按页数</string>
+    <string name="navi_by_id">按ID</string>
 </resources>
