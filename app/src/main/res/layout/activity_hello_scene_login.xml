@@ -3,9 +3,10 @@
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="doneListener"
-            type="android.widget.TextView.OnEditorActionListener" />
+            type="android.widget.TextView.OnEditorActionListener"/>
     </data>
 
     <ScrollView
@@ -42,8 +43,8 @@
                     android:id="@+id/login_id_container"
                     style="@style/HelloTextInputLayout.Normal"
                     android:layout_width="match_parent"
-                    android:hint="@string/hello_hint_username"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hello_hint_username">
 
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/login_id"
@@ -54,13 +55,13 @@
                     android:id="@+id/login_pass_container"
                     style="@style/HelloTextInputLayout.Warning"
                     android:layout_width="match_parent"
-                    android:hint="@string/hello_hint_password"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hello_hint_password">
 
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/login_pass"
-                        android:onEditorAction ="@{doneListener}"
-                        style="@style/HelloEditText.Password"/>
+                        style="@style/HelloEditText.Password"
+                        android:onEditorAction="@{doneListener}"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <LinearLayout
@@ -73,9 +74,9 @@
                     <Button
                         android:id="@+id/login_button"
                         style="@style/HelloButton.Login"
-                        android:imeOptions="actionDone"
                         android:layout_width="0dp"
                         android:layout_weight="1"
+                        android:imeOptions="actionDone"
                         android:text="@string/hello_btn_login"/>
 
                     <Button

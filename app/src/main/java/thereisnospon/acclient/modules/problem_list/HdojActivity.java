@@ -1,9 +1,11 @@
 package thereisnospon.acclient.modules.problem_list;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.KeyEvent;
@@ -24,17 +26,29 @@ import thereisnospon.acclient.modules.problem_detail.ShowProblemActivity;
 import thereisnospon.acclient.modules.problem_list.search_list.SearchProblemFragment;
 import thereisnospon.acclient.modules.settings.Settings;
 
+import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
+import static android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP;
+import static android.os.Bundle.EMPTY;
+
 /**
  * Created by yzr on 16/6/5.
  */
 public final class HdojActivity extends SearchActivity {
 
-    public static final String TAG="HdojActivity";
+    private static final String TAG="HdojActivity";
+    private static final int LAYOUT = R.layout.activity_problem_list;
+
+
+    public static void showInstance(Activity cxt) {
+    	Intent intent = new Intent(cxt, HdojActivity.class);
+    	intent.setFlags(FLAG_ACTIVITY_SINGLE_TOP | FLAG_ACTIVITY_CLEAR_TOP);
+    	ActivityCompat.startActivity(cxt, intent, EMPTY);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_problem_list);
+        setContentView(LAYOUT);
         initDrawer();
         changeFragment(new HdojProblemFragment());
         initView();

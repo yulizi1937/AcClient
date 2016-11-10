@@ -10,4 +10,6 @@
     <color name="colorGrey">#9E9E9E</color>
     <color name="cardViewColor">#fff</color>
     <color name="backgroundColor">#E0E5EA</color>
+    <color name="codeEditBack">#fdf6e3</color>
+    <color name="codeEditText">#657b83</color>
 </resources>

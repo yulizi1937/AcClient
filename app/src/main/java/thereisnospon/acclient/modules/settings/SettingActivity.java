@@ -5,30 +5,16 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.os.Bundle;
-
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.Toast;
-
 
 import com.orhanobut.logger.Logger;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.base.activity.DrawerActivity;
@@ -139,9 +125,9 @@ public class SettingActivity extends DrawerActivity
     void initTheme(){
         Settings settings = Settings.getInstance();
         if (settings.getBoolean(Settings.SKIN_PREF, settings.skinPref)) {
-            setTheme(R.style.AppThemeNightNoactionBar);
+            setTheme(R.style.AppThemeNight);
         } else {
-            setTheme(R.style.AppThemeNoActionBar);
+            setTheme(R.style.AppTheme);
             Logger.d("appTheme");
         }
 

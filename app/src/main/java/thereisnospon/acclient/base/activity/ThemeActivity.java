@@ -24,9 +24,9 @@ public class ThemeActivity extends BaseActivity {
     void initTheme(){
         Settings settings = Settings.getInstance();
         if (settings.getBoolean(Settings.SKIN_PREF, settings.skinPref)) {
-            setTheme(R.style.AppThemeNightNoactionBar);
+            setTheme(R.style.AppThemeNight);
         } else {
-            setTheme(R.style.AppThemeNoActionBar);
+            setTheme(R.style.AppTheme);
             Logger.d("appTheme");
         }
 

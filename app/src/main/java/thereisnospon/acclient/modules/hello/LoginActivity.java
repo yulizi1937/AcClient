@@ -197,9 +197,7 @@ public final class LoginActivity extends BasicActivity {
 			sp.putString(SpUtil.NAME, id);
 			sp.putString(SpUtil.NICKNAME, nickname);
 		}
-		Intent intent = new Intent(this, HdojActivity.class);
-		startActivity(intent);
-		finish();
+		HdojActivity.showInstance(this);
 	}
 
 	@Override
