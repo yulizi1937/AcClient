@@ -2,7 +2,6 @@ package thereisnospon.acclient.modules.hello;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
@@ -24,7 +23,7 @@ import thereisnospon.acclient.widget.TransitiionListenerAdapter;
 import static thereisnospon.acclient.modules.hello.ErrorConstants.NO_EMPTY_PASSWORD;
 import static thereisnospon.acclient.modules.hello.ErrorConstants.NO_EMPTY_USERNAME;
 
-public final class LoginActivity extends BasicActivity{
+public final class LoginActivity extends BasicActivity {
 	private static final int LAYOUT = R.layout.activity_hello;
 	private static final int DURATION = 500;
 	private Scene login;
@@ -201,10 +200,6 @@ public final class LoginActivity extends BasicActivity{
 
 
 	@Override
-	public void onRegisterSuccess(String userName) {
-	}
-
-	@Override
 	public void onUserInputFailure(String error, @ErrorConstants.Value int errorType) {
 		switch (errorType) {
 			case NO_EMPTY_USERNAME:
@@ -221,15 +216,5 @@ public final class LoginActivity extends BasicActivity{
 		}
 		mLoadToast.setText(error);
 		mLoadToast.error();
-	}
-
-	@Override
-	public void onCheckCode(Bitmap bitmap) {
-
-	}
-
-	@Override
-	public void onCheckCodeErr(String error) {
-
 	}
 }

@@ -106,14 +106,6 @@ public final class RegisterActivity extends BasicActivity {
 		mLoadToast.error();
 	}
 
-	@Override
-	public void onLoginSuccess(String userName) {
-	}
-
-	@Override
-	public void onLoginFailure(String error) {
-	}
-
 
 	@Override
 	public void onCheckCode(Bitmap bitmap) {

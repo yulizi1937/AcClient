@@ -1,5 +1,6 @@
 package thereisnospon.acclient.modules.hello;
 
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 
 import net.steamcrafted.loadtoast.LoadToast;
@@ -34,5 +35,27 @@ public abstract class BasicActivity extends AppCompatActivity implements HelloCo
 		createToast();
 		mLoadToast.setText(getString(R.string.hello_btn_register));
 		mLoadToast.show();
+	}
+
+	@Override
+	public void onLoginSuccess(String userName) {
+	}
+
+	@Override
+	public void onLoginFailure(String error) {
+	}
+
+	@Override
+	public void onCheckCode(Bitmap bitmap) {
+
+	}
+
+	@Override
+	public void onCheckCodeErr(String error) {
+
+	}
+
+	@Override
+	public void onRegisterSuccess(String userName) {
 	}
 }
