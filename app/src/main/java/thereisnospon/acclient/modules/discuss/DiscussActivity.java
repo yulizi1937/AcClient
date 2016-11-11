@@ -1,30 +1,22 @@
 package thereisnospon.acclient.modules.discuss;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.PersistableBundle;
+import android.support.annotation.NonNull;
+import android.widget.FrameLayout;
 
-import thereisnospon.acclient.R;
-import thereisnospon.acclient.base.activity.DrawerActivity;
-import thereisnospon.acclient.base.activity.FragmentActivity;
+import thereisnospon.acclient.base.activity.AppBarActivity;
 import thereisnospon.acclient.event.Arg;
 
 /**
  * Created by yzr on 16/9/9.
  */
-public class DiscussActivity extends FragmentActivity {
-
-
+public final class DiscussActivity extends AppBarActivity {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_discuss);
-        initDrawer();
+    protected void setupContent(@NonNull FrameLayout contentLayout) {
         String pid=getIntent().getStringExtra(Arg.PROBLEM_DISUCSS);
         if(pid==null){
-            changeFragment(DiscussFragment.newIndexDiscuss());
+            setupFragment(contentLayout.getId(), DiscussFragment.newInstance());
         }else{
-            changeFragment(DiscussFragment.newProbleDisuss(pid));
+            setupFragment(contentLayout.getId(), DiscussFragment.newInstance(pid));
         }
     }
 }

@@ -1,25 +1,21 @@
 package thereisnospon.acclient.modules.settings;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.orhanobut.logger.Logger;
 
 import thereisnospon.acclient.R;
-import thereisnospon.acclient.base.activity.DrawerActivity;
+import thereisnospon.acclient.base.activity.AppBarActivity;
 
-public class SettingActivity extends DrawerActivity
+public final class SettingActivity extends AppBarActivity
         implements SimpleSettingFragment.OnThemeChangeListener{
 
 
@@ -31,11 +27,13 @@ public class SettingActivity extends DrawerActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initTheme();
-        setContentView(R.layout.activity_setting);
-        initDrawer();
+    }
+
+    @Override
+    protected void setupContent(@NonNull FrameLayout contentLayout) {
+        contentLayout.addView(getLayoutInflater().inflate(R.layout.nav_setting, contentLayout, false));
         initView();
         addFragment();
-
     }
 
     void changeTheme(){
@@ -44,14 +42,6 @@ public class SettingActivity extends DrawerActivity
         getState();
     }
 
-
-    @Override
-    public void onFragmentCreate(Toolbar toolbar) {
-        setSupportActionBar(toolbar);
-        initDrawerWithToolBar(toolbar);
-        startAnimation(settingimage);
-
-    }
 
     void getState(){
         addFragment();
@@ -97,30 +87,7 @@ public class SettingActivity extends DrawerActivity
         }
     }*/
 
-    void startAnimation(final View view){
 
-
-        ValueAnimator animator=ValueAnimator.ofFloat(1f).setDuration(1000);
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                float n = (float) animation.getAnimatedValue();
-                view.setAlpha(1f - n);
-            }
-        });
-        animator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
-                if(bitmap!=null&&!bitmap.isRecycled()){
-                    bitmap.recycle();
-                    bitmap=null;
-                }
-                settingimage.setVisibility(View.INVISIBLE);
-            }
-        });
-        animator.start();
-    }
 
     void initTheme(){
         Settings settings = Settings.getInstance();
@@ -145,14 +112,4 @@ public class SettingActivity extends DrawerActivity
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar_menu_nosearch, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-       return false;
-    }
 }

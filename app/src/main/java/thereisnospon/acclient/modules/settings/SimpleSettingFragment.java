@@ -4,35 +4,13 @@ package thereisnospon.acclient.modules.settings;
  * Created by yzr on 16/8/3.
  */
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
-import android.preference.RingtonePreference;
 import android.preference.SwitchPreference;
-import android.support.design.widget.AppBarLayout;
-import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.Toast;
-
-import com.orhanobut.logger.Logger;
-
-import java.util.Set;
 
 import thereisnospon.acclient.R;
 
@@ -56,7 +34,6 @@ public  class SimpleSettingFragment extends PreferenceFragment
 
     interface OnThemeChangeListener{
         void onThemeChange();
-        void onFragmentCreate(Toolbar toolbar);
     }
 
     @Override
@@ -91,20 +68,7 @@ public  class SimpleSettingFragment extends PreferenceFragment
         compiler.setOnPreferenceChangeListener(this);
     }
 
-    LinearLayout linearLayout;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view=super.onCreateView(inflater, container, savedInstanceState);
-
-
-        AppBarLayout appBarLayout=(AppBarLayout)inflater.inflate(R.layout.appbar,null,false);
-        Toolbar toolbar=(Toolbar)appBarLayout.findViewById(R.id.toolbar);
-        linearLayout=(LinearLayout)view;
-        linearLayout.addView(appBarLayout,0);
-        themeChangeListener.onFragmentCreate(toolbar);
-        return view;
-    }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {

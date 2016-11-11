@@ -23,7 +23,7 @@ import thereisnospon.acclient.R;
 import thereisnospon.acclient.databinding.ActivityHelloSceneLoginBinding;
 import thereisnospon.acclient.databinding.LoginActivityBinding;
 import thereisnospon.acclient.event.Arg;
-import thereisnospon.acclient.modules.problem_list.HdojActivity;
+import thereisnospon.acclient.modules.problem.list.HdojActivity;
 import thereisnospon.acclient.utils.SpUtil;
 import thereisnospon.acclient.widget.TransitiionListenerAdapter;
 
@@ -127,7 +127,7 @@ public final class LoginActivity extends BasicActivity {
 				rememberPas = mLoginBinding.loginRemember.isChecked();
 				if (rememberPas) {
 					Snackbar.make(mBinding.sceneRoot, R.string.hello_remember_password, Snackbar.LENGTH_SHORT)
-					        .setAction(R.string.lbl_cancel, new View.OnClickListener() {
+					        .setAction(R.string.cancel, new View.OnClickListener() {
 						        @Override
 						        public void onClick(View v) {
 							        mLoginBinding.loginRemember.setChecked(false);

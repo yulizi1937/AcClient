@@ -11,7 +11,7 @@ import thereisnospon.acclient.modules.settings.Settings;
 /**
  * Created by yzr on 16/8/29.
  */
-public class ThemeActivity extends BaseActivity {
+public abstract class ThemeActivity extends BaseActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

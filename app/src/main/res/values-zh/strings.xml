@@ -1,5 +1,9 @@
 <resources>
-    <string name="lbl_cancel">取消</string>
+    <string name="navigation_drawer_open">打开抽屉</string>
+    <string name="navigation_drawer_close">关闭抽屉</string>
+
+    <string name="cancel">取消</string>
+    <string name="discuss">讨论</string>
 
     <string name="hello_hint_username">账号</string>
     <string name="hello_hint_password">密码</string>
@@ -33,6 +37,7 @@
     <string name="navi_share">分享</string>
     <string name="navi_by_page">按页数</string>
     <string name="navi_by_id">指定题号</string>
+    <string name="navi_answer">回答</string>
 
     <string name="search_by_problem_id">指定题号：</string>
     <string name="search_problem_by_page">前往页数：</string>

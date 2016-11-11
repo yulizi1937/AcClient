@@ -1,14 +1,12 @@
 package thereisnospon.acclient.modules.about;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.NonNull;
 import android.webkit.WebView;
+import android.widget.FrameLayout;
 
-import thereisnospon.acclient.R;
+import thereisnospon.acclient.base.activity.AppBarActivity;
 
-public final class AboutActivity extends AppCompatActivity {
-
-
+public final class AboutActivity extends AppBarActivity {
 	private static final String ABOUT = "<!DOCTYPE html>\n" +
 			"<html>\n" +
 			"<head>\n" +
@@ -21,11 +19,9 @@ public final class AboutActivity extends AppCompatActivity {
 			"</html>";
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_about);
-		WebView webView = (WebView) findViewById(R.id.webView);
+	protected void setupContent(@NonNull FrameLayout contentLayout) {
+		WebView webView = new WebView(this);
 		webView.loadDataWithBaseURL(null, ABOUT, "text/html", "utf-8", null);
-
+		contentLayout.addView(webView);
 	}
 }

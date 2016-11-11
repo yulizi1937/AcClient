@@ -15,7 +15,7 @@ import thereisnospon.acclient.base.adapter.NormalSwipeAdapter;
 import thereisnospon.acclient.data.RankItem;
 import thereisnospon.acclient.databinding.ItemSearchPeopleBinding;
 import thereisnospon.acclient.event.Arg;
-import thereisnospon.acclient.modules.user_detail.UserDetailActivity;
+import thereisnospon.acclient.modules.personal.UserDetailActivity;
 
 
 public final class RankItemAdapter extends NormalSwipeAdapter<RankItem> {

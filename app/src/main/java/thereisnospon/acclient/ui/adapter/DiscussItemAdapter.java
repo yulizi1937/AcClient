@@ -17,7 +17,7 @@ import thereisnospon.acclient.data.DiscussItem;
 import thereisnospon.acclient.databinding.ItemDiscussBinding;
 import thereisnospon.acclient.event.Arg;
 import thereisnospon.acclient.modules.discuss.DiscussHelper;
-import thereisnospon.acclient.modules.show_code.CodeActivity;
+import thereisnospon.acclient.modules.code.CodeActivity;
 
 
 public final class DiscussItemAdapter extends NormalSwipeAdapter<DiscussItem> {

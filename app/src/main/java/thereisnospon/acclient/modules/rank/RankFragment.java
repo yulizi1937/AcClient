@@ -10,6 +10,7 @@ import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
+import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.base.adapter.BaseSwipeAdapter;
 import thereisnospon.acclient.base.fragment.NormalSwipeFragment;
 import thereisnospon.acclient.data.RankItem;
@@ -22,6 +23,10 @@ public class RankFragment extends NormalSwipeFragment  implements RankContact.Vi
 
 
     RankContact.Presenter presenter;
+
+    public static RankFragment newInstance() {
+        return (RankFragment) RankFragment.instantiate(AppApplication.context, RankFragment.class.getName());
+    }
 
     @Nullable
     @Override

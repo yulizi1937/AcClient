@@ -17,7 +17,7 @@ import thereisnospon.acclient.data.HdojProblem;
 import thereisnospon.acclient.data.ProblemItem;
 import thereisnospon.acclient.databinding.ItemListProblemBinding;
 import thereisnospon.acclient.event.Arg;
-import thereisnospon.acclient.modules.problem_detail.ShowProblemActivity;
+import thereisnospon.acclient.modules.problem.detail.ShowProblemActivity;
 
 public final class HdojProblemAdapter extends NormalSwipeAdapter<HdojProblem> {
 
