@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
+import thereisnospon.acclient.R;
 import thereisnospon.acclient.base.adapter.BaseSwipeAdapter;
 
 /**
@@ -41,6 +42,7 @@ public abstract class BaseSwipeFragment<T> extends Fragment
                           @IdRes int recycleView){
 
         mSwipeRefreshLayout = (SwipeRefreshLayout) parent.findViewById(swiperRefreshLayout);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary, R.color.colorPrimaryDark, R.color.colorAccent, R.color.colorGreen);
         mSwipeRefreshLayout.setOnRefreshListener(this);
         mRecyclerView = (RecyclerView) parent.findViewById(recycleView);
 

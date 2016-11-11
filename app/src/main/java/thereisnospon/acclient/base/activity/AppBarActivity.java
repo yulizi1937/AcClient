@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
@@ -38,7 +39,7 @@ import thereisnospon.acclient.utils.SpUtil;
 public abstract class AppBarActivity extends ThemeActivity implements NavigationView.OnNavigationItemSelectedListener,
                                                                       SearchView.OnQueryTextListener {
 
-	private static final int LAYOUT = R.layout.activity_appbar;
+	private static final @LayoutRes int LAYOUT = R.layout.activity_appbar;
 	private String id;
 	private String nickname;
 	private AppBarLayoutBinding mBinding;

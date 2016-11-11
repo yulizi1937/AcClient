@@ -38,7 +38,7 @@ public final class HdojProblemAdapter extends NormalSwipeAdapter<HdojProblem> {
 	public void bindNormalViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
 		VH vh = (VH) viewHolder;
 		final ProblemItem problem = getItem(position);
-		vh.mBinding.problemTitle.setOnClickListener(new View.OnClickListener() {
+		vh.itemView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				goToProblemDetail(v.getContext(), problem.getId());
@@ -48,7 +48,7 @@ public final class HdojProblemAdapter extends NormalSwipeAdapter<HdojProblem> {
 		vh.mBinding.problemId.setText(String.valueOf(problem.getId()));
 		vh.mBinding.problemAc.setText(String.valueOf(problem.getAccepted()));
 		vh.mBinding.problemSubmmit.setText(String.valueOf(problem.getSubmmision()));
-		vh.mBinding.executePendingBindings();
+
 		if(problem.getStatus()==ProblemItem.ACCEPTED){
 			vh.mBinding.problemId.setText(String.valueOf(problem.getId())+"\t(AC)");
 			vh.mBinding.problemId.setTextColor(Color.parseColor("#4CAF50"));
@@ -56,6 +56,7 @@ public final class HdojProblemAdapter extends NormalSwipeAdapter<HdojProblem> {
 			vh.mBinding.problemId.setTextColor(Color.parseColor("#FFAB40"));
 			vh.mBinding.problemId.setText(String.valueOf(problem.getId())+"\t(UAC)");
 		}
+		vh.mBinding.executePendingBindings();
 	}
 
 	private void goToProblemDetail(Context context, int id) {

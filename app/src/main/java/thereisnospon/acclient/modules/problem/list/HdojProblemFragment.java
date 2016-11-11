@@ -22,15 +22,10 @@ import thereisnospon.acclient.ui.adapter.HdojProblemAdapter;
 /**
  * Created by yzr on 16/6/5.
  */
-public class HdojProblemFragment extends BaseSwipeFragment<HdojProblem> implements  HdojContact.View{
-
-
-
-    public static final int INDEX=-1;
-
-    HdojContact.Presenter presenter;
-
-    int page=INDEX;
+public final class HdojProblemFragment extends BaseSwipeFragment<HdojProblem> implements  HdojContact.View{
+    private static final int INDEX=-1;
+    private HdojContact.Presenter presenter;
+    private int page=INDEX;
 
     public static  HdojProblemFragment newInstance(int page){
         HdojProblemFragment fragment= HdojProblemFragment.newInstance();

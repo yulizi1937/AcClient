@@ -33,6 +33,7 @@
 
     <string name="cancel">Cancel</string>
     <string name="discuss">Discuss</string>
+    <string name="loading">loading…</string>
 
     <string name="hello_hint_username">username</string>
     <string name="hello_hint_password">password</string>

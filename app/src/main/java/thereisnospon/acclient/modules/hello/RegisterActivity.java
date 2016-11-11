@@ -25,7 +25,7 @@ import static thereisnospon.acclient.modules.hello.ErrorConstants.PASSWORD_NOT_E
 import static thereisnospon.acclient.modules.hello.ErrorConstants.PASSWORD_SHORT;
 import static thereisnospon.acclient.modules.hello.ErrorConstants.WRONG_EMAIL;
 
-public final class RegisterActivity extends BasicActivity {
+public final class RegisterActivity extends BaseActivity {
 
 	private static final int LAYOUT = R.layout.activity_register;
 	private RegisterActivityBinding mBinding;

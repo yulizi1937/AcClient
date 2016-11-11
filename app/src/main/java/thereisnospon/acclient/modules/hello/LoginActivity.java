@@ -33,7 +33,7 @@ import static android.os.Bundle.EMPTY;
 import static thereisnospon.acclient.modules.hello.ErrorConstants.NO_EMPTY_PASSWORD;
 import static thereisnospon.acclient.modules.hello.ErrorConstants.NO_EMPTY_USERNAME;
 
-public final class LoginActivity extends BasicActivity {
+public final class LoginActivity extends BaseActivity {
 	private static final int LAYOUT = R.layout.activity_hello;
 	private static final int DURATION = 500;
 	private Scene login;
