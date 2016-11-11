@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/submit_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end|right"
+        android:layout_margin="@dimen/fab_margin"
+        android:onClick="@{clickListener}"
+        app:srcCompat="@drawable/ic_upload"
+        app:backgroundTint="@color/colorGreen"
+        app:rippleColor="@color/colorGrey"
+        app:behavior_autoHide="true"
+        app:useCompatPadding="true"/>
+
+</layout>

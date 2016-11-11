@@ -1,5 +1,6 @@
 package thereisnospon.acclient.modules.problem.detail;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
@@ -64,7 +65,10 @@ public final class ShowProblemFragment extends Fragment implements ShowProblemCo
 			private void showPb() {
 				dismissPb();
 				if (mProgressDialog == null) {
-					mProgressDialog = ProgressDialog.show(getActivity(), null, getString(R.string.loading));
+					Activity activity = getActivity();
+					if (activity != null) {
+						mProgressDialog = ProgressDialog.show(activity, null, getString(R.string.loading));
+					}
 				}
 			}
 

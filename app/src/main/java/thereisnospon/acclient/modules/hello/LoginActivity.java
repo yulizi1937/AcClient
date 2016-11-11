@@ -25,7 +25,7 @@ import thereisnospon.acclient.databinding.LoginActivityBinding;
 import thereisnospon.acclient.event.Arg;
 import thereisnospon.acclient.modules.problem.list.HdojActivity;
 import thereisnospon.acclient.utils.SpUtil;
-import thereisnospon.acclient.widget.TransitiionListenerAdapter;
+import thereisnospon.acclient.widget.TransitionListenerAdapter;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 import static android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP;
@@ -184,7 +184,7 @@ public final class LoginActivity extends BaseActivity {
 		TransitionSet transitionSet = new TransitionSet();
 		transitionSet.addTransition(new AutoTransition());
 		transitionSet.setDuration(DURATION);
-		transitionSet.addListener(new TransitiionListenerAdapter() {
+		transitionSet.addListener(new TransitionListenerAdapter() {
 			@Override
 			public void onTransitionEnd(Transition transition) {
 				super.onTransitionEnd(transition);

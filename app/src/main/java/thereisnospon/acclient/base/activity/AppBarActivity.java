@@ -169,6 +169,9 @@ public abstract class AppBarActivity extends ThemeActivity implements Navigation
 		searchview.setOnQueryTextListener(this);
 	}
 
+	protected void addViewToCoordinatorLayout(View addView) {
+		mBinding.coordinatorLayout.addView(addView);
+	}
 
 	@Override
 	public boolean onQueryTextChange(String newText) {
