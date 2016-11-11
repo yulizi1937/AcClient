@@ -86,8 +86,8 @@ public abstract class AppBarActivity extends ThemeActivity implements Navigation
 		          .setOnClickListener(new View.OnClickListener() {
 			          @Override
 			          public void onClick(View view) {
+				          ActivityCompat.finishAffinity(AppBarActivity.this);
 				          LoginActivity.showInstance(AppBarActivity.this, true);
-				          ActivityCompat.finishAfterTransition(AppBarActivity.this);
 			          }
 		          });
 	}
