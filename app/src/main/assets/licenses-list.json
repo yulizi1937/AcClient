@@ -93,6 +93,17 @@
           "copyright": "2009-2016"
         }
       ]
+    },
+    {
+      "name": "BSD",
+      "description": "BSD License",
+      "libraries": [
+        {
+          "name": "highlight.js for CodeView",
+          "owner": "Ivan Sagalaev",
+          "copyright": "2006"
+        }
+      ]
     }
   ]
 }
