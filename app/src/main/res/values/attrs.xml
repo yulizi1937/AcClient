@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="textColor" format="color"></attr>
-    <attr name="textColorHighlight" format="color"></attr>
-    <attr name="cardViewColor" format="color"></attr>
-    <attr name="backgroundColor" format="color"></attr>
-    <attr name="dialogCardColor" format="color"></attr>
-
-
+    <attr name="textColor" format="color"/>
+    <attr name="textColorHighlight" format="color"/>
+    <attr name="cardViewColor" format="color"/>
+    <attr name="backgroundColor" format="color"/>
+    <attr name="dialogCardColor" format="color"/>
+    <attr name="codeEditTextColor" format="color"/>
+    <attr name="codeEditBackground" format="color"/>
+    <attr name="preferenceFragmentListStyle" format="reference"/>
 </resources>

@@ -15,7 +15,7 @@ import thereisnospon.acclient.R;
 import thereisnospon.acclient.data.UserInfo;
 import thereisnospon.acclient.databinding.ItemUserProNodeBinding;
 import thereisnospon.acclient.event.Arg;
-import thereisnospon.acclient.modules.submmit_status.SubmmitStatusActivity;
+import thereisnospon.acclient.modules.submit.status.SubmitStatusActivity;
 
 public final class ProblemNodeAdapter extends RecyclerView.Adapter<ProblemNodeAdapter.VH> {
 	private static final int ITEM_LAYOUT = R.layout.item_user_pro_node;
@@ -57,7 +57,7 @@ public final class ProblemNodeAdapter extends RecyclerView.Adapter<ProblemNodeAd
 	}
 
 	private void toStatus(Context context, String pid) {
-		Intent intent = new Intent(context, SubmmitStatusActivity.class);
+		Intent intent = new Intent(context, SubmitStatusActivity.class);
 		intent.putExtra(Arg.SUBMMIT_QUERY_USER, uid);
 		//intent.putExtra(Arg.SUBMMIT_QUERY_STATUS, SubmmitQuery.Status.ALL.getValue());
 		intent.putExtra(Arg.SUBMMIT_QUERY_PID, pid);

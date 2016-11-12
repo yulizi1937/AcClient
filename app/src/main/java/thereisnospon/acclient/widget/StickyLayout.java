@@ -2,29 +2,23 @@ package thereisnospon.acclient.widget;
 
 import android.content.Context;
 import android.support.v4.view.NestedScrollingChild;
-import android.support.v4.view.NestedScrollingChildHelper;
 import android.support.v4.view.NestedScrollingParent;
 import android.support.v4.view.NestedScrollingParentHelper;
 import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.OverScroller;
-import android.widget.ScrollView;
 
 /**
  * Created by yzr on 16/8/23.
  */
-public class StickyLayout extends LinearLayout implements NestedScrollingParent {
+public class StickyLayout extends LinearLayout implements NestedScrollingParent,NestedScrollingChild {
+
 
 
 
@@ -53,7 +47,7 @@ public class StickyLayout extends LinearLayout implements NestedScrollingParent 
     }
 
     public StickyLayout(Context context, AttributeSet attrs) {
-       this(context,null,0);
+       this(context,attrs,0);
     }
 
     public StickyLayout(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -71,6 +65,8 @@ public class StickyLayout extends LinearLayout implements NestedScrollingParent 
 
 
     }
+
+
 
     // 垂直方向的滑动
     @Override

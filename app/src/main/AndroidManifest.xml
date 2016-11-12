@@ -1,54 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="thereisnospon.acclient">
+          package="thereisnospon.acclient">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".AppApplication"
         android:allowBackup="true"
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
-
         android:supportsRtl="true"
-        android:theme="@style/AppThemeNoActionBar">
-        <activity android:name=".MainActivity" />
-
+        android:theme="@style/AppTheme">
         <activity
+            android:name=".modules.hello.LoginActivity"
             android:launchMode="singleTask"
-            android:name=".modules.problem_list.HdojActivity"
-            android:label="题目列表" />
-        <activity android:name=".modules.problem_detail.ShowProblemActivity" android:launchMode="singleTask"/>
-        <activity android:name=".modules.search_people.SearchPeopleActivity" android:launchMode="singleTask"/>
-        <activity android:name=".modules.user_detail.UserDetailActivity" android:launchMode="singleTask" />
-        <activity android:name=".modules.submmit_status.SubmmitStatusActivity" android:launchMode="singleTask"/>
-        <activity android:name=".DebugActivity" android:launchMode="singleTask"/>
-        <activity android:name=".modules.show_code.CodeActivity" android:launchMode="singleTask"/>
-        <activity
-            android:launchMode="singleTask"
-            android:name=".modules.settings.SettingActivity"
-            android:label="设置" />
-        <activity android:name=".modules.submit.SubmmitAnwserActivity" android:launchMode="singleTask" />
-        <activity
-            android:name=".modules.rank.RankActivity"
-            android:launchMode="singleTask"
-            android:windowSoftInputMode="adjustResize"
-            android:label="用户列表" />
-        <activity android:name=".modules.login.LoginActivity" android:launchMode="singleTask">
+            android:theme="@style/AppTheme.Hello">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".modules.about.AboutActivity" android:launchMode="singleTask" android:label="关于" />
-        <activity android:name=".modules.discuss.DiscussActivity" android:launchMode="singleTask" android:label="题目讨论" />
-        <activity android:name=".modules.note.NoteActivity" android:launchMode="singleTask" android:label="笔记"/>
-        <activity android:name=".modules.login.RegisterActivity" android:windowSoftInputMode="adjustResize" android:launchMode="singleTask" android:label="注册"> </activity>
+        <activity
+            android:name=".modules.problem.list.HdojActivity"
+            android:label="@string/navi_problem_list"
+            android:launchMode="singleTask"/>
+        <activity
+            android:name=".modules.problem.detail.ShowProblemActivity"
+            android:launchMode="singleTask"/>
+        <activity
+            android:name=".modules.personal.search.SearchPeopleActivity"
+            android:launchMode="singleTask"/>
+        <activity
+            android:name=".modules.personal.UserDetailActivity"
+            android:launchMode="singleTask"/>
+        <activity
+            android:name=".modules.submit.status.SubmitStatusActivity"
+            android:launchMode="singleTask"/>
+        <activity
+            android:name=".DebugActivity"
+            android:launchMode="singleTask"/>
+        <activity
+            android:name=".modules.code.CodeActivity"
+            android:launchMode="singleTask"/>
+        <activity
+            android:name=".modules.settings.SettingActivity"
+            android:label="@string/navi_settings"
+            android:launchMode="singleTask"/>
+        <activity
+            android:name=".modules.submit.SubmitAnswerActivity"
+            android:launchMode="singleTask"/>
+        <activity
+            android:name=".modules.rank.RankActivity"
+            android:label="@string/navi_user_list"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".modules.about.AboutActivity"
+            android:label="@string/navi_about"
+            android:launchMode="singleTask"/>
+        <activity
+            android:name=".modules.discuss.DiscussActivity"
+            android:label="@string/navi_topic_discuss"
+            android:launchMode="singleTask"/>
+        <activity
+            android:name=".modules.note.NoteActivity"
+            android:label="@string/navi_notice"
+            android:launchMode="singleTask"/>
+        <activity
+            android:name=".modules.hello.RegisterActivity"
+            android:label="@string/navi_register"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme.Hello"
+            android:windowSoftInputMode="adjustResize"/>
     </application>
 
 </manifest>

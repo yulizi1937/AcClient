@@ -22,7 +22,9 @@ public class HttpUtil {
     private CookiesManager cookiesManager;
 
 
-
+    public CookiesManager getCookiesManager() {
+        return cookiesManager;
+    }
 
     private HttpUtil(){
 

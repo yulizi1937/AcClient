@@ -1,30 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
 
 
-    <thereisnospon.acclient.widget.StickyLayout
+
+    <data class="UserDetailBinding"/>
+
+
+    <android.support.design.widget.CoordinatorLayout
+
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:background="#ffffff"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_height="match_parent">
 
-
-        <include
-            android:id="@+id/fragment_user_detail"
-            layout="@layout/fragment_user_detail">
-        </include>
-
-
-        <android.support.v7.widget.RecyclerView
-
-            android:id="@+id/usernode_recycle"
+        <thereisnospon.acclient.widget.StickyLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        </android.support.v7.widget.RecyclerView>
+            <include
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                android:id="@+id/fragment_user_detail"
+                layout="@layout/fragment_user_detail">
+            </include>
 
 
-    </thereisnospon.acclient.widget.StickyLayout>
+            <android.support.v7.widget.RecyclerView
+
+                android:id="@+id/usernode_recycle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+
+        </thereisnospon.acclient.widget.StickyLayout>
+
+
+
+
+
+    </android.support.design.widget.CoordinatorLayout>
+
+
+
+
+
+
 </layout>
