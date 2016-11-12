@@ -7,17 +7,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="thereisnospon.acclient.modules.submmit_status.SubmmitStatusActivity"
+    tools:context=".modules.submit.status.SubmitStatusActivity"
     tools:openDrawer="start">
 
     <FrameLayout
         android:id="@+id/fragment_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </FrameLayout>
+        android:layout_height="match_parent"/>
 
 
-    <include layout="@layout/navigation"></include>
+    <include layout="@layout/navigation"/>
 
 
 </android.support.v4.widget.DrawerLayout>

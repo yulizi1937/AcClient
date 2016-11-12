@@ -1,7 +1,6 @@
 package thereisnospon.acclient.modules.discuss;
 
 import android.os.Bundle;
-import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,29 +18,41 @@ import thereisnospon.acclient.ui.adapter.DiscussItemAdapter;
 /**
  * Created by yzr on 16/9/9.
  */
-public class DiscussFragment extends NormalSwipeFragment<DiscussItem> implements DiscussContact.View{
+public final class DiscussFragment extends NormalSwipeFragment<DiscussItem> implements DiscussContact.View{
 
 
-    private String pid;
+	private DiscussContact.Presenter presenter;
+	private String pid;
 
-    public static DiscussFragment newIndexDiscuss(){
+    public static DiscussFragment newInstance(){
         return new DiscussFragment();
     }
 
-    public static DiscussFragment newProbleDisuss(@Nullable String problemid){
+    public static DiscussFragment newInstance(@Nullable String problemid){
         DiscussFragment fragment=new DiscussFragment();
         fragment.pid=problemid;
         return fragment;
     }
 
-    DiscussContact.Presenter presenter;
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		pid = outState.getString("pid");
+	}
 
-    @Nullable
+	@Override
+	public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+		super.onViewStateRestored(savedInstanceState);
+		if(savedInstanceState != null) {
+			pid = savedInstanceState.getString("pid");
+		}
+	}
+
+	@Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         presenter=new DiscussPresenter(this,pid);
-        View view=normalView(inflater,container,savedInstanceState);
-        return view;
+        return normalView(inflater,container,savedInstanceState);
     }
 
     @Override

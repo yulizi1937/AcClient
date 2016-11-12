@@ -2,35 +2,35 @@ package thereisnospon.acclient;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
-import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import thereisnospon.acclient.base.activity.DrawerActivity;
+import thereisnospon.acclient.base.activity.AppBarActivity;
 import thereisnospon.acclient.event.Arg;
 import thereisnospon.acclient.event.Msg;
-import thereisnospon.acclient.modules.login.LoginActivity;
-
-import thereisnospon.acclient.modules.login.LoginUtil;
-import thereisnospon.acclient.modules.problem_list.HdojActivity;
+import thereisnospon.acclient.modules.code.CodeActivity;
+import thereisnospon.acclient.modules.hello.HelloUtil;
+import thereisnospon.acclient.modules.hello.LoginActivity;
+import thereisnospon.acclient.modules.personal.UserDetailActivity;
+import thereisnospon.acclient.modules.personal.search.SearchPeopleActivity;
+import thereisnospon.acclient.modules.problem.list.HdojActivity;
 import thereisnospon.acclient.modules.rank.RankActivity;
-import thereisnospon.acclient.modules.search_people.SearchPeopleActivity;
 import thereisnospon.acclient.modules.settings.SettingActivity;
 import thereisnospon.acclient.modules.settings.Settings;
-import thereisnospon.acclient.modules.show_code.CodeActivity;
-import thereisnospon.acclient.modules.submit.SubmmitAnwserActivity;
-import thereisnospon.acclient.modules.submmit_status.SubmmitStatusActivity;
-import thereisnospon.acclient.modules.user_detail.UserDetailActivity;
+import thereisnospon.acclient.modules.submit.SubmitAnswerActivity;
+import thereisnospon.acclient.modules.submit.status.SubmitStatusActivity;
 import thereisnospon.acclient.utils.SpUtil;
 
-public class DebugActivity extends DrawerActivity implements ListView.OnItemClickListener{
+public final class DebugActivity extends AppBarActivity implements ListView.OnItemClickListener{
 
 
 
@@ -62,13 +62,13 @@ public class DebugActivity extends DrawerActivity implements ListView.OnItemClic
                 break;
             case 2:cl= SearchPeopleActivity.class;
                 break;
-            case 3:cl= SubmmitStatusActivity.class;
+            case 3:cl= SubmitStatusActivity.class;
                 break;
             case 4:cl= CodeActivity.class;
                 break;
             case 5:cl= SettingActivity.class;
                 break;
-            case 6:cl= SubmmitAnwserActivity.class;
+            case 6:cl= SubmitAnswerActivity.class;
                 break;
             case 7:cl= UserDetailActivity.class;
                 Intent intent=new Intent(this,cl);
@@ -86,19 +86,14 @@ public class DebugActivity extends DrawerActivity implements ListView.OnItemClic
         startActivity(intent);
     }
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_debug);
-        handler=new Handler();
+    protected void setupContent(@NonNull FrameLayout contentLayout) {
+        contentLayout.addView(getLayoutInflater().inflate(R.layout.nav_activity_debug, contentLayout, false));
+        handler = new Handler();
         initList();
-        initDrawer();
-
         checkLogin();
-
-
     }
-
 
     void goToLogin(){
         Msg.t("请先登陆");
@@ -113,7 +108,7 @@ public class DebugActivity extends DrawerActivity implements ListView.OnItemClic
             goToLogin();
             return;
         }
-        LoginUtil.login(userName, password, new LoginUtil.LoginCall() {
+        HelloUtil.login(userName, password, new HelloUtil.LoginCall() {
             @Override
             public void success(String nickName) {
                 setTitle(nickName);

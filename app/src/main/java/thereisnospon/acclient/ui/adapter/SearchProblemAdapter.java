@@ -17,7 +17,7 @@ import thereisnospon.acclient.data.ProblemItem;
 import thereisnospon.acclient.data.SearchProblem;
 import thereisnospon.acclient.databinding.ItemListProblemBinding;
 import thereisnospon.acclient.event.Arg;
-import thereisnospon.acclient.modules.problem_detail.ShowProblemActivity;
+import thereisnospon.acclient.modules.problem.detail.ShowProblemActivity;
 
 
 public final class SearchProblemAdapter extends NormalSwipeAdapter<SearchProblem> {
@@ -50,7 +50,7 @@ public final class SearchProblemAdapter extends NormalSwipeAdapter<SearchProblem
 		vh.mBinding.problemId.setText(String.valueOf(problem.getId()));
 		vh.mBinding.problemAc.setText(String.valueOf(problem.getAccepted()));
 		vh.mBinding.problemSubmmit.setText(String.valueOf(problem.getSubmmision()));
-		vh.mBinding.executePendingBindings();
+
 		if(problem.getStatus()==ProblemItem.ACCEPTED){
 			vh.mBinding.problemId.setText(String.valueOf(problem.getId())+"\t(AC)");
 			vh.mBinding.problemId.setTextColor(Color.parseColor("#4CAF50"));
@@ -58,6 +58,7 @@ public final class SearchProblemAdapter extends NormalSwipeAdapter<SearchProblem
 			vh.mBinding.problemId.setTextColor(Color.parseColor("#FFAB40"));
 			vh.mBinding.problemId.setText(String.valueOf(problem.getId())+"\t(UAC)");
 		}
+		vh.mBinding.executePendingBindings();
 	}
 
 

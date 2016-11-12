@@ -8,17 +8,13 @@ import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorListener;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
-import android.view.animation.AnimationSet;
 import android.view.animation.Interpolator;
 import android.widget.LinearLayout;
 
 import com.orhanobut.logger.Logger;
 
 import java.util.List;
-
-import thereisnospon.acclient.widget.BottomsheetLayout;
 
 /**
  * Created by yzr on 16/8/25.
@@ -28,7 +24,7 @@ public class FabBehavior extends FloatingActionButton.Behavior {
 
 
     private boolean isBottomSheetLayout(View view){
-        return view instanceof BottomsheetLayout;
+        return view instanceof LinearLayout;
     }
 
 

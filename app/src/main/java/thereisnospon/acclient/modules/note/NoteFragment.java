@@ -10,6 +10,7 @@ import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
+import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.base.adapter.BaseSwipeAdapter;
 import thereisnospon.acclient.base.fragment.NormalSwipeFragment;
 import thereisnospon.acclient.data.NoteItem;
@@ -18,11 +19,14 @@ import thereisnospon.acclient.ui.adapter.NoteAdapter;
 /**
  * Created by yzr on 16/9/9.
  */
-public class NoteFragment extends NormalSwipeFragment<NoteItem> implements NoteContact.View {
+public final class NoteFragment extends NormalSwipeFragment<NoteItem> implements NoteContact.View {
 
 
     private NoteContact.Presenter presenter;
 
+    public static NoteFragment newInstance() {
+         return (NoteFragment) NoteFragment.instantiate(AppApplication.context, NoteFragment.class.getName());
+    }
 
     @Nullable
     @Override
