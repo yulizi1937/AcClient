@@ -217,6 +217,7 @@ public final class LoginActivity extends BaseActivity {
 	public void onLoginFailure(String error) {
 		if (!isShowLoginUI) {
 			showLoginUI();
+			mLoadToast.error();
 		} else {
 			Snackbar.make(mBinding.sceneRoot, error, Snackbar.LENGTH_LONG)
 			        .show();
