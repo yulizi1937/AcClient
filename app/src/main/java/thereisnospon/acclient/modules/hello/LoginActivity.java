@@ -13,6 +13,7 @@ import android.support.transition.Transition;
 import android.support.transition.TransitionManager;
 import android.support.transition.TransitionSet;
 import android.support.v4.app.ActivityCompat;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -116,7 +117,7 @@ public final class LoginActivity extends BaseActivity {
 		mLoginBinding.registerButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+				RegisterActivity.showInstance(LoginActivity.this);
 			}
 		});
 		mLoginBinding.loginRemember.setOnClickListener(new View.OnClickListener() {
@@ -171,10 +172,10 @@ public final class LoginActivity extends BaseActivity {
 
 	private boolean checkRemembered() {
 		SpUtil sp = SpUtil.getInstance();
-		this.id = sp.getString(SpUtil.NAME);
-		this.pass = sp.getString(SpUtil.PASS);
-		this.nickname = sp.getString(SpUtil.NICKNAME);
-		rememberPas = this.id != null && this.pass != null;
+		id = sp.getString(SpUtil.NAME);
+		pass = sp.getString(SpUtil.PASS);
+		nickname = sp.getString(SpUtil.NICKNAME);
+		rememberPas = !TextUtils.isEmpty(id) && !TextUtils.isEmpty(pass) ;
 		return rememberPas;
 	}
 

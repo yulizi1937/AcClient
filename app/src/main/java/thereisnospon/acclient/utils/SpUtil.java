@@ -1,6 +1,5 @@
 package thereisnospon.acclient.utils;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -9,7 +8,7 @@ import thereisnospon.acclient.AppApplication;
 /**
  * Created by yzr on 16/8/21.
  */
-public class SpUtil {
+public final class SpUtil {
 
     private static SpUtil instance;
 
@@ -37,6 +36,18 @@ public class SpUtil {
 
     public void putString(String key,String value){
         sp.edit().putString(key,value).commit();
+    }
+
+    public void putString(String key,String value,final SharedPreferences.OnSharedPreferenceChangeListener l){
+        SharedPreferences.OnSharedPreferenceChangeListener masterListener = new  SharedPreferences.OnSharedPreferenceChangeListener() {
+            @Override
+            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+                l.onSharedPreferenceChanged(  sharedPreferences,   s);
+                sp.unregisterOnSharedPreferenceChangeListener(this);
+            }
+        };
+        sp.registerOnSharedPreferenceChangeListener(masterListener);
+        sp.edit().putString(key,value).apply();
     }
 
     public static SpUtil getInstance(){
