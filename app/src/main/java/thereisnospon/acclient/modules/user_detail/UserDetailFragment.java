@@ -15,6 +15,7 @@ import jp.wasabeef.recyclerview.animators.ScaleInAnimator;
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.data.UserInfo;
 import thereisnospon.acclient.databinding.FragmentUserDetailWrapperBinding;
+import thereisnospon.acclient.databinding.FragmentUserDetailWrapperBinding;
 import thereisnospon.acclient.event.Arg;
 import thereisnospon.acclient.modules.submmit_status.SubmmitQuery;
 import thereisnospon.acclient.modules.submmit_status.SubmmitStatusActivity;
@@ -26,7 +27,7 @@ import thereisnospon.acclient.ui.adapter.ProblemNodeAdapter;
 public final class UserDetailFragment extends Fragment implements UserDetailContact.View {
 	private static final String TAG = "UserDetailFragment";
 	private UserDetailContact.Presenter presenter;
-	private FragmentUserDetailWrapperBinding mBinding;
+	private thereisnospon.acclient.databinding.FragmentUserDetailWrapperBinding mBinding;
 
 
 	private String id;
