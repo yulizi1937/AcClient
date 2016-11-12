@@ -68,6 +68,7 @@
     <string name="navi_by_page">Find problem by page</string>
     <string name="navi_by_id">Find problem by id</string>
     <string name="navi_answer">Answer</string>
+    <string name="navi_software_licenses">Software licenses</string>
 
     <string name="search_by_problem_id">Find problem by id: </string>
     <string name="search_problem_by_page">Find problem(s) at page:</string>
