@@ -5,28 +5,22 @@
       "description": "The Android Open Source Project",
       "libraries": [
         {
-          "name": "com.android.support:support-annotations",
-          "copyright": "2014"
+          "name": "com.android.support:design"
         },
         {
-          "name": "com.android.support:design",
-          "copyright": "2014"
+          "name": "com.android.support:support-v4"
         },
         {
-          "name": "com.android.support:support-v4",
-          "copyright": "2014"
+          "name": "com.android.support:recyclerview-v7"
         },
         {
-          "name": "com.android.support:recyclerview-v7",
-          "copyright": "2014"
+          "name": "com.android.support:appcompat-v7"
         },
         {
-          "name": "com.android.support:appcompat-v7",
-          "copyright": "2014"
+          "name": "com.android.support:cardview-v7"
         },
         {
-          "name": "com.google.android.gms:play-services",
-          "copyright": "2014"
+          "name": "com.android.support:transition"
         }
       ]
     },
@@ -35,8 +29,13 @@
       "description": "Apache License, Version 2.0",
       "libraries": [
         {
-          "name": "com.squareup.leakcanary:leakcanary-android",
-          "owner": "Square, Inc.",
+          "name": "io.reactivex:rxjava",
+          "owner": "Netflix, Inc.",
+          "copyright": "2013"
+        },
+        {
+          "name": "io.reactivex:rxandroid",
+          "owner": "The RxAndroid authors",
           "copyright": "2015"
         },
         {
@@ -45,59 +44,42 @@
           "copyright": "2008"
         },
         {
-          "name": "com.github.hotchemi:permissionsdispatcher",
-          "owner": "Shintaro Katafuchi, Marcel Schnelle, Yoshinori Isogai",
-          "copyright": "2016"
-        },
-        {
           "name": "org.greenrobot:eventbus",
           "owner": "Markus Junginger, greenrobot (http://greenrobot.org)",
           "copyright": "2012-2016"
-        },
-        {
-          "name": "JakeWharton/ViewPagerIndicator",
-          "owner": "Francisco Figueiredo Jr, Patrik Åkerfeldt, Jake Wharton",
-          "copyright": "2011-2012"
         },
         {
           "name": "Glide",
           "owner": "bumptech/glide"
         },
         {
-          "name": "org.apache.httpcomponents:httpmime",
-          "owner": "Apache.org"
+          "name": "com.squareup.retrofit2",
+          "owner": "Square, Inc.",
+          "copyright":"2013"
         },
         {
-          "name": "org.apache.httpcomponents:httpclient-android",
-          "owner": "Apache.org"
+          "name": "com.squareup.retrofit:converter-gson",
+          "owner": "Square, Inc.",
+          "copyright":"2013"
         },
         {
-          "name": "com.code-troopers.betterpickers",
-          "owner": "Derek Brameyer, Code-Troopers",
-          "copyright": "2013"
-        },
-        {
-          "name": "com.github.chrisbanes.photoview",
-          "owner": "Chris Banes",
-          "copyright": "2011-2012"
-        },
-        {
-          "name": "javax.inject:javax.inject",
-          "owner": "https://code.google.com/p/atinject/"
-        },
-        {
-          "name": "Android Asynchronous Http Client",
-          "owner": "James Smith <james@loopj.com>",
-          "copyright": "2011"
-        },
-        {
-          "name": "joda-time",
-          "owner": "https://github.com/JodaOrg"
+          "name": "okhttp",
+          "owner": "Square, Inc.",
+          "copyright":"2016"
         },
         {
           "name": "jp.wasabeef:recyclerview-animators",
           "owner": "Wasabeef",
-          "copyright": "2015"
+          "copyright":"2015"
+        },
+        {
+          "name": "com.orhanobut:logger",
+          "owner": "Orhan Obut",
+          "copyright":"2015"
+        },
+        {
+          "name": "net.steamcrafted:load-toast",
+          "owner": "code-mc"
         }
       ]
     },
@@ -106,37 +88,9 @@
       "description": "The MIT License (MIT)",
       "libraries": [
         {
-          "name": "com.adjust.sdk:adjust-android",
-          "owner": "adjust GmbH, http://www.adjust.com",
-          "copyright": "2012-2015"
-        },
-        {
-          "name": "com.github.dmytrodanylyk.circular-progress-button",
-          "owner": "Danylyk Dmytro",
-          "copyright": "2014"
-        }
-      ]
-    },
-    {
-      "name": "ISC",
-      "description": "Internet Systems Consortium",
-      "libraries": [
-        {
-          "name": "com.j256.ormlite:ormlite-core",
-          "owner": "http://ormlite.com/"
-        },
-        {
-          "name": "com.j256.ormlite:ormlite-android",
-          "owner": "http://ormlite.com/"
-        }
-      ]
-    },
-    {
-      "name": "Hockey",
-      "libraries": [
-        {
-          "name": "net.hockeyapp.android:HockeySDK",
-          "owner": " Microsoft Corporation; nullwire aps; The Android Open Source Project"
+          "name": "org.jsoup:jsoup",
+          "owner": "https://jsoup.org/",
+          "copyright": "2009-2016"
         }
       ]
     }
