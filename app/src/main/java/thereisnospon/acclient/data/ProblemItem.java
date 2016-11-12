@@ -6,6 +6,10 @@ package thereisnospon.acclient.data;
 
 
 public class ProblemItem {
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
 
     int id;
     String title;
