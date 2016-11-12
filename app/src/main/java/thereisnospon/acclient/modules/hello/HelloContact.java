@@ -18,6 +18,10 @@ interface HelloContact {
 
 		void beforeRegister();
 
+		void afterLogin();
+
+		void afterRegister();
+
 		void onLoginSuccess(String userName);
 
 		void onLoginFailure(String error);
