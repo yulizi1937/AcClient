@@ -1,11 +1,10 @@
 package thereisnospon.acclient.utils.net.request;
 
-import com.google.gson.Gson;
-
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import thereisnospon.acclient.AppApplication;
 
 /**
  * Created by yzr on 16/6/5.
@@ -37,7 +36,7 @@ public class PostJsonRequest extends PostRequest {
 
     @Override
     public PostRequest addJsonObject(Object object){
-        this.json=new Gson().toJson(object);
+        this.json= AppApplication.gson.toJson(object);
         return this;
     }
 

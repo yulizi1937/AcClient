@@ -76,6 +76,10 @@
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.Hello"
             android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".modules.licenses.LicensesActivity"
+            android:label="@string/navi_software_licenses"
+            android:launchMode="singleTask"/>
     </application>
 
 </manifest>
