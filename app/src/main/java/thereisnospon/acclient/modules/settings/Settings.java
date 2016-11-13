@@ -3,13 +3,12 @@ package thereisnospon.acclient.modules.settings;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import retrofit.http.PUT;
 import thereisnospon.acclient.AppApplication;
 
 /**
  * Created by yzr on 16/8/20.
  */
-public class Settings {
+public final class Settings {
 
 
     private static Settings instance;
@@ -17,32 +16,31 @@ public class Settings {
     private static final String SETTING_FILE="settings_pref";
 
 
-    public static final String SKIN_PREF="skins_pref";
-    public static final String ABOUT_PREF="pref_about";
-    public static final String THEME_PREF="theme_pref";
-    public static final String EXIT_CONFIRM="exitcon_pref";
-    public static final String COMPILER="compiler_pref";
+    public static final String SKIN_PREF = "skins_pref";
+    static final String ABOUT_PREF = "pref_about";
+    static final String SOFTWARE_LICENSES = "pref_software_licenses";
+    static final String THEME_PREF = "theme_pref";
+    static final String EXIT_CONFIRM = "exitcon_pref";
+    static final String COMPILER = "compiler_pref";
 
 
     public int getTheme(){
         String str=getString(THEME_PREF,theme+"");
-        int index=Integer.parseInt(str);
-        return index;
+        return Integer.parseInt(str);
     }
 
     public int getCompiler(){
         String str=getString(COMPILER,compiler+"");
-        int index=Integer.parseInt(str);
-        return index;
+        return Integer.parseInt(str);
     }
 
-    public int compiler=0;
+    int compiler=0;
     public int theme=0;
-    public boolean exitConfirm=true;
+    boolean exitConfirm=true;
     public boolean skinPref=false;
 
 
-    private SharedPreferences mPreference;
+    private final SharedPreferences mPreference;
 
     private Settings(Context context){
 
@@ -65,23 +63,41 @@ public class Settings {
         return mPreference.getBoolean(key,def);
     }
 
-    public void putBoolean(String key,boolean value){
-        mPreference.edit().putBoolean(key,value).commit();
-    }
 
-    public String getString(String key,String def){
+	void putBooleanAsync(String key, boolean value, final SharedPreferences.OnSharedPreferenceChangeListener l) {
+		if (l != null) {
+			SharedPreferences.OnSharedPreferenceChangeListener masterListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+				@Override
+				public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+					l.onSharedPreferenceChanged(sharedPreferences, s);
+					mPreference.unregisterOnSharedPreferenceChangeListener(this);
+				}
+			};
+			mPreference.registerOnSharedPreferenceChangeListener(masterListener);
+		}
+		mPreference.edit()
+		           .putBoolean(key, value)
+		           .apply();
+	}
+
+
+    private String getString(String key, String def){
         return mPreference.getString(key,def);
     }
 
-    public int getInt(String key,int def){
-        return mPreference.getInt(key,def);
-    }
-
-    public void putString(String key,String value){
-        mPreference.edit().putString(key,value).commit();
-    }
-
-    public void putInt(String key,int value){
-        mPreference.edit().putInt(key,value).commit();
-    }
+	void putStringAsync(String key, String value, final SharedPreferences.OnSharedPreferenceChangeListener l) {
+		if (l != null) {
+			SharedPreferences.OnSharedPreferenceChangeListener masterListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+				@Override
+				public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+					l.onSharedPreferenceChanged(sharedPreferences, s);
+					mPreference.unregisterOnSharedPreferenceChangeListener(this);
+				}
+			};
+			mPreference.registerOnSharedPreferenceChangeListener(masterListener);
+		}
+		mPreference.edit()
+		           .putString(key, value)
+		           .apply();
+	}
 }

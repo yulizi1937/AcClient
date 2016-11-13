@@ -50,14 +50,16 @@ public final class SpUtil {
     }
 
     public void putString(String key,String value,final SharedPreferences.OnSharedPreferenceChangeListener l){
-        SharedPreferences.OnSharedPreferenceChangeListener masterListener = new  SharedPreferences.OnSharedPreferenceChangeListener() {
-            @Override
-            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
-                l.onSharedPreferenceChanged(  sharedPreferences,   s);
-                sp.unregisterOnSharedPreferenceChangeListener(this);
-            }
-        };
-        sp.registerOnSharedPreferenceChangeListener(masterListener);
+        if (l != null) {
+            SharedPreferences.OnSharedPreferenceChangeListener masterListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+                @Override
+                public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+                    l.onSharedPreferenceChanged(sharedPreferences, s);
+                    sp.unregisterOnSharedPreferenceChangeListener(this);
+                }
+            };
+            sp.registerOnSharedPreferenceChangeListener(masterListener);
+        }
         sp.edit().putString(key,value).apply();
     }
 

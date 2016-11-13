@@ -4,7 +4,6 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.Menu;
@@ -45,7 +44,7 @@ public final class CodeActivity extends AppBarActivity {
             ClipData clipData=ClipData.newPlainText("code",code);
             ClipboardManager clipboardManager=(ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
             clipboardManager.setPrimaryClip(clipData);
-            showShortSnackbar(R.string.info_copy_code, R.string.message_snackbar_copycode_btn, new View.OnClickListener() {
+            showShortSnackbar(R.string.info_copy_code, android.R.string.ok, new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
