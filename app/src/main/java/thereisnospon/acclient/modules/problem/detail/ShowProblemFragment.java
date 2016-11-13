@@ -48,7 +48,6 @@ public final class ShowProblemFragment extends Fragment implements ShowProblemCo
 		id = savedInstanceState.getInt("id");
 	}
 
-
 	@Nullable
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -66,8 +65,12 @@ public final class ShowProblemFragment extends Fragment implements ShowProblemCo
 				dismissPb();
 				if (mProgressDialog == null) {
 					Activity activity = getActivity();
+
+					// it showing ugly in android 4.4
+					//
 					if (activity != null) {
-						mProgressDialog = ProgressDialog.show(activity, null, getString(R.string.loading));
+						//mBinding.progressBar.setProgress(50);
+						//mProgressDialog = ProgressDialog.show(activity, null, getString(R.string.loading));
 					}
 				}
 			}

@@ -87,6 +87,8 @@ dependencies {
     compile 'jp.wasabeef:recyclerview-animators:2.2.1'
     compile 'com.orhanobut:logger:1.15'
     compile 'net.steamcrafted:load-toast:1.0.10'
+
+    compile('com.lsjwzh:materialloadingprogressbar:0.5.8-RELEASE')
 }
 
 // Rename final apks

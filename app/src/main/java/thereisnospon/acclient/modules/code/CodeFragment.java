@@ -35,7 +35,6 @@ public final class CodeFragment extends Fragment implements CodeContact.View {
 	                                                                   CodeViewTheme.SOLARIZED_DARK,
 	                                                                   CodeViewTheme.SOLARIZED_LIGHT, };
 
-
 	private String id;
 	private String code;
 	private FragmentShowcodeBinding mBinding;
@@ -90,7 +89,7 @@ public final class CodeFragment extends Fragment implements CodeContact.View {
 		int index = settings.getTheme();
 		mBinding.codeView.setTheme(THEMES[index]);
 		mBinding.codeView.fillColor();
-		LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.code_back);
+		ViewGroup linearLayout = (ViewGroup) view.findViewById(R.id.code_back);
 		linearLayout.setBackgroundColor(mBinding.codeView.getCodeBackgroundColor());
 	}
 
