@@ -43,5 +43,5 @@ workspace.xml
 .idea/
 *.iml
 .DS_Store
-
+app/*.iml
 
