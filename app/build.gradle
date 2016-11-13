@@ -8,6 +8,7 @@ def buildNumber = 'bld' + (System.env.BUILD_NUMBER ?: 'SNAPSHOT')
 apply plugin: 'com.android.application'
 
 android {
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
@@ -38,7 +39,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -55,6 +56,10 @@ android {
         exclude 'META-INF/license.txt'
         exclude 'META-INF/dependencies.txt'
         exclude 'META-INF/LGPL2.1'
+    }
+    lintOptions {
+        checkReleaseBuilds false
+
     }
 }
 

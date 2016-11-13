@@ -84,7 +84,7 @@
 
 
     <string name="info_copy_code">code has pasted to clipboard </string>
-
+    <string name="menu_copy_code">复制</string>
     <string name="message_snackbar_copycode_msg"></string>
     <string name="message_snackbar_copycode_btn">ok</string>
 
