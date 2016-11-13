@@ -62,6 +62,16 @@ public abstract class BaseActivity extends AppCompatActivity implements HelloCon
 	}
 
 	@Override
+	public void afterRegister() {
+
+	}
+
+	@Override
+	public void afterLogin() {
+
+	}
+
+	@Override
 	public @Nullable  ImageView getCheckCodeImageHolder() {
 		return null;
 	}

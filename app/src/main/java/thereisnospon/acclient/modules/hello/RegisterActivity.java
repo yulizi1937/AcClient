@@ -160,4 +160,31 @@ public final class RegisterActivity extends BaseActivity {
 			return builder.create();
 		}
 	}
+
+
+	private void updateUIWhenRegister(boolean enable) {
+		mBinding.registerId.setEnabled(enable);
+		mBinding.registerIdContainer.setEnabled(enable);
+		mBinding.registerEmail.setEnabled(enable);
+		mBinding.registerEmailContainer.setEnabled(enable);
+		mBinding.registerPass1.setEnabled(enable);
+		mBinding.registerPass1Container.setEnabled(enable);
+		mBinding.registerPass2.setEnabled(enable);
+		mBinding.registerPass2Container.setEnabled(enable);
+		mBinding.checkCodeText.setEnabled(enable);
+		mBinding.registerButton.setEnabled(enable);
+	}
+
+
+	@Override
+	public void beforeRegister() {
+		super.beforeRegister();
+		updateUIWhenRegister(false);
+	}
+
+	@Override
+	public void afterRegister() {
+		super.afterRegister();
+		updateUIWhenRegister(true);
+	}
 }
