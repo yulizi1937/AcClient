@@ -239,7 +239,7 @@
                 <ImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:src="@drawable/right_arrow"/>
+                    app:srcCompat="@drawable/ic_arrow_right"/>
             </LinearLayout>
 
 
@@ -277,7 +277,7 @@
                 <ImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:src="@drawable/right_arrow"/>
+                    app:srcCompat="@drawable/ic_arrow_right"/>
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
