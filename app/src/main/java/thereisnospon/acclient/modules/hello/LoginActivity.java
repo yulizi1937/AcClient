@@ -50,7 +50,7 @@ public final class LoginActivity extends BaseActivity {
 
 
 	public static void showInstance(Activity cxt, boolean relogin) {
-		Intent intent = new Intent(cxt,LoginActivity.class);
+		Intent intent = new Intent(cxt, LoginActivity.class);
 		intent.putExtra(Arg.RE_LOGIN, relogin);
 		intent.setFlags(FLAG_ACTIVITY_SINGLE_TOP | FLAG_ACTIVITY_CLEAR_TOP);
 		ActivityCompat.startActivity(cxt, intent, EMPTY);
@@ -244,5 +244,29 @@ public final class LoginActivity extends BaseActivity {
 		}
 		mLoadToast.setText(error);
 		mLoadToast.error();
+	}
+
+
+	private void updateUIWhenLogin(boolean enabled) {
+		mLoginBinding.loginId.setEnabled(enabled);
+		mLoginBinding.loginIdContainer.setEnabled(enabled);
+		mLoginBinding.loginPass.setEnabled(enabled);
+		mLoginBinding.loginPassContainer.setEnabled(enabled);
+		mLoginBinding.loginButton.setEnabled(enabled);
+		mLoginBinding.registerButton.setEnabled(enabled);
+		mLoginBinding.loginRemember.setEnabled(enabled);
+	}
+
+	@Override
+	public void beforeLogin() {
+		super.beforeLogin();
+		updateUIWhenLogin(false);
+	}
+
+
+	@Override
+	public void afterLogin() {
+		super.afterLogin();
+		updateUIWhenLogin(true);
 	}
 }

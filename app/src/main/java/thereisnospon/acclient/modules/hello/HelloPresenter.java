@@ -55,11 +55,13 @@ final class HelloPresenter implements HelloContact.Presenter {
 			          @Override
 			          public void success(String nickName) {
 				          view.onLoginSuccess(nickName);
+				          view.afterLogin();
 			          }
 
 			          @Override
 			          public void failure(String msg) {
 				          view.onLoginFailure(msg);
+				          view.afterLogin();
 			          }
 		          });
 
@@ -84,11 +86,13 @@ final class HelloPresenter implements HelloContact.Presenter {
 			          @Override
 			          public void success(String nickName) {
 				          view.onRegisterSuccess(nickName);
+				          view.afterRegister();
 			          }
 
 			          @Override
 			          public void failure(String msg) {
 				          view.onUserInputFailure(AppApplication.context.getString(R.string.hello_register_unsuccessfully), REGISTER_UNSUCCESSFULLY);
+				          view.afterRegister();
 			          }
 		          });
 	}
