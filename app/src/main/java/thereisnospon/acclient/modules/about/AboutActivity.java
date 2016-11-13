@@ -6,7 +6,11 @@ import android.widget.FrameLayout;
 
 import thereisnospon.acclient.base.activity.AppBarActivity;
 
+
+
 public final class AboutActivity extends AppBarActivity {
+
+
 	private static final String ABOUT = "<!DOCTYPE html>\n" +
 			"<html>\n" +
 			"<head>\n" +
@@ -18,10 +22,15 @@ public final class AboutActivity extends AppBarActivity {
 			"</body>\n" +
 			"</html>";
 
+
+
 	@Override
 	protected void setupContent(@NonNull FrameLayout contentLayout) {
 		WebView webView = new WebView(this);
 		webView.loadDataWithBaseURL(null, ABOUT, "text/html", "utf-8", null);
 		contentLayout.addView(webView);
 	}
+
+
+
 }

@@ -34,6 +34,17 @@ public final class SpUtil {
 
 
 
+    public static final String FIRST_VISIT="firsitvisit";
+
+    public  void putBoolean(String key,boolean value){
+        sp.edit().putBoolean(key,value).commit();
+    }
+
+    public boolean getBoolean(String key){
+        return sp.getBoolean(key,true);
+    }
+
+
     public void putString(String key,String value){
         sp.edit().putString(key,value).commit();
     }

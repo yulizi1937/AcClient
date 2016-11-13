@@ -121,16 +121,16 @@ public abstract class AppBarActivity extends ThemeActivity implements Navigation
 			case R.id.menu_share:
 				share();
 				break;
-			case R.id.menu_about:
+			/*case R.id.menu_about:
 				Intent intent1 = new Intent(this, AboutActivity.class);
 				startActivity(intent1);
-				break;
+				break;*/
 			case R.id.menu_setting:
 				intent = new Intent(this, SettingActivity.class);
 				break;
-			case R.id.menu_software_licenses:
-				LicensesActivity.showInstance(this);
-				break;
+//			case R.id.menu_software_licenses:
+//				LicensesActivity.showInstance(this);
+//				break;
             /*case R.id.menu_note:
                 intent=new Intent(this, NoteActivity.class);
                 break;*/

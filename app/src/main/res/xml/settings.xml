@@ -37,5 +37,10 @@
             android:title="退出提醒"></SwitchPreference>
 
 
+        <Preference
+            android:key="pref_about"
+            android:title="关于">
+        </Preference>
+
     </PreferenceCategory>
 </PreferenceScreen>

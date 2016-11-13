@@ -4,6 +4,7 @@ package thereisnospon.acclient.modules.settings;
  * Created by yzr on 16/8/3.
  */
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -13,6 +14,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import thereisnospon.acclient.R;
+import thereisnospon.acclient.modules.about.AboutActivity;
+import thereisnospon.acclient.modules.licenses.LicensesActivity;
 
 public  class SimpleSettingFragment extends PreferenceFragment
         implements
@@ -27,7 +30,8 @@ public  class SimpleSettingFragment extends PreferenceFragment
     Settings settings;
 
 
-    private OnThemeChangeListener themeChangeListener;
+
+   // private OnThemeChangeListener themeChangeListener;
 
 
 
@@ -43,7 +47,7 @@ public  class SimpleSettingFragment extends PreferenceFragment
         addPreferencesFromResource(R.xml.settings);
 
 
-        themeChangeListener=(OnThemeChangeListener)getActivity();
+        //themeChangeListener=(OnThemeChangeListener)getActivity();
 
         settings=Settings.getInstance();
         theme=(ListPreference)findPreference(Settings.THEME_PREF);
@@ -55,11 +59,12 @@ public  class SimpleSettingFragment extends PreferenceFragment
         exitConfirm=(SwitchPreference)findPreference(Settings.EXIT_CONFIRM);
         exitConfirm.setOnPreferenceChangeListener(this);
 
-        /*about=findPreference(Settings.ABOUT_PREF);
-        about.setOnPreferenceClickListener(this);*/
+        about=findPreference(Settings.ABOUT_PREF);
+        about.setOnPreferenceClickListener(this);
 
        // skin=(CheckBoxPreference) findPreference(Settings.SKIN_PREF);
        // skin.setOnPreferenceChangeListener(this);
+
 
 
         compiler=(ListPreference)findPreference(Settings.COMPILER);
@@ -79,11 +84,7 @@ public  class SimpleSettingFragment extends PreferenceFragment
         }else if(preference==exitConfirm){
            settings.exitConfirm=Boolean.valueOf(newValue.toString());
            settings.putBoolean(Settings.EXIT_CONFIRM,settings.exitConfirm);
-       }//else if(preference==skin){
-           /*settings.skinPref=Boolean.valueOf(newValue.toString());
-           settings.putBoolean(Settings.SKIN_PREF,settings.skinPref);
-           themeChangeListener.onThemeChange();*/
-      // }
+       }
         else if(preference==compiler){
            settings.compiler=Integer.parseInt(newValue.toString());
            settings.putString(Settings.COMPILER,settings.compiler+"");
@@ -109,8 +110,9 @@ public  class SimpleSettingFragment extends PreferenceFragment
      */
     @Override
     public boolean onPreferenceClick(Preference preference) {
-        if(preference==about){
-            Toast.makeText(getActivity(),"hello",Toast.LENGTH_SHORT).show();
+         if(preference==about){
+            Intent intent=new Intent(getActivity(), LicensesActivity.class);
+            startActivity(intent);
         }
         return false;
     }

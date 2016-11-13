@@ -15,8 +15,11 @@ import com.orhanobut.logger.Logger;
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.base.activity.AppBarActivity;
 
+
+
 public final class SettingActivity extends AppBarActivity
         implements SimpleSettingFragment.OnThemeChangeListener{
+
 
 
     private ImageView settingimage;
@@ -26,8 +29,9 @@ public final class SettingActivity extends AppBarActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initTheme();
+       // initTheme();
     }
+
 
     @Override
     protected void setupContent(@NonNull FrameLayout contentLayout) {
@@ -41,7 +45,6 @@ public final class SettingActivity extends AppBarActivity
         initTheme();
         getState();
     }
-
 
     void getState(){
         addFragment();
@@ -58,12 +61,9 @@ public final class SettingActivity extends AppBarActivity
         transaction.commit();
     }
 
-
     private Bitmap bitmap;
 
-
-    //TODO
-    //可能OOM
+    //TODO 可能OOM
     void setDrawableCache(){
         settingcontent.setDrawingCacheEnabled(false);
         settingcontent.setDrawingCacheEnabled(true);
@@ -73,19 +73,6 @@ public final class SettingActivity extends AppBarActivity
         settingimage.setAlpha(1f);
         settingimage.setVisibility(View.VISIBLE);
     }
-    /*void saveBitmap(Bitmap bitmap){
-        File file=getCacheDir();
-        File x=new File(file,"233.png");
-        try(FileOutputStream out=new FileOutputStream(x)){
-            bitmap.compress(Bitmap.CompressFormat.PNG,100,out);
-            out.flush();
-            Logger.d("save ok"+x.getAbsolutePath());
-        }catch (FileNotFoundException e){
-            e.printStackTrace();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }*/
 
 
 
@@ -103,12 +90,12 @@ public final class SettingActivity extends AppBarActivity
     void initView(){
         this.settingcontent = (ViewGroup) findViewById(R.id.setting_content);
         this.settingimage = (ImageView) findViewById(R.id.setting_image);
-
     }
+
 
     @Override
     public void onThemeChange() {
-        changeTheme();
+        //changeTheme();
     }
 
 

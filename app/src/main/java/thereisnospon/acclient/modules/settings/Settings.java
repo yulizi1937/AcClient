@@ -18,7 +18,7 @@ public class Settings {
 
 
     public static final String SKIN_PREF="skins_pref";
-    public static final String ABOUT_PREF="about_pref";
+    public static final String ABOUT_PREF="pref_about";
     public static final String THEME_PREF="theme_pref";
     public static final String EXIT_CONFIRM="exitcon_pref";
     public static final String COMPILER="compiler_pref";

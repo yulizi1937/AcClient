@@ -18,6 +18,7 @@ import thereisnospon.acclient.data.ProblemItem;
 import thereisnospon.acclient.databinding.ItemListProblemBinding;
 import thereisnospon.acclient.event.Arg;
 import thereisnospon.acclient.modules.problem.detail.ShowProblemActivity;
+import thereisnospon.acclient.widget.Colors;
 
 public final class HdojProblemAdapter extends NormalSwipeAdapter<HdojProblem> {
 
@@ -51,10 +52,12 @@ public final class HdojProblemAdapter extends NormalSwipeAdapter<HdojProblem> {
 
 		if(problem.getStatus()==ProblemItem.ACCEPTED){
 			vh.mBinding.problemId.setText(String.valueOf(problem.getId())+"\t(AC)");
-			vh.mBinding.problemId.setTextColor(Color.parseColor("#4CAF50"));
+			vh.mBinding.problemId.setTextColor(Colors.GREEN);
 		}else if(problem.getStatus()==ProblemItem.UN_SOLVED){
-			vh.mBinding.problemId.setTextColor(Color.parseColor("#FFAB40"));
+			vh.mBinding.problemId.setTextColor(Colors.YELLOW);
 			vh.mBinding.problemId.setText(String.valueOf(problem.getId())+"\t(UAC)");
+		}else {
+			vh.mBinding.problemId.setTextColor(Colors.GRAY);
 		}
 		vh.mBinding.executePendingBindings();
 	}

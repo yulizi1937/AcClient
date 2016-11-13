@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
@@ -24,6 +26,7 @@ import thereisnospon.acclient.event.Arg;
 import thereisnospon.acclient.modules.problem.detail.ShowProblemActivity;
 import thereisnospon.acclient.modules.problem.list.search.SearchProblemFragment;
 import thereisnospon.acclient.modules.settings.Settings;
+import thereisnospon.acclient.utils.SpUtil;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 import static android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP;
@@ -61,6 +64,24 @@ public final class HdojActivity extends AppBarActivity {
 	@Override
 	protected void setupContent(@NonNull FrameLayout contentLayout) {
 		setupFragment(contentLayout.getId(), HdojProblemFragment.newInstance());
+
+		showMessageInfo();
+	}
+
+	private void showMessageInfo(){
+
+		if(SpUtil.getInstance().getBoolean(SpUtil.FIRST_VISIT)){
+
+		Handler handler=new Handler(Looper.getMainLooper());
+		handler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				showMessageDialog();
+			}
+		},1000);
+
+		SpUtil.getInstance().putBoolean(SpUtil.FIRST_VISIT,false);
+		}
 	}
 
 	@Override
@@ -101,6 +122,31 @@ public final class HdojActivity extends AppBarActivity {
 		                            .setCancelable(true)
 		                            .create();
 		dialog.show();
+	}
+
+
+
+
+	private void showMessageDialog(){
+
+		AlertDialog.Builder builder=new AlertDialog.Builder(this);
+
+		builder.setTitle("温馨提醒")
+				.setMessage("第一次使用oj的话，建议先看看11页的题目，难度会比较简单~")
+				.setPositiveButton("前往", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialogInterface, int i) {
+						goToPage("11");
+					}
+				})
+				.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialogInterface, int i) {
+
+					}
+				})
+				.show();
+
 	}
 
 
