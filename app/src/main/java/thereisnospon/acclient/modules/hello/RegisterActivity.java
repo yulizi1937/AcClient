@@ -1,7 +1,9 @@
 package thereisnospon.acclient.modules.hello;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -19,6 +21,7 @@ import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.databinding.RegisterActivityBinding;
 
+import static android.os.Bundle.EMPTY;
 import static thereisnospon.acclient.modules.hello.ErrorConstants.NO_EMPTY_PASSWORD;
 import static thereisnospon.acclient.modules.hello.ErrorConstants.NO_EMPTY_USERNAME;
 import static thereisnospon.acclient.modules.hello.ErrorConstants.PASSWORD_NOT_EQUAL;
@@ -30,6 +33,11 @@ public final class RegisterActivity extends BaseActivity {
 	private static final int LAYOUT = R.layout.activity_register;
 	private RegisterActivityBinding mBinding;
 
+	public static void showInstance(Activity cxt) {
+		Intent intent = new Intent(cxt, RegisterActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		ActivityCompat.startActivity(cxt, intent, EMPTY);
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

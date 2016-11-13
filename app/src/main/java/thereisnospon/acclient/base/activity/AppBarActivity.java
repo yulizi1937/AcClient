@@ -1,6 +1,7 @@
 package thereisnospon.acclient.base.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -86,8 +87,13 @@ public abstract class AppBarActivity extends ThemeActivity implements Navigation
 		          .setOnClickListener(new View.OnClickListener() {
 			          @Override
 			          public void onClick(View view) {
-				          ActivityCompat.finishAffinity(AppBarActivity.this);
-				          LoginActivity.showInstance(AppBarActivity.this, true);
+				          SpUtil.getInstance().putString(SpUtil.PASS, null, new SharedPreferences.OnSharedPreferenceChangeListener() {
+					          @Override
+					          public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+						          ActivityCompat.finishAffinity(AppBarActivity.this);
+						          LoginActivity.showInstance(AppBarActivity.this, true);
+					          }
+				          });
 			          }
 		          });
 	}

@@ -1,7 +1,5 @@
 package thereisnospon.acclient.utils.net;
 
-import android.util.Log;
-
 import okhttp3.OkHttpClient;
 import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.utils.net.cookie.CookiesManager;
@@ -12,7 +10,7 @@ import thereisnospon.acclient.utils.net.request.PostRequest;
 /**
  * Created by yzr on 16/6/5.
  */
-public class HttpUtil {
+public final class HttpUtil {
 
     public static final String TAG="HttpUtil";
     private OkHttpClient client;
