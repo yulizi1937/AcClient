@@ -64,7 +64,6 @@ ext {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
     compile(group: 'thereisnospon.codeview', name: 'codeview', version: '0.3.0', ext: 'aar', classifier: '')
 
     compile "com.android.support:design:${appCompat}"
@@ -83,12 +82,11 @@ dependencies {
     compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
     compile 'com.squareup.okhttp:okhttp:2.4.0'
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
-    compile 'org.jsoup:jsoup:1.9.2'
+    compile 'org.jsoup:jsoup:1.10.1'
 
     compile 'jp.wasabeef:recyclerview-animators:2.2.1'
     compile 'com.orhanobut:logger:1.15'
-    compile 'com.aurelhubert:ahbottomnavigation:1.1.8'
-    compile 'net.steamcrafted:load-toast:1.0.9'
+    compile 'net.steamcrafted:load-toast:1.0.10'
 }
 
 // Rename final apks

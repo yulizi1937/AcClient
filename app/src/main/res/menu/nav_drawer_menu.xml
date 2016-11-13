@@ -46,6 +46,11 @@
                 android:icon="@drawable/ic_settings_applications_black_24dp"
                 android:title="@string/navi_settings" />
 
+            <item
+                android:id="@+id/menu_software_licenses"
+                android:icon="@drawable/ic_software_licenses"
+                android:title="@string/navi_software_licenses" />
+
         </menu>
     </item>
 
