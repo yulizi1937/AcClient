@@ -11,9 +11,14 @@ import android.widget.LinearLayout;
 
 import com.orhanobut.logger.Logger;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.databinding.FragmentShowcodeBinding;
+import thereisnospon.acclient.event.Event;
+import thereisnospon.acclient.event.EventCode;
 import thereisnospon.acclient.modules.settings.Settings;
 import thereisnospon.codeview.CodeViewTheme;
 
@@ -73,6 +78,7 @@ public final class CodeFragment extends Fragment implements CodeContact.View {
 		initCodeView(mBinding.getRoot());
 		presenter = new CodePresenter(this);
 		showCode();
+		EventBus.getDefault().register(this);
 		return mBinding.getRoot();
 	}
 
@@ -95,6 +101,7 @@ public final class CodeFragment extends Fragment implements CodeContact.View {
 
 	@Override
 	public void onSuccess(String code) {
+		this.code=code;
 		mBinding.codeView.showCode(code);
 		Logger.d(code);
 	}
@@ -102,5 +109,21 @@ public final class CodeFragment extends Fragment implements CodeContact.View {
 	@Override
 	public void onFailure(String err) {
 		Logger.d(err);
+	}
+
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		EventBus.getDefault().unregister(this);
+	}
+
+
+	@Subscribe
+	public void onEvent(Event event){
+		if(event.getEventCode()== EventCode.CLIP_CODE_REQUEST){
+			String data=code==null?"":code;
+			EventBus.getDefault().post(new Event<String>(data,EventCode.CLIP_CODE_RESPONSE));
+		}
 	}
 }

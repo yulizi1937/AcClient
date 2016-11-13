@@ -52,4 +52,9 @@
     <string name="share_app">分享</string>
 
     <string name="software_licenses_count">总计%1$d份证书, %2$d外部库，软件。</string>
+
+    <string name="menu_copy_code">复制</string>
+    <string name="info_copy_code">代码已经复制到粘贴版</string>
+
+    <string name="message_snackbar_copycode_btn">确认</string>
 </resources>

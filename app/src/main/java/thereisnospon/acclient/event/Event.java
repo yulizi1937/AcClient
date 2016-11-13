@@ -8,6 +8,9 @@ public class Event<T> {
     private int eventCode;
     private T data;
 
+
+    public static final Object EMPTY=new Object();
+
     public Event(T data){
         this.data=data;
         this.eventCode=EventCode.EVENT_DEFAULT_CODE;

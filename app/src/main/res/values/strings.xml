@@ -83,6 +83,9 @@
     <string name="software_licenses_count">Total %1$d licenses for %2$d libraries and software.</string>
 
 
+    <string name="info_copy_code">code has pasted to clipboard </string>
 
+    <string name="message_snackbar_copycode_msg"></string>
+    <string name="message_snackbar_copycode_btn">ok</string>
 
 </resources>

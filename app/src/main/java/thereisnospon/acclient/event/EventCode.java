@@ -17,4 +17,8 @@ public class EventCode {
 
     public static final int RECYCLE_SCROLLED=6;
 
+
+    public static final int CLIP_CODE_REQUEST=7;
+    public static final int CLIP_CODE_RESPONSE=8;
+
 }
