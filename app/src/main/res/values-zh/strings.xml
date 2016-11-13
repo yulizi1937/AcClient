@@ -39,6 +39,7 @@
     <string name="navi_by_page">按页数</string>
     <string name="navi_by_id">指定题号</string>
     <string name="navi_answer">回答</string>
+    <string name="navi_software_licenses">开放软件证书</string>
 
     <string name="search_by_problem_id">指定题号：</string>
     <string name="search_problem_by_page">前往页数：</string>
@@ -49,4 +50,6 @@
     <string name="share_app_subject">分享一个有用的APP</string>
     <string name="share_app_text">我发现了一个可以在手机上刷题(HduOj)的app,大家快来看看吧!</string>
     <string name="share_app">分享</string>
+
+    <string name="software_licenses_count">总计%1$d份证书, %2$d外部库，软件。</string>
 </resources>

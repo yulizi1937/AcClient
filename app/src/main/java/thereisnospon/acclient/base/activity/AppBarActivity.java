@@ -28,6 +28,7 @@ import thereisnospon.acclient.event.Arg;
 import thereisnospon.acclient.modules.about.AboutActivity;
 import thereisnospon.acclient.modules.discuss.DiscussActivity;
 import thereisnospon.acclient.modules.hello.LoginActivity;
+import thereisnospon.acclient.modules.licenses.LicensesActivity;
 import thereisnospon.acclient.modules.personal.UserDetailActivity;
 import thereisnospon.acclient.modules.problem.list.HdojActivity;
 import thereisnospon.acclient.modules.rank.RankActivity;
@@ -126,6 +127,9 @@ public abstract class AppBarActivity extends ThemeActivity implements Navigation
 				break;
 			case R.id.menu_setting:
 				intent = new Intent(this, SettingActivity.class);
+				break;
+			case R.id.menu_software_licenses:
+				LicensesActivity.showInstance(this);
 				break;
             /*case R.id.menu_note:
                 intent=new Intent(this, NoteActivity.class);
