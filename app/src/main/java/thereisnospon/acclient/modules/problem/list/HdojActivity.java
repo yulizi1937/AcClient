@@ -131,15 +131,15 @@ public final class HdojActivity extends AppBarActivity {
 
 		AlertDialog.Builder builder=new AlertDialog.Builder(this);
 
-		builder.setTitle("温馨提醒")
-				.setMessage("第一次使用oj的话，建议先看看11页的题目，难度会比较简单~")
-				.setPositiveButton("前往", new DialogInterface.OnClickListener() {
+		builder.setTitle(R.string.warm_tips_title)
+				.setMessage(R.string.warm_tips_message)
+				.setPositiveButton(R.string.Go, new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialogInterface, int i) {
 						goToPage("11");
 					}
 				})
-				.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+				.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialogInterface, int i) {
 
