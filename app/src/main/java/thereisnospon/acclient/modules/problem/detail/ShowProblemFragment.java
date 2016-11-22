@@ -66,18 +66,17 @@ public final class ShowProblemFragment extends Fragment implements ShowProblemCo
 				if (mProgressDialog == null) {
 					Activity activity = getActivity();
 
-					// it showing ugly in android 4.4
-					//
 					if (activity != null) {
-						//mBinding.progressBar.setProgress(50);
-						//mProgressDialog = ProgressDialog.show(activity, null, getString(R.string.loading));
+						mProgressDialog = ProgressDialog.show(activity, getString(R.string.app_name), getString(R.string.loading));
 					}
 				}
 			}
 
 			private void dismissPb() {
 				if (mProgressDialog != null) {
-					mProgressDialog.dismiss();
+					if (mProgressDialog.isShowing()) {
+						mProgressDialog.dismiss();
+					}
 					mProgressDialog = null;
 				}
 			}

@@ -1,6 +1,10 @@
 package thereisnospon.acclient.modules.about;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 
@@ -23,6 +27,11 @@ public final class AboutActivity extends AppBarActivity {
 			"</html>";
 
 
+	public static void showInstance(Activity cxt) {
+		Intent intent = new Intent(cxt, AboutActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		ActivityCompat.startActivity(cxt, intent, Bundle.EMPTY);
+	}
 
 	@Override
 	protected void setupContent(@NonNull FrameLayout contentLayout) {

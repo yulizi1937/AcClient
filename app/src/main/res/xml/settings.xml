@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory
-        android:title="主题设置">
+        android:title="@string/settings_app_theme">
         <ListPreference
             android:key="theme_pref"
-            android:title="代码高亮"
+            android:title="@string/settings_code_highlight"
             android:summary="AndroidStudio"
             android:entries="@array/them_names"
             android:defaultValue="@string/theme_value_def"
-            android:entryValues="@array/them_values">
-        </ListPreference>
+            android:entryValues="@array/them_values"/>
 
         <!--<CheckBoxPreference-->
             <!--android:defaultValue="false"-->
@@ -18,29 +17,31 @@
 
         <ListPreference
             android:key="compiler_pref"
-            android:title="默认编译器"
+            android:title="@string/settings_default_compiler"
             android:summary="G++"
             android:entries="@array/code_languages"
             android:defaultValue="@string/theme_value_def"
-            android:entryValues="@array/code_values">
-        </ListPreference>
+            android:entryValues="@array/code_values"/>
 
 
 
 
 </PreferenceCategory>
-    <PreferenceCategory android:title="其它设置">
+    <PreferenceCategory android:title="@string/settings_other">
         <SwitchPreference
-            android:summary="需要两次返回键退出"
+            android:summary="@string/settings_double_click_to_exit"
             android:defaultValue="true"
             android:key="exitcon_pref"
-            android:title="退出提醒"></SwitchPreference>
+            android:title="@string/settings_exit_info"/>
 
 
         <Preference
             android:key="pref_about"
-            android:title="关于">
-        </Preference>
+            android:title="@string/settings_about"/>
+
+        <Preference
+            android:key="pref_software_licenses"
+            android:title="@string/settings_software_licenses"/>
 
     </PreferenceCategory>
 </PreferenceScreen>
