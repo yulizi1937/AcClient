@@ -20,8 +20,6 @@ import android.widget.OverScroller;
 public class StickyLayout extends LinearLayout implements NestedScrollingParent,NestedScrollingChild {
 
 
-
-
     NestedScrollingParentHelper  mParentHelper;
 
     private View mTop;
@@ -199,71 +197,5 @@ public class StickyLayout extends LinearLayout implements NestedScrollingParent,
         }
     }
 
-
-//        @Override
-//    public boolean onTouchEvent(MotionEvent event)
-//    {
-//        initVelocityTrackerIfNotExists();
-//        mVelocityTracker.addMovement(event);
-//        int action = event.getAction();
-//        float y = event.getY();
-//
-//        switch (action)
-//        {
-//            case MotionEvent.ACTION_DOWN:
-//                if (!mScroller.isFinished())
-//                    mScroller.abortAnimation();
-//                mLastY = y;
-//                return true;
-//            case MotionEvent.ACTION_MOVE:
-//                float dy = y - mLastY;
-//
-//                if (!mDragging && Math.abs(dy) > mTouchSlop)
-//                {
-//                    mDragging = true;
-//                }
-//                if (mDragging)
-//                {
-//                    scrollBy(0, (int) -dy);
-//                }
-//
-//                mLastY = y;
-//                break;
-//            case MotionEvent.ACTION_CANCEL:
-//                mDragging = false;
-//                recycleVelocityTracker();
-//                if (!mScroller.isFinished())
-//                {
-//                    mScroller.abortAnimation();
-//                }
-//                break;
-//            case MotionEvent.ACTION_UP:
-//                mDragging = false;
-//                mVelocityTracker.computeCurrentVelocity(1000, mMaximumVelocity);
-//                int velocityY = (int) mVelocityTracker.getYVelocity();
-//                if (Math.abs(velocityY) > mMinimumVelocity)
-//                {
-//                    fling(-velocityY);
-//                }
-//                recycleVelocityTracker();
-//                break;
-//        }
-//
-//        return super.onTouchEvent(event);
-//    }
-
-
-    private void initVelocityTrackerIfNotExists() {
-        if (mVelocityTracker == null) {
-            mVelocityTracker = VelocityTracker.obtain();
-        }
-    }
-
-    private void recycleVelocityTracker() {
-        if (mVelocityTracker != null) {
-            mVelocityTracker.recycle();
-            mVelocityTracker = null;
-        }
-    }
 
 }

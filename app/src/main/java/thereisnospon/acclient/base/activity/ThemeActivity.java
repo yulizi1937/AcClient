@@ -27,7 +27,6 @@ public abstract class ThemeActivity extends BaseActivity {
             setTheme(R.style.AppThemeNight);
         } else {
             setTheme(R.style.AppTheme);
-            Logger.d("appTheme");
         }
 
     }

@@ -12,5 +12,4 @@ public class Colors {
         public static int YELLOW=Color.parseColor("#FFAB40");
         public static int GRAY=Color.parseColor("#DCDCDC");
 
-
 }

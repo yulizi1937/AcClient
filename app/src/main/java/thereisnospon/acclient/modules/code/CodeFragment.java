@@ -31,14 +31,16 @@ public final class CodeFragment extends Fragment implements CodeContact.View {
 	private CodeContact.Presenter presenter;
 
 
-	private static final CodeViewTheme[] THEMES = new CodeViewTheme[] { CodeViewTheme.ANDROIDSTUDIO,
-	                                                                   CodeViewTheme.ARDUINO_LIGHT,
-	                                                                   CodeViewTheme.DEFAULT,
-	                                                                   CodeViewTheme.GITHUB,
-	                                                                   CodeViewTheme.MONOKAI_SUBLIME,
-	                                                                   CodeViewTheme.OBSIDIAN,
-	                                                                   CodeViewTheme.SOLARIZED_DARK,
-	                                                                   CodeViewTheme.SOLARIZED_LIGHT, };
+	private static final CodeViewTheme[] THEMES = new CodeViewTheme[] {
+			CodeViewTheme.ANDROIDSTUDIO,
+			CodeViewTheme.ARDUINO_LIGHT,
+			CodeViewTheme.DEFAULT,
+			CodeViewTheme.GITHUB,
+			CodeViewTheme.MONOKAI_SUBLIME,
+			CodeViewTheme.OBSIDIAN,
+			CodeViewTheme.SOLARIZED_DARK,
+			CodeViewTheme.SOLARIZED_LIGHT,
+	};
 
 	private String id;
 	private String code;

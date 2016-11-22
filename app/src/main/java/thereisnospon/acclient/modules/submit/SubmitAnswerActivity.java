@@ -26,7 +26,6 @@ import thereisnospon.acclient.databinding.NavActivitySubmitAnswerBinding;
 import thereisnospon.acclient.databinding.NavActivitySubmitAnswerBottomSheetBinding;
 import thereisnospon.acclient.databinding.NavActivitySubmitAnswerSubmitButtonBinding;
 import thereisnospon.acclient.event.Arg;
-import thereisnospon.acclient.event.Msg;
 import thereisnospon.acclient.modules.code.CodeActivity;
 import thereisnospon.acclient.modules.settings.Settings;
 import thereisnospon.acclient.modules.submit.status.SubmitQuery;
@@ -84,12 +83,12 @@ public final class SubmitAnswerActivity extends AppBarActivity implements View.O
 	}
 
 	private void submit() {
-		Msg.t("submit");
+
 		$submit();
 	}
 
 	private void review() {
-		Msg.t("review");
+
 		Intent intent = new Intent(this, CodeActivity.class);
 		String code = mBinding.submitCode.getText()
 		                                 .toString() + "";
@@ -121,7 +120,7 @@ public final class SubmitAnswerActivity extends AppBarActivity implements View.O
 
 			@Override
 			public void failure(String msg) {
-				Msg.t("Submit unsuccessfully");
+
 			}
 		});
 	}

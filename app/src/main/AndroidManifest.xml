@@ -45,9 +45,7 @@
         <activity
             android:name=".modules.submit.status.SubmitStatusActivity"
             android:launchMode="singleTask"/>
-        <activity
-            android:name=".DebugActivity"
-            android:launchMode="singleTask"/>
+
         <activity
             android:name=".modules.code.CodeActivity"
             android:launchMode="singleTask"/>

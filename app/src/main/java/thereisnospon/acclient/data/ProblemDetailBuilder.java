@@ -14,7 +14,6 @@ public class ProblemDetailBuilder {
 
     public static String parse(String html){
 
-        Log.d("TTAG",html);
         Document document= Jsoup.parse(html);
         Elements trs=document.getElementsByTag("tr");
         Element tr=findTr(trs);

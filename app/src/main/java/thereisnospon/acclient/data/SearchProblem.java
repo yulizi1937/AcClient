@@ -32,9 +32,9 @@ public class SearchProblem extends ProblemItem
     public static class Builder{
 
         public static List<SearchProblem> parse(String html){
-            Log.d("SSEARCH","parse");
+
             Document document= Jsoup.parse(html);
-            Log.d("SSEARCH",html);
+
             Element tbody=document.getElementsByTag("TBODY").first();
 
             Elements trs=tbody.getElementsByTag("tr");
@@ -86,7 +86,7 @@ public class SearchProblem extends ProblemItem
             int submission=Integer.parseInt(nums[2]);
             SearchProblem problem=new SearchProblem(id,title,author,source,accepted,submission);
             problem.setStatus(status);
-            Logger.e(status+"");
+
             return problem;
         }
         private static SearchProblem getWithout(Element tr){
@@ -108,10 +108,10 @@ public class SearchProblem extends ProblemItem
         private static SearchProblem get(Element tr){
             Elements tds=tr.getElementsByTag("td");
             if(tds.size()==5){
-                Logger.d("out");
+
                 return getWithout(tr);
             }else{
-                Logger.d("login");
+
                 return getWithLogin(tr);
             }
         }

@@ -21,17 +21,4 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
 
-    void changeTheme(){
-
-    }
-
-
-
-
-
-
-
-
-
-
 }
