@@ -7,6 +7,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.widget.FrameLayout;
 
+import thereisnospon.acclient.R;
 import thereisnospon.acclient.base.activity.AppBarActivity;
 import thereisnospon.acclient.event.Arg;
 
@@ -31,5 +32,6 @@ public final class DiscussActivity extends AppBarActivity {
         }else{
             setupFragment(contentLayout.getId(), DiscussFragment.newInstance(pid));
         }
+        setActivityBackgroundColor(R.color.colorGrey);
     }
 }

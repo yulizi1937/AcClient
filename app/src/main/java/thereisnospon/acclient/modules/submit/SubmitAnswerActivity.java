@@ -149,6 +149,8 @@ public final class SubmitAnswerActivity extends AppBarActivity implements View.O
 
 		initView();
 		resolveId();
+
+		setActivityBackgroundColor(R.color.colorGrey);
 	}
 
 	private void resolveId() {
