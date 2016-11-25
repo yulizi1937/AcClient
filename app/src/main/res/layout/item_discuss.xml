@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:tools="http://schemas.android.com/tools">
+
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="@dimen/card_margin"
-        app:cardBackgroundColor="?attr/cardViewColor"
-        app:cardCornerRadius="4dp"
-        app:cardElevation="2dp"
-        app:cardPreventCornerOverlap="true"
-        app:contentPadding="10dp">
+        android:layout_gravity="center"
+        style="@style/Card.ProblemItem" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,14 +18,14 @@
                 android:id="@+id/discuss_pid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1000"
+                tools:text="1000"
                 android:textColor="#dcdcdc"/>
 
             <TextView
                 android:id="@+id/discuss_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="新手注意一下格式，以后都这样，加油！！！"
+                tools:text="新手注意一下格式，以后都这样，加油！！！"
                 android:textSize="16sp"/>
 
             <LinearLayout
@@ -39,10 +35,10 @@
 
                 <TextView
                     android:id="@+id/disucss_username"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="贺宇成"
+                    tools:text="贺宇成"
                     android:textSize="14sp"/>
 
                 <TextView
@@ -50,7 +46,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:text="2015-11-04 18:20:36"
+                    tools:text="2015-11-04 18:20:36"
                     android:textSize="14sp"/>
 
             </LinearLayout>

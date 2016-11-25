@@ -43,7 +43,7 @@ public final class DiscussItemAdapter extends NormalSwipeAdapter<DiscussItem> {
 		vh.mBinding.discussTitle.setText(discussItem.getTitle());
 		vh.mBinding.disucssUsername.setText(discussItem.getUserName());
 		vh.mBinding.discussDate.setText(discussItem.getDate());
-		vh.mBinding.discussTitle.setOnClickListener(new View.OnClickListener() {
+		vh.itemView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				toDiscuss(vh.mBinding.discussDate.getContext(), discussItem.getDiscussUrl());
