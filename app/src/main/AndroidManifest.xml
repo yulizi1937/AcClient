@@ -54,6 +54,7 @@
             android:launchMode="singleTask"/>
         <activity
             android:name=".modules.submit.SubmitAnswerActivity"
+            android:theme="@style/AppTheme.Problem"
             android:launchMode="singleTask"/>
         <activity
             android:name=".modules.rank.RankActivity"
@@ -67,6 +68,7 @@
         <activity
             android:name=".modules.discuss.DiscussActivity"
             android:label="@string/navi_topic_discuss"
+            android:theme="@style/AppTheme.Problem"
             android:launchMode="singleTask"/>
         <activity
             android:name=".modules.note.NoteActivity"

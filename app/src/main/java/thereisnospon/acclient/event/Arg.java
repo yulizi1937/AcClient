@@ -16,7 +16,7 @@ public class Arg {
     public static final String SHOWCODE_CODE="showcode_code";
 
 
-    public static final String SBUMMIT_PROBLEM_ID="submmit_problem_id";
+    public static final String SBUMIT_PROBLEM_ID ="submmit_problem_id";
 
 
     public static final String RE_LOGIN="re_login";

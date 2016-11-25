@@ -5,10 +5,12 @@
     <item
         android:id="@+id/problem_discuss"
         android:title="@string/discuss"
+        app:actionViewClass="android.widget.Button"
         app:showAsAction="always"/>
     <item
         android:id="@+id/problem_answer"
         android:title="@string/navi_answer"
+        app:actionViewClass="android.widget.Button"
         app:showAsAction="always"/>
 
 </menu>

@@ -1,10 +1,11 @@
 package thereisnospon.acclient.modules.problem.detail;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 
 import thereisnospon.acclient.R;
@@ -12,10 +13,13 @@ import thereisnospon.acclient.base.activity.AppBarActivity;
 import thereisnospon.acclient.event.Arg;
 import thereisnospon.acclient.modules.discuss.DiscussActivity;
 import thereisnospon.acclient.modules.submit.SubmitAnswerActivity;
+import thereisnospon.acclient.utils.AcClientAnimationUtils;
 
 public final class ShowProblemActivity extends AppBarActivity {
 
 	private int id;
+	private Button mDiscussBtn;
+	private Button mAnswerBtn;
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
@@ -42,20 +46,30 @@ public final class ShowProblemActivity extends AppBarActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.problem_detail, menu);
-		return super.onCreateOptionsMenu(menu);
-	}
+		mDiscussBtn = (Button) menu.findItem(R.id.problem_discuss)
+		                           .getActionView();
+		mDiscussBtn.setBackgroundResource(R.drawable.button_item_background);
+		mDiscussBtn.setText(R.string.discuss);
+		mDiscussBtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				ActivityOptionsCompat options = AcClientAnimationUtils.createRevealOptions(mDiscussBtn, AcClientAnimationUtils.getViewCenter(mDiscussBtn), false);
+				DiscussActivity.showInstance(ShowProblemActivity.this, id, options);
+			}
+		});
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		if (item.getItemId() == R.id.problem_discuss) {
-			Intent intent = new Intent(this, DiscussActivity.class);
-			intent.putExtra(Arg.PROBLEM_DISUCSS, id + "");
-			startActivity(intent);
-		} else {
-			Intent intent = new Intent(this, SubmitAnswerActivity.class);
-			intent.putExtra(Arg.SBUMMIT_PROBLEM_ID, id + "");
-			startActivity(intent);
-		}
-		return true;
+
+		mAnswerBtn = (Button) menu.findItem(R.id.problem_answer)
+		                          .getActionView();
+		mAnswerBtn.setBackgroundResource(R.drawable.button_item_background);
+		mAnswerBtn.setText(R.string.navi_answer);
+		mAnswerBtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				ActivityOptionsCompat options = AcClientAnimationUtils.createRevealOptions(mAnswerBtn, AcClientAnimationUtils.getViewCenter(mAnswerBtn), false);
+				SubmitAnswerActivity.showInstance(ShowProblemActivity.this, id, options);
+			}
+		});
+		return super.onCreateOptionsMenu(menu);
 	}
 }
