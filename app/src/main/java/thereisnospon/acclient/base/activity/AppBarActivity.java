@@ -11,7 +11,6 @@ import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -22,6 +21,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.databinding.AppBarLayoutBinding;
 import thereisnospon.acclient.event.Arg;
@@ -31,6 +31,7 @@ import thereisnospon.acclient.modules.personal.UserDetailActivity;
 import thereisnospon.acclient.modules.problem.list.HdojActivity;
 import thereisnospon.acclient.modules.rank.RankActivity;
 import thereisnospon.acclient.modules.settings.SettingActivity;
+import thereisnospon.acclient.utils.AcClientActivityCompat;
 import thereisnospon.acclient.utils.SpUtil;
 
 /**
@@ -43,6 +44,19 @@ public abstract class AppBarActivity extends ThemeActivity implements Navigation
 	private String id;
 	private String nickname;
 	private AppBarLayoutBinding mBinding;
+	private boolean mPaused;
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		mPaused = true;
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		mPaused = false;
+	}
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
@@ -86,10 +100,13 @@ public abstract class AppBarActivity extends ThemeActivity implements Navigation
 		          .setOnClickListener(new View.OnClickListener() {
 			          @Override
 			          public void onClick(View view) {
+				          if (mPaused) {
+					          return;
+				          }
 				          SpUtil.getInstance().putString(SpUtil.PASS, null, new SharedPreferences.OnSharedPreferenceChangeListener() {
 					          @Override
 					          public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
-						          ActivityCompat.finishAffinity(AppBarActivity.this);
+						          AcClientActivityCompat.finishAffinityCompat(AppBarActivity.this, AppApplication.context.activityStack);
 						          LoginActivity.showInstance(AppBarActivity.this, true);
 					          }
 				          });
