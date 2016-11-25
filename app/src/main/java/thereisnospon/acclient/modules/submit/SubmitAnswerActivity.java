@@ -1,5 +1,6 @@
 package thereisnospon.acclient.modules.submit;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -7,6 +8,8 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.NestedScrollView;
 import android.view.Gravity;
@@ -36,6 +39,15 @@ import thereisnospon.acclient.utils.StringCall;
 public final class SubmitAnswerActivity extends AppBarActivity implements View.OnClickListener,
                                                                           NestedScrollView.OnScrollChangeListener,
                                                                           View.OnFocusChangeListener {
+
+	public static void showInstance(@NonNull  Activity cxt, int id, @NonNull  ActivityOptionsCompat options) {
+		Intent intent = new Intent(cxt, SubmitAnswerActivity.class);
+		intent.putExtra(Arg.SBUMIT_PROBLEM_ID, String.valueOf(id));
+		intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		ActivityCompat.startActivity(cxt, intent, options.toBundle());
+	}
+
+
 	private static final @LayoutRes int LAYOUT = R.layout.nav_activity_submit_answer;
 	private static final @LayoutRes int LAYOUT_BOTTOM_SHEET = R.layout.nav_activity_submit_answer_bottom_sheet;
 	private static final @LayoutRes int LAYOUT_SUBMIT_BUTTON = R.layout.nav_activity_submit_answer_submit_button;
@@ -137,11 +149,13 @@ public final class SubmitAnswerActivity extends AppBarActivity implements View.O
 
 		initView();
 		resolveId();
+
+		setActivityBackgroundColor(R.color.colorGrey);
 	}
 
 	private void resolveId() {
 		Intent intent = getIntent();
-		problemId = intent.getStringExtra(Arg.SBUMMIT_PROBLEM_ID);
+		problemId = intent.getStringExtra(Arg.SBUMIT_PROBLEM_ID);
 		setTitle(problemId);
 	}
 
