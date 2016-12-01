@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.ColorRes;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.support.annotation.StringRes;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.SearchView;
@@ -245,5 +247,9 @@ public abstract class AppBarActivity extends ThemeActivity implements Navigation
 	protected void showIndefiniteSnackbar(@StringRes int message ) {
 		Snackbar.make(mBinding.drawerLayout, message, Snackbar.LENGTH_LONG)
 		        .show();
+	}
+
+	protected void setActivityBackgroundColor(@ColorRes int colorRes) {
+		mBinding.coordinatorLayout.setBackgroundColor(ResourcesCompat.getColor(getResources(),colorRes, getTheme()));
 	}
 }
