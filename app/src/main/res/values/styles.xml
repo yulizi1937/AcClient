@@ -3,7 +3,9 @@
         <item name="android:background">#ffaaee</item>
     </style>
 
-    <style name="Card">
+    <style name="CardBase" />
+
+    <style name="Card" parent="CardBase">
         <item name="android:layout_margin">@dimen/card_margin</item>
         <item name="cardCornerRadius">4dp</item>
         <item name="cardElevation">4dp</item>
@@ -43,7 +45,6 @@
     </style>
 
     <style name="HelloEditText.Password" >
-        <item name="android:fontFamily">null</item>
         <item name="android:inputType">textPassword</item>
     </style>
 
@@ -61,12 +62,14 @@
     <style name="HelloTextInputLayout.Warning">
     </style>
 
-    <style name="HelloButton">
+    <style name="HelloButtonBase"/>
+
+    <style name="HelloButton" parent="HelloButtonBase">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
-        <item name="android:background">@drawable/button_item_background</item>
-        <item name="android:foreground">@drawable/button_item_background</item>
+        <item name="android:background">@drawable/selector_item_background</item>
+        <item name="android:foreground">@drawable/selector_item_background</item>
     </style>
 
     <style name="HelloButton.Login">
