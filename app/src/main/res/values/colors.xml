@@ -8,7 +8,7 @@
     <color name="colorGreen">#81C784</color>
     <color name="colorTransparent">@android:color/transparent</color>
     <color name="colorGrey">#aaaaaa</color>
-    <color name="grayTransparent">#22aaaaaa</color>
+    <color name="grayTransparent">#1Aaaaaaa</color>
     <color name="cardViewColor">@color/colorWhite</color>
     <color name="backgroundColor">#E0E5EA</color>
     <color name="codeEditBack">#fdf6e3</color>

@@ -48,7 +48,7 @@ public final class ShowProblemActivity extends AppBarActivity {
 		getMenuInflater().inflate(R.menu.problem_detail, menu);
 		mDiscussBtn = (Button) menu.findItem(R.id.problem_discuss)
 		                           .getActionView();
-		mDiscussBtn.setBackgroundResource(R.drawable.button_item_background);
+		mDiscussBtn.setBackgroundResource(R.drawable.selector_item_background);
 		mDiscussBtn.setText(R.string.discuss);
 		mDiscussBtn.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -61,7 +61,7 @@ public final class ShowProblemActivity extends AppBarActivity {
 
 		mAnswerBtn = (Button) menu.findItem(R.id.problem_answer)
 		                          .getActionView();
-		mAnswerBtn.setBackgroundResource(R.drawable.button_item_background);
+		mAnswerBtn.setBackgroundResource(R.drawable.selector_item_background);
 		mAnswerBtn.setText(R.string.navi_answer);
 		mAnswerBtn.setOnClickListener(new View.OnClickListener() {
 			@Override
