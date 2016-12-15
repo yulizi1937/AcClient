@@ -1,57 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/group_1"
+        android:checkableBehavior="single">
 
-    <item
-        android:id="@+id/menu_problem"
-        android:icon="@drawable/ic_event_note"
-        android:title="@string/navi_problem_list" />
+        <item
+            android:id="@+id/menu_problem"
+            android:icon="@drawable/ic_event_note"
+            android:title="@string/navi_problem_list"/>
 
-    <item
-        android:id="@+id/menu_user"
-        android:icon="@drawable/ic_people"
-        android:title="@string/navi_user_list" />
+        <item
+            android:id="@+id/menu_user"
+            android:icon="@drawable/ic_people"
+            android:title="@string/navi_user_list"/>
 
-    <item
-        android:id="@+id/menu_info"
-        android:icon="@drawable/ic_account_circle"
-        android:title="@string/navi_personal" />
+        <item
+            android:id="@+id/menu_info"
+            android:icon="@drawable/ic_account_circle"
+            android:title="@string/navi_personal"/>
 
         <!--<item-->
-            <!--android:id="@+id/menu_note"-->
-            <!--android:icon="@drawable/ic_event_note_black_24dp"-->
-            <!--android:title="笔记本" />-->
+        <!--android:id="@+id/menu_note"-->
+        <!--android:icon="@drawable/ic_event_note_black_24dp"-->
+        <!--android:title="笔记本" />-->
 
-    <item
-        android:id="@+id/menu_contest"
-        android:icon="@drawable/ic_toys"
-        android:title="@string/navi_topic_discuss" >
-    </item>
+        <item
+            android:id="@+id/menu_contest"
+            android:icon="@drawable/ic_toys"
+            android:title="@string/navi_topic_discuss">
+        </item>
 
-</group>
+    </group>
+    <group
+        android:id="@+id/group_2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_share"
+            android:icon="@drawable/ic_share"
+            android:title="@string/navi_share"/>
+        <!--<item-->
+        <!--android:id="@+id/menu_about"-->
+        <!--android:icon="@drawable/ic_info_black_24dp"-->
+        <!--android:title="@string/navi_about" />-->
+        <item
+            android:id="@+id/menu_setting"
+            android:icon="@drawable/ic_settings_applications"
+            android:title="@string/navi_settings"/>
 
-    <item android:title="@string/navi_other">
-        <menu>
-            <item
-                android:id="@+id/menu_share"
-                android:icon="@drawable/ic_share"
-                android:title="@string/navi_share" />
-            <!--<item-->
-                <!--android:id="@+id/menu_about"-->
-                <!--android:icon="@drawable/ic_info_black_24dp"-->
-                <!--android:title="@string/navi_about" />-->
-            <item
-                android:id="@+id/menu_setting"
-                android:icon="@drawable/ic_settings_applications"
-                android:title="@string/navi_settings" />
-
-            <!--<item-->
-                <!--android:id="@+id/menu_software_licenses"-->
-                <!--android:icon="@drawable/ic_software_licenses"-->
-                <!--android:title="@string/navi_software_licenses" />-->
-
-        </menu>
-    </item>
+        <!--<item-->
+        <!--android:id="@+id/menu_software_licenses"-->
+        <!--android:icon="@drawable/ic_software_licenses"-->
+        <!--android:title="@string/navi_software_licenses" />-->
+    </group>
 
 </menu>
