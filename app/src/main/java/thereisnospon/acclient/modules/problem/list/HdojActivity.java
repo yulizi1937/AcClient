@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
@@ -30,7 +31,6 @@ import thereisnospon.acclient.utils.SpUtil;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 import static android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP;
-import static android.os.Bundle.EMPTY;
 
 /**
  * Created by yzr on 16/6/5.
@@ -38,6 +38,12 @@ import static android.os.Bundle.EMPTY;
 public final class HdojActivity extends AppBarActivity {
 	private static final String TAG = "HdojActivity";
 	private boolean first = true;
+
+	public static void showInstance(@NonNull Activity cxt) {
+		Intent intent = new Intent(cxt, HdojActivity.class);
+		intent.setFlags(FLAG_ACTIVITY_SINGLE_TOP | FLAG_ACTIVITY_CLEAR_TOP);
+		ActivityCompat.startActivity(cxt, intent, Bundle.EMPTY);
+	}
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
@@ -54,11 +60,7 @@ public final class HdojActivity extends AppBarActivity {
 		first = savedInstanceState.getBoolean("first");
 	}
 
-	public static void showInstance(Activity cxt) {
-		Intent intent = new Intent(cxt, HdojActivity.class);
-		intent.setFlags(FLAG_ACTIVITY_SINGLE_TOP | FLAG_ACTIVITY_CLEAR_TOP);
-		ActivityCompat.startActivity(cxt, intent, EMPTY);
-	}
+
 
 
 	@Override
@@ -226,5 +228,10 @@ public final class HdojActivity extends AppBarActivity {
 
 		}
 		return super.onKeyDown(keyCode, event);
+	}
+
+	@Override
+	protected @IdRes int getMenuId() {
+		return R.id.menu_problem;
 	}
 }

@@ -2,11 +2,13 @@ package thereisnospon.acclient.modules.discuss;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.widget.FrameLayout;
 
+import thereisnospon.acclient.R;
 import thereisnospon.acclient.base.activity.AppBarActivity;
 import thereisnospon.acclient.event.Arg;
 
@@ -15,6 +17,14 @@ import thereisnospon.acclient.event.Arg;
  */
 public final class DiscussActivity extends AppBarActivity {
 
+	public static void showInstance(@NonNull Activity cxt) {
+		Intent intent = new Intent(cxt, DiscussActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		ActivityCompat.startActivity(cxt,
+		                             intent,
+		                             ActivityOptionsCompat.makeBasic()
+		                                                  .toBundle());
+	}
 
     public static void showInstance(@NonNull Activity cxt, int id, @NonNull ActivityOptionsCompat options) {
         Intent intent = new Intent(cxt, DiscussActivity.class);
@@ -31,5 +41,10 @@ public final class DiscussActivity extends AppBarActivity {
         }else{
             setupFragment(contentLayout.getId(), DiscussFragment.newInstance(pid));
         }
+    }
+
+    @Override
+    protected @IdRes  int getMenuId() {
+        return R.id.menu_contest;
     }
 }

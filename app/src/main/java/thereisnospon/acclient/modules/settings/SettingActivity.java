@@ -6,6 +6,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.view.View;
@@ -87,4 +88,11 @@ public final class SettingActivity extends AppBarActivity {
         this.settingcontent = (ViewGroup) findViewById(R.id.setting_content);
         this.settingimage = (ImageView) findViewById(R.id.setting_image);
     }
+
+	@Override
+	protected
+	@IdRes
+	int getMenuId() {
+		return R.id.menu_setting;
+	}
 }

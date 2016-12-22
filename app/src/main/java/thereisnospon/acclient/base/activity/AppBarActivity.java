@@ -26,7 +26,6 @@ import android.widget.TextView;
 import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.databinding.AppBarLayoutBinding;
-import thereisnospon.acclient.event.Arg;
 import thereisnospon.acclient.modules.discuss.DiscussActivity;
 import thereisnospon.acclient.modules.hello.LoginActivity;
 import thereisnospon.acclient.modules.personal.UserDetailActivity;
@@ -36,9 +35,7 @@ import thereisnospon.acclient.modules.settings.SettingActivity;
 import thereisnospon.acclient.utils.AcClientActivityCompat;
 import thereisnospon.acclient.utils.SpUtil;
 
-/**
- * Created by xzhao on 11.11.16.
- */
+
 public abstract class AppBarActivity extends ThemeActivity implements NavigationView.OnNavigationItemSelectedListener,
                                                                       SearchView.OnQueryTextListener {
 
@@ -57,6 +54,7 @@ public abstract class AppBarActivity extends ThemeActivity implements Navigation
 	@Override
 	protected void onResume() {
 		super.onResume();
+		selectMenu(getMenuId());
 		mPaused = false;
 	}
 
@@ -105,54 +103,54 @@ public abstract class AppBarActivity extends ThemeActivity implements Navigation
 				          if (mPaused) {
 					          return;
 				          }
-				          SpUtil.getInstance().putString(SpUtil.PASS, null, new SharedPreferences.OnSharedPreferenceChangeListener() {
-					          @Override
-					          public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
-						          AcClientActivityCompat.finishAffinityCompat(AppBarActivity.this, AppApplication.context.activityStack);
-						          LoginActivity.showInstance(AppBarActivity.this, true);
-					          }
-				          });
+				          SpUtil.getInstance()
+				                .putString(SpUtil.PASS, null, new SharedPreferences.OnSharedPreferenceChangeListener() {
+					                @Override
+					                public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+						                AcClientActivityCompat.finishAffinityCompat(AppBarActivity.this, AppApplication.context.activityStack);
+						                LoginActivity.showInstance(AppBarActivity.this, true);
+					                }
+				                });
 			          }
 		          });
 	}
 
+	private void selectMenu(@IdRes int menuId) {
+		mBinding.navigation.navView.getMenu()
+		                           .findItem(menuId)
+		                           .setChecked(true);
+	}
 
 	@Override
 	public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 		int id = item.getItemId();
-		Intent intent = null;
 		switch (id) {
 			case R.id.menu_contest:
-				intent = new Intent(this, DiscussActivity.class);
+				selectMenu(R.id.menu_contest);
+				DiscussActivity.showInstance(this);
 				break;
 			case R.id.menu_info:
-				intent = new Intent(this, UserDetailActivity.class);
-				intent.putExtra(Arg.LOAD_USER_DETAIL, this.id);
+				selectMenu(R.id.menu_info);
+				UserDetailActivity.showInstance(this, this.id);
 				break;
 			case R.id.menu_problem:
-				intent = new Intent(this, HdojActivity.class);
+				selectMenu(R.id.menu_problem);
+				HdojActivity.showInstance(this);
 				break;
 			case R.id.menu_user:
-				intent = new Intent(this, RankActivity.class);
+				selectMenu(R.id.menu_user);
+				RankActivity.showInstance(this);
 				break;
 			case R.id.menu_share:
+				selectMenu(R.id.menu_share);
 				share();
 				break;
-			/*case R.id.menu_about:
-				Intent intent1 = new Intent(this, AboutActivity.class);
-				startActivity(intent1);
-				break;*/
 			case R.id.menu_setting:
+				selectMenu(R.id.menu_setting);
 				SettingActivity.showInstance(this);
 				break;
-            /*case R.id.menu_note:
-                intent=new Intent(this, NoteActivity.class);
-                break;*/
 		}
 		mBinding.drawerLayout.closeDrawer(GravityCompat.START);
-		if (intent != null) {
-			startActivity(intent);
-		}
 		return true;
 	}
 
@@ -206,9 +204,10 @@ public abstract class AppBarActivity extends ThemeActivity implements Navigation
 		return false;
 	}
 
-	protected void inflateSearchMenu(@NonNull  Menu menu) {
+	protected void inflateSearchMenu(@NonNull Menu menu) {
 		getMenuInflater().inflate(R.menu.toolbar_menu, menu);
 	}
+
 	@Override
 	public boolean onQueryTextSubmit(String query) {
 		return false;
@@ -220,7 +219,7 @@ public abstract class AppBarActivity extends ThemeActivity implements Navigation
 		        .show();
 	}
 
-	protected void showShortSnackbar(@StringRes int message ) {
+	protected void showShortSnackbar(@StringRes int message) {
 		Snackbar.make(mBinding.drawerLayout, message, Snackbar.LENGTH_SHORT)
 		        .show();
 	}
@@ -232,7 +231,7 @@ public abstract class AppBarActivity extends ThemeActivity implements Navigation
 		        .show();
 	}
 
-	protected void showLongSnackbar(@StringRes int message ) {
+	protected void showLongSnackbar(@StringRes int message) {
 		Snackbar.make(mBinding.drawerLayout, message, Snackbar.LENGTH_LONG)
 		        .show();
 	}
@@ -244,12 +243,19 @@ public abstract class AppBarActivity extends ThemeActivity implements Navigation
 		        .show();
 	}
 
-	protected void showIndefiniteSnackbar(@StringRes int message ) {
+	protected void showIndefiniteSnackbar(@StringRes int message) {
 		Snackbar.make(mBinding.drawerLayout, message, Snackbar.LENGTH_LONG)
 		        .show();
 	}
 
 	protected void setActivityBackgroundColor(@ColorRes int colorRes) {
-		mBinding.coordinatorLayout.setBackgroundColor(ResourcesCompat.getColor(getResources(),colorRes, getTheme()));
+		mBinding.coordinatorLayout.setBackgroundColor(ResourcesCompat.getColor(getResources(), colorRes, getTheme()));
 	}
+
+	protected
+	@IdRes
+	int getMenuId(){
+		return  R.id.menu_problem;
+	}
+
 }
