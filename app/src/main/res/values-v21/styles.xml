@@ -1,3 +1,15 @@
 <resources>
 
+    <style name="CardBase">
+        <item name="android:stateListAnimator">@anim/selector_elevation</item>
+    </style>
+
+    <style name="HelloButtonBase">
+        <item name="android:stateListAnimator">@anim/selector_elevation</item>
+    </style>
+
+    <style name="HelloEditText.Password" >
+        <item name="android:fontFamily">null</item>
+        <item name="android:inputType">textPassword</item>
+    </style>
 </resources>

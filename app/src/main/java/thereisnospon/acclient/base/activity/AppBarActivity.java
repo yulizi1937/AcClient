@@ -25,9 +25,10 @@ import android.widget.TextView;
 
 import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.R;
-import thereisnospon.acclient.databinding.AppBarLayoutBinding;
+
+
 import thereisnospon.acclient.databinding.DrawerActivityLayoutBinding;
-import thereisnospon.acclient.event.Arg;
+
 import thereisnospon.acclient.modules.discuss.DiscussActivity;
 import thereisnospon.acclient.modules.hello.LoginActivity;
 import thereisnospon.acclient.modules.personal.UserDetailActivity;
@@ -37,9 +38,12 @@ import thereisnospon.acclient.modules.settings.SettingActivity;
 import thereisnospon.acclient.utils.AcClientActivityCompat;
 import thereisnospon.acclient.utils.SpUtil;
 
+
 /**
  * Created by xzhao on 11.11.16.
  */
+
+
 
 /**
  *  侧滑 Activity 基类
@@ -90,6 +94,7 @@ public abstract class AppBarActivity extends BasicActivity
 		outState.putString("id", id);
 		outState.putString("nickname", nickname);
 	}
+
 
 	@Override
 	protected void onRestoreInstanceState(Bundle savedInstanceState) {
@@ -150,36 +155,42 @@ public abstract class AppBarActivity extends BasicActivity
 		toggle.syncState();
 	}
 
+	private void selectMenu(@IdRes int menuId) {
+		mBinding.navigation.navView.getMenu()
+		                           .findItem(menuId)
+		                           .setChecked(true);
+	}
 
 	@Override
 	public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 		int id = item.getItemId();
-		Intent intent = null;
 		switch (id) {
 			case R.id.menu_contest:
-				intent = new Intent(this, DiscussActivity.class);
+				selectMenu(R.id.menu_contest);
+				DiscussActivity.showInstance(this);
 				break;
 			case R.id.menu_info:
-				intent = new Intent(this, UserDetailActivity.class);
-				intent.putExtra(Arg.LOAD_USER_DETAIL, this.id);
+				selectMenu(R.id.menu_info);
+				UserDetailActivity.showInstance(this, this.id);
 				break;
 			case R.id.menu_problem:
-				intent = new Intent(this, HdojActivity.class);
+				selectMenu(R.id.menu_problem);
+				HdojActivity.showInstance(this);
 				break;
 			case R.id.menu_user:
-				intent = new Intent(this, RankActivity.class);
+				selectMenu(R.id.menu_user);
+				RankActivity.showInstance(this);
 				break;
 			case R.id.menu_share:
+				selectMenu(R.id.menu_share);
 				share();
 				break;
 			case R.id.menu_setting:
+				selectMenu(R.id.menu_setting);
 				SettingActivity.showInstance(this);
 				break;
 		}
 		mBinding.drawerLayout.closeDrawer(GravityCompat.START);
-		if (intent != null) {
-			startActivity(intent);
-		}
 		return true;
 	}
 
@@ -199,13 +210,15 @@ public abstract class AppBarActivity extends BasicActivity
 	}
 
 
+
+
 	protected void showShortSnackbar(@StringRes int message, @StringRes int buttonLabel, @NonNull View.OnClickListener clickListener) {
 		Snackbar.make(mBinding.drawerLayout, message, Snackbar.LENGTH_SHORT)
 				.setAction(buttonLabel, clickListener)
 				.show();
 	}
 
-	protected void showShortSnackbar(@StringRes int message ) {
+	protected void showShortSnackbar(@StringRes int message) {
 		Snackbar.make(mBinding.drawerLayout, message, Snackbar.LENGTH_SHORT)
 				.show();
 	}
@@ -217,7 +230,7 @@ public abstract class AppBarActivity extends BasicActivity
 				.show();
 	}
 
-	protected void showLongSnackbar(@StringRes int message ) {
+	protected void showLongSnackbar(@StringRes int message) {
 		Snackbar.make(mBinding.drawerLayout, message, Snackbar.LENGTH_LONG)
 				.show();
 	}
@@ -228,14 +241,15 @@ public abstract class AppBarActivity extends BasicActivity
 				.show();
 	}
 
-	protected void showIndefiniteSnackbar(@StringRes int message ) {
+	protected void showIndefiniteSnackbar(@StringRes int message) {
 		Snackbar.make(mBinding.drawerLayout, message, Snackbar.LENGTH_LONG)
 				.show();
 	}
 
 	protected void setActivityBackgroundColor(@ColorRes int colorRes) {
-		mBinding.coordinatorLayout.setBackgroundColor(ResourcesCompat.getColor(getResources(),colorRes, getTheme()));
+		mBinding.coordinatorLayout.setBackgroundColor(ResourcesCompat.getColor(getResources(), colorRes, getTheme()));
 	}
+
 
 
 

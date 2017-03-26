@@ -6,6 +6,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.view.View;
@@ -26,9 +27,9 @@ public final class SettingActivity extends AppBarActivity {
 
 
     public static void showInstance(Activity cxt) {
-    	Intent intent = new Intent(cxt, SettingActivity.class);
-    	intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-    	ActivityCompat.startActivity(cxt, intent, Bundle.EMPTY);
+        Intent intent = new Intent(cxt, SettingActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        ActivityCompat.startActivity(cxt, intent, Bundle.EMPTY);
     }
 
     @Override
@@ -38,29 +39,29 @@ public final class SettingActivity extends AppBarActivity {
         addFragment();
     }
 
-    void changeTheme(){
+    void changeTheme() {
         setDrawableCache();
         initTheme();
         getState();
     }
 
-    private void getState(){
+    private void getState() {
         addFragment();
     }
 
-    private void addFragment(){
-        FragmentManager manager=getFragmentManager();
-        FragmentTransaction transaction=manager.beginTransaction();
-        if(settingFragment!=null){
+    private void addFragment() {
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        if (settingFragment != null) {
             transaction.remove(settingFragment);
         }
         settingFragment = SettingFragment.newInstance();
-        transaction.add(R.id.fragment_content,settingFragment);
+        transaction.add(R.id.fragment_content, settingFragment);
         transaction.commit();
     }
 
     //TODO 可能OOM
-    private void setDrawableCache(){
+    private void setDrawableCache() {
         settingcontent.setDrawingCacheEnabled(false);
         settingcontent.setDrawingCacheEnabled(true);
         Bitmap bitmap = Bitmap.createBitmap(settingcontent.getDrawingCache());
@@ -71,8 +72,7 @@ public final class SettingActivity extends AppBarActivity {
     }
 
 
-
-    private void initTheme(){
+    private void initTheme() {
         Settings settings = Settings.getInstance();
         if (settings.getBoolean(Settings.SKIN_PREF, settings.skinPref)) {
             setTheme(R.style.AppThemeNight);
@@ -83,8 +83,9 @@ public final class SettingActivity extends AppBarActivity {
 
     }
 
-    private void initView(){
+    private void initView() {
         this.settingcontent = (ViewGroup) findViewById(R.id.setting_content);
         this.settingimage = (ImageView) findViewById(R.id.setting_image);
     }
+
 }
