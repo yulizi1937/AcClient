@@ -1,4 +1,4 @@
-package thereisnospon.acclient.modules.hello;
+package thereisnospon.acclient.modules.login;
 
 import android.app.Activity;
 import android.content.Context;
@@ -50,9 +50,9 @@ import static android.text.TextUtils.isEmpty;
  */
 
 
-public final class HelloUtil {
+public final class LoginRegisterUtil {
 
-	private HelloUtil() {
+	private LoginRegisterUtil() {
 	}
 
 	static LoadToast createLoadToast(@NonNull Activity activity) {
@@ -60,7 +60,7 @@ public final class HelloUtil {
 		return new LoadToast(activity).setBackgroundColor(ActivityCompat.getColor(cxt, R.color.colorGreen))
 		                              .setProgressColor(ActivityCompat.getColor(cxt, R.color.colorPrimaryDark))
 		                              .setTextColor(ActivityCompat.getColor(cxt, R.color.colorWhite))
-		                              .setTranslationY(HelloUtil.getActionBarHeight(cxt));
+		                              .setTranslationY(LoginRegisterUtil.getActionBarHeight(cxt));
 	}
 
 	static int getActionBarHeight(Context cxt) {

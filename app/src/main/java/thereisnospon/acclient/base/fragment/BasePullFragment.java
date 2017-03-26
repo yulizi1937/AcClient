@@ -17,10 +17,11 @@ import thereisnospon.acclient.R;
 import thereisnospon.acclient.base.adapter.BasePullAdapter;
 
 /**
+ * @author thereisnospon
  * Created by yzr on 16/8/20.
  * 需要 下拉刷新，上拉加载，进入自动初始化加载的功能的 Fragment 的基础类
  */
-public abstract class BasePullFragment<T> extends BaseFragment
+public abstract class BasePullFragment<T> extends Fragment
         implements SwipeRefreshLayout.OnRefreshListener{
 
     private SwipeRefreshLayout mSwipeRefreshLayout;

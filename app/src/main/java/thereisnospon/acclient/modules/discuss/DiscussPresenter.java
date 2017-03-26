@@ -12,6 +12,8 @@ import thereisnospon.acclient.data.DiscussItem;
 import thereisnospon.acclient.utils.LoadListCallback;
 
 /**
+ * @author thereisnospon
+ * 讨论模块的 mvp 的 Presenter
  * Created by yzr on 16/9/9.
  */
 public class DiscussPresenter implements DiscussContact.Presenter {

@@ -36,6 +36,13 @@ import thereisnospon.acclient.modules.submit.status.SubmitStatusActivity;
 import thereisnospon.acclient.utils.SpUtil;
 import thereisnospon.acclient.utils.StringCall;
 
+
+/**
+ * @author thereisnospon
+ * 提交代码的 Activity
+ * @// TODO: 17/3/26
+ * @// FIXME: 17/3/26
+ */
 public final class SubmitAnswerActivity extends AppBarActivity implements View.OnClickListener,
                                                                           NestedScrollView.OnScrollChangeListener,
                                                                           View.OnFocusChangeListener {

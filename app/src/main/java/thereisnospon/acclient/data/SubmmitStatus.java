@@ -11,6 +11,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * @author thereisnospon
+ * 提交状态Bean
  * Created by yzr on 16/6/8.
  */
 public class SubmmitStatus

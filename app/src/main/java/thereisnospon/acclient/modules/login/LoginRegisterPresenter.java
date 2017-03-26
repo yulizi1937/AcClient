@@ -1,4 +1,4 @@
-package thereisnospon.acclient.modules.hello;
+package thereisnospon.acclient.modules.login;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -13,26 +13,28 @@ import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.utils.StringCall;
 
-import static thereisnospon.acclient.modules.hello.ErrorConstants.NO_EMPTY_PASSWORD;
-import static thereisnospon.acclient.modules.hello.ErrorConstants.NO_EMPTY_USERNAME;
-import static thereisnospon.acclient.modules.hello.ErrorConstants.PASSWORD_NOT_EQUAL;
-import static thereisnospon.acclient.modules.hello.ErrorConstants.PASSWORD_SHORT;
-import static thereisnospon.acclient.modules.hello.ErrorConstants.REGISTER_UNSUCCESSFULLY;
-import static thereisnospon.acclient.modules.hello.ErrorConstants.WRONG_EMAIL;
+import static thereisnospon.acclient.modules.login.ErrorConstants.NO_EMPTY_PASSWORD;
+import static thereisnospon.acclient.modules.login.ErrorConstants.NO_EMPTY_USERNAME;
+import static thereisnospon.acclient.modules.login.ErrorConstants.PASSWORD_NOT_EQUAL;
+import static thereisnospon.acclient.modules.login.ErrorConstants.PASSWORD_SHORT;
+import static thereisnospon.acclient.modules.login.ErrorConstants.REGISTER_UNSUCCESSFULLY;
+import static thereisnospon.acclient.modules.login.ErrorConstants.WRONG_EMAIL;
 
 /**
+ * @author thereisnospon
+ * 登陆注册 Presenter
  * Created by yzr on 16/10/30.
  */
 
-final class HelloPresenter implements HelloContact.Presenter {
+final class LoginRegisterPresenter implements LoginRegisterContact.Presenter {
 
 
-	private final HelloContact.Model model;
-	private final HelloContact.View view;
+	private final LoginRegisterContact.Model model;
+	private final LoginRegisterContact.View view;
 
-	HelloPresenter(HelloContact.View view) {
+	LoginRegisterPresenter(LoginRegisterContact.View view) {
 		this.view = view;
-		this.model = new HelloModel();
+		this.model = new LoginRegisterModel();
 	}
 
 	@Override
@@ -155,7 +157,7 @@ final class HelloPresenter implements HelloContact.Presenter {
 			return false;
 		}
 
-		if (password.length() < 6) {
+		if (password.length() < 7) {
 			view.onUserInputFailure(cxt.getString(R.string.hello_password_short), PASSWORD_SHORT);
 			return false;
 		}

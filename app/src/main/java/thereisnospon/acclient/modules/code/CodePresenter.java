@@ -7,6 +7,8 @@ import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
+ * @author thereisnopon
+ * 代码显示模块的 Prensenter
  * Created by yzr on 16/8/2.
  */
 public class CodePresenter implements CodeContact.Presenter {

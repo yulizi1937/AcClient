@@ -24,14 +24,16 @@ public class RankPresenter implements RankContact.Presenter {
         model=new RankModel();
     }
 
+
+
     @Override
-    public void loadRankItems() {
+    public void requestRefresh() {
         Observable.just(1)
                 .observeOn(Schedulers.io())
                 .map(new Func1<Integer, List<RankItem>>() {
                     @Override
                     public List<RankItem> call(Integer integer) {
-                        return model.loadRankItems();
+                        return model.requestRefresh();
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())
@@ -39,39 +41,39 @@ public class RankPresenter implements RankContact.Presenter {
                     @Override
                     public void call(List<RankItem> list) {
                         if (list !=null &&list.size()!=0)
-                            view.onRefreshRankSuccess(list);
-                        else view.onRankFailure("load null");
+                            view.onRefreshSuccess(list);
+                        else view.onFailure("load null");
                     }
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
-                        view.onRankFailure(throwable.getMessage());
+                        view.onFailure(throwable.getMessage());
                     }
                 });
     }
 
     @Override
-    public void moreRankItems() {
+    public void requestMore() {
         Observable.just(1)
                 .observeOn(Schedulers.io())
                 .map(new Func1<Integer, List<RankItem>>() {
                     @Override
                     public List<RankItem> call(Integer integer) {
-                        return model.moreRankItems();
-                }
+                        return model.requestMore();
+                    }
                 })
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<List<RankItem>>() {
                     @Override
                     public void call(List<RankItem> list) {
                         if (list !=null &&list.size()!=0)
-                            view.onMoreRanks(list);
-                        else view.onRankFailure("load null");
+                            view.onMoreSuccess(list);
+                        else view.onFailure("load null");
                     }
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
-                        view.onRankFailure(throwable.getMessage());
+                        view.onFailure(throwable.getMessage());
                     }
                 });
     }

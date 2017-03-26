@@ -12,6 +12,8 @@ import rx.schedulers.Schedulers;
 import thereisnospon.acclient.data.HdojProblem;
 
 /**
+ * @author thereisnospon
+ * 首页题目 Presenter
  * Created by yzr on 16/6/5.
  */
 public class HdojPresenterImpl implements HdojContact.Presenter {
@@ -25,50 +27,14 @@ public class HdojPresenterImpl implements HdojContact.Presenter {
     }
 
 
-
-    @Deprecated
     @Override
-    public void loadPage(final int page) {
-
-    }
-
-    @Override
-    public void loadMore() {
+    public void requestRefresh() {
         Observable.just(1)
                 .observeOn(Schedulers.io())
                 .map(new Func1<Object, List<HdojProblem>>() {
                     @Override
                     public List<HdojProblem> call(Object object) {
-                        Log.d("HHDOJ", "RX CALL  ");
-                        return model.loadMore();
-                    }
-                })
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<List<HdojProblem>>() {
-                    @Override
-                    public void call(List<HdojProblem> hdojProblems) {
-                        if(hdojProblems!=null&&hdojProblems.size()>0){
-                            view.onMoreProblem(hdojProblems);
-                        }else{
-                            view.onFailure("获取失败");
-                        }
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        view.onFailure("获取失败");
-                    }
-                });
-    }
-
-    @Override
-    public void refresh() {
-       Observable.just(1)
-                .observeOn(Schedulers.io())
-                .map(new Func1<Object, List<HdojProblem>>() {
-                    @Override
-                    public List<HdojProblem> call(Object object) {
-                        return model.refresh();
+                        return model.requestRefresh();
                     }
                 })
                 .filter(new Func1<List<HdojProblem>, Boolean>() {
@@ -81,7 +47,7 @@ public class HdojPresenterImpl implements HdojContact.Presenter {
                 .subscribe(new Action1<List<HdojProblem>>() {
                     @Override
                     public void call(List<HdojProblem> hdojProblems) {
-                        view.onSuccess(hdojProblems);
+                        view.onRefreshSuccess(hdojProblems);
                     }
                 }, new Action1<Throwable>() {
                     @Override
@@ -90,5 +56,41 @@ public class HdojPresenterImpl implements HdojContact.Presenter {
                     }
                 });
     }
+
+    @Override
+    public void requestMore() {
+        Observable.just(1)
+                .observeOn(Schedulers.io())
+                .map(new Func1<Object, List<HdojProblem>>() {
+                    @Override
+                    public List<HdojProblem> call(Object object) {
+                        return model.requestMore();
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<List<HdojProblem>>() {
+                    @Override
+                    public void call(List<HdojProblem> hdojProblems) {
+                        if(hdojProblems!=null&&hdojProblems.size()>0){
+                            view.onMoreSuccess(hdojProblems);
+                        }else{
+                            view.onFailure("获取失败");
+                        }
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        view.onFailure("获取失败");
+                    }
+                });
+    }
+
+    @Deprecated
+    @Override
+    public void loadPage(final int page) {
+
+    }
+
+
 
 }

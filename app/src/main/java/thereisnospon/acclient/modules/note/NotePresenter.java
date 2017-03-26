@@ -10,10 +10,11 @@ import thereisnospon.acclient.data.NoteItem;
 import thereisnospon.acclient.utils.LoadListCallback;
 
 /**
+ * @author thereisnospon
+ * @// TODO: 17/3/26
  * Created by yzr on 16/9/9.
  */
 public class NotePresenter implements NoteContact.Presenter {
-
 
 
     private NoteContact.Model model;
@@ -25,20 +26,20 @@ public class NotePresenter implements NoteContact.Presenter {
     }
 
     @Override
-    public void refreshNotes() {
+    public void requestRefresh() {
         Observable.just(1)
                 .observeOn(Schedulers.io())
                 .map(new Func1<Integer, List<NoteItem>>() {
                     @Override
                     public List<NoteItem> call(Integer integer) {
-                        return model.refreshNotes();
+                        return model.requestRefresh();
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new LoadListCallback<List<NoteItem>>() {
                     @Override
                     public void onSuccess(List<NoteItem> noteItems) {
-                        view.onRefreshNotes(noteItems);
+                        view.onRefreshSuccess(noteItems);
                     }
 
                     @Override
@@ -49,20 +50,20 @@ public class NotePresenter implements NoteContact.Presenter {
     }
 
     @Override
-    public void moreNotes() {
+    public void requestMore() {
         Observable.just(1)
                 .observeOn(Schedulers.io())
                 .map(new Func1<Integer, List<NoteItem>>() {
                     @Override
                     public List<NoteItem> call(Integer integer) {
-                        return model.moreNotes();
+                        return model.requestMore();
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new LoadListCallback<List<NoteItem>>() {
                     @Override
                     public void onSuccess(List<NoteItem> noteItems) {
-                        view.onMoreNotes(noteItems);
+                        view.onMoreSuccess(noteItems);
                     }
 
                     @Override
@@ -71,4 +72,8 @@ public class NotePresenter implements NoteContact.Presenter {
                     }
                 });
     }
+
+
+
+
 }

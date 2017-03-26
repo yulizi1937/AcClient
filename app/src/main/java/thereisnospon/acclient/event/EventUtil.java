@@ -6,6 +6,8 @@ import android.os.Looper;
 import org.greenrobot.eventbus.EventBus;
 
 /**
+ * @author  thereisnospon
+ * 用来往主线程发消息的工具类
  * Created by yzr on 16/6/5.
  */
 public class EventUtil {

@@ -13,9 +13,23 @@ import thereisnospon.acclient.base.activity.AppBarActivity;
 import thereisnospon.acclient.event.Arg;
 
 /**
+ * @author thereisnospon
+ * 讨论模块的 Activity
  * Created by yzr on 16/9/9.
  */
 public final class DiscussActivity extends AppBarActivity {
+
+
+
+    @Override
+    protected void setupContent(@NonNull FrameLayout contentLayout) {
+        String pid=getIntent().getStringExtra(Arg.PROBLEM_DISUCSS);
+        if(pid==null){//加载讨论模块首页
+            setupFragment(contentLayout.getId(), DiscussFragment.newInstance());
+        }else{//指定题目的讨论区
+            setupFragment(contentLayout.getId(), DiscussFragment.newInstance(pid));
+        }
+    }
 
 	public static void showInstance(@NonNull Activity cxt) {
 		Intent intent = new Intent(cxt, DiscussActivity.class);
@@ -33,15 +47,7 @@ public final class DiscussActivity extends AppBarActivity {
         ActivityCompat.startActivity(cxt, intent, options.toBundle());
     }
 
-    @Override
-    protected void setupContent(@NonNull FrameLayout contentLayout) {
-        String pid=getIntent().getStringExtra(Arg.PROBLEM_DISUCSS);
-        if(pid==null){
-            setupFragment(contentLayout.getId(), DiscussFragment.newInstance());
-        }else{
-            setupFragment(contentLayout.getId(), DiscussFragment.newInstance(pid));
-        }
-    }
+
 
 
 }

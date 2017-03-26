@@ -43,4 +43,7 @@ public class HdojApi {
 
 
 
+    public static final String HTML_CHAR_SET="gb2312";
+
+
 }

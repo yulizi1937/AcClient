@@ -7,6 +7,8 @@ import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
+ * @author thereisnospon
+ * 显示题目 Presenter
  * Created by yzr on 16/6/6.
  */
 public class ShowProblePresenter implements ShowProblemContact.Presenter {

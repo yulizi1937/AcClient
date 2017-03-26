@@ -9,6 +9,8 @@ import thereisnospon.acclient.data.HdojProblem;
 import thereisnospon.acclient.utils.net.HttpUtil;
 
 /**
+ * @author threeisnospon
+ * 首页题目 Model
  * Created by yzr on 16/6/5.
  */
 public class HdojProbelemModeImpl implements HdojContact.Model {
@@ -31,17 +33,6 @@ public class HdojProbelemModeImpl implements HdojContact.Model {
         return list;
     }
 
-    @Override
-    public List<HdojProblem> loadMore() {
-        if(mloadPge!=-1)
-            return null;
-        String html=getHtml(currentPage+1);
-        List<HdojProblem>list= HdojProblem.Builder.buildProblems(html);
-        if(list!=null&&list.size()>0){
-            currentPage++;
-        }
-        return list;
-    }
 
     private String getHtml(int page){
         try{
@@ -57,12 +48,27 @@ public class HdojProbelemModeImpl implements HdojContact.Model {
         return "";
     }
 
+
+
+
     @Override
-    public List<HdojProblem> refresh() {
+    public List<HdojProblem> requestRefresh() {
         if(mloadPge!=-1){
             return loadPage(mloadPge);
         }else{
             return loadPage(1);
         }
+    }
+
+    @Override
+    public List<HdojProblem> requestMore() {
+        if(mloadPge!=-1)
+            return null;
+        String html=getHtml(currentPage+1);
+        List<HdojProblem>list= HdojProblem.Builder.buildProblems(html);
+        if(list!=null&&list.size()>0){
+            currentPage++;
+        }
+        return list;
     }
 }

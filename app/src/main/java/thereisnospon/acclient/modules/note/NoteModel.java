@@ -11,6 +11,8 @@ import thereisnospon.acclient.utils.net.HttpUtil;
 import thereisnospon.acclient.utils.net.request.IRequest;
 
 /**
+ * @author therisnospon
+ * @// TODO: 17/3/26
  * Created by yzr on 16/9/9.
  */
 public class NoteModel implements NoteContact.Model {
@@ -23,24 +25,7 @@ public class NoteModel implements NoteContact.Model {
         currentPage=1;
     }
 
-    @Override
-    public List<NoteItem> refreshNotes() {
-        currentPage=1;
-        List<NoteItem>list=getList(getHtml(currentPage));
-        if(list!=null&&list.size()>0){
-            currentPage++;
-        }
-        return list;
-    }
 
-    @Override
-    public List<NoteItem> moreNotes() {
-        List<NoteItem>list=getList(getHtml(currentPage+1));
-        if(list!=null&&list.size()>0){
-            currentPage++;
-        }
-        return list;
-    }
     private List<NoteItem>getList(String html){
         return html==null?null:NoteItem.Builder.parse(html);
     }
@@ -56,5 +41,25 @@ public class NoteModel implements NoteContact.Model {
             e.printStackTrace();
         }
         return null;
+    }
+
+
+    @Override
+    public List<NoteItem> requestRefresh() {
+        currentPage=1;
+        List<NoteItem>list=getList(getHtml(currentPage));
+        if(list!=null&&list.size()>0){
+            currentPage++;
+        }
+        return list;
+    }
+
+    @Override
+    public List<NoteItem> requestMore() {
+        List<NoteItem>list=getList(getHtml(currentPage+1));
+        if(list!=null&&list.size()>0){
+            currentPage++;
+        }
+        return list;
     }
 }

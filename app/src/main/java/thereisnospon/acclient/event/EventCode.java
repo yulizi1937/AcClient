@@ -1,6 +1,8 @@
 package thereisnospon.acclient.event;
 
 /**
+ * @author  thereisnospon
+ * 保存消息数据的常量信息
  * Created by yzr on 16/6/5.
  */
 public class EventCode {

@@ -9,6 +9,8 @@ import thereisnospon.acclient.utils.net.HttpUtil;
 import thereisnospon.acclient.utils.net.request.IRequest;
 
 /**
+ * @author thereisnospon
+ * 用户详细信息 mvp Model
  * Created by yzr on 16/6/18.
  */
 public class UserDetailModel implements UserDetailContact.Model {

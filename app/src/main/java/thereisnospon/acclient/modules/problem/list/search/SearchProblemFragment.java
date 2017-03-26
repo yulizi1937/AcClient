@@ -11,13 +11,17 @@ import java.util.List;
 
 import thereisnospon.acclient.base.adapter.BasePullAdapter;
 import thereisnospon.acclient.base.fragment.NormalPullFragment;
+import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
+import thereisnospon.acclient.base.pullswipe.BasicSwpiePullFragment;
 import thereisnospon.acclient.data.SearchProblem;
 import thereisnospon.acclient.ui.adapter.SearchProblemAdapter;
 
 /**
+ * @author threisnospon
+ * 搜索题目 Fragment
  * Created by yzr on 16/6/10.
  */
-public class SearchProblemFragment extends NormalPullFragment<SearchProblem>
+public class SearchProblemFragment extends BasicSwpiePullFragment
         implements SearchProblemContact.View{
 
     SearchProblemContact.Presenter presenter;
@@ -32,36 +36,42 @@ public class SearchProblemFragment extends NormalPullFragment<SearchProblem>
         return fragment;
     }
 
+    public static final String SAVE_QUERY="save_query_";
 
-
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=normalView(inflater,container,savedInstanceState);
-        presenter=new SearchProblemPresenter(this);
-        return view;
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putCharSequence(SAVE_QUERY,query);
     }
 
+    @Override
+    public void onRestoreInstanceState(Bundle inState) {
+        super.onRestoreInstanceState(inState);
+        query=inState.getString(SAVE_QUERY);
+    }
+
+    @Override
+    public void start() {
+        super.start();
+        presenter=new SearchProblemPresenter(this);
+    }
 
     @Override
     public void loadSccess(List<SearchProblem> list) {
-       notifyMoreData(list);
+
+        onMoreData(list);
     }
 
     @Override
     public void refreshSuccess(List<SearchProblem> list) {
-       notifyRefreshData(list);
+       onRefreshData(list);
     }
 
     @Override
     public void onFailure(String errMsg) {
-        enableLoadMore(false);
+
     }
 
-    @Override
-    public BasePullAdapter<SearchProblem> createItemAdapter(List<SearchProblem> list) {
-        return new SearchProblemAdapter(list);
-    }
 
     @Override
     public void loadMore() {
@@ -71,5 +81,16 @@ public class SearchProblemFragment extends NormalPullFragment<SearchProblem>
     @Override
     public void refresh() {
         presenter.queryProblem(query);
+    }
+
+
+    @Override
+    public BaseSwipeAdapter createAdapter(List list) {
+        return new SearchProblemAdapter(list);
+    }
+
+    @Override
+    public boolean hasMore() {
+        return true;
     }
 }

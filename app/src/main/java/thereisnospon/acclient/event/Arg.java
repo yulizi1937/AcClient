@@ -1,6 +1,8 @@
 package thereisnospon.acclient.event;
 
 /**
+ * @author thereisnospon
+ * Intent 传递数据的 key 的常量
  * Created by yzr on 16/6/6.
  */
 public class Arg {

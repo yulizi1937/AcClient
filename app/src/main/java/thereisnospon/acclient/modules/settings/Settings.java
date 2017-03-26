@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import thereisnospon.acclient.AppApplication;
 
 /**
+ * @author thereisnospon
+ * 管理设置信息
  * Created by yzr on 16/8/20.
  */
 public final class Settings {

@@ -1,4 +1,4 @@
-package thereisnospon.acclient.modules.hello;
+package thereisnospon.acclient.modules.login;
 
 import android.content.Context;
 import android.support.graphics.drawable.AnimatedVectorDrawableCompat;
@@ -8,7 +8,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.bumptech.glide.load.model.Headers;
-import com.bumptech.glide.load.model.LazyHeaders;
 import com.orhanobut.logger.Logger;
 
 import org.jsoup.Jsoup;
@@ -29,13 +28,13 @@ import thereisnospon.acclient.api.HdojApi;
 import thereisnospon.acclient.utils.net.HttpUtil;
 import thereisnospon.acclient.utils.net.request.IRequest;
 
-import static com.bumptech.glide.load.DecodeFormat.PREFER_RGB_565;
-
 /**
+ * @author thereisnospon
+ * 登陆注册具体实现
  * Created by yzr on 16/10/30.
  */
 
-final class HelloModel implements HelloContact.Model {
+final class LoginRegisterModel implements LoginRegisterContact.Model {
 
 
 	@Override
@@ -146,13 +145,14 @@ final class HelloModel implements HelloContact.Model {
 	}
 
 
+
+
 	@Override
 	public void checkCode(Context cxt, ImageView imageView) {
 		AnimatedVectorDrawableCompat animatedVectorDrawableCompat = AnimatedVectorDrawableCompat.create(cxt, R.drawable.ic_animated_loading_pb);
 		imageView.setImageDrawable(animatedVectorDrawableCompat);
 		AnimatedVectorDrawableCompat dr = (AnimatedVectorDrawableCompat) imageView.getDrawable();
 		dr.start();
-
 
 		List<Cookie>cookies=HttpUtil.getInstance()
 				.getCookiesManager()
@@ -167,8 +167,8 @@ final class HelloModel implements HelloContact.Model {
 		final Map<String,String>map=new HashMap<>();
 		map.put("Cookie",sb.toString());
 
-		Logger.e(sb.toString());
 
+		//带cookie 的图片请求
 		GlideUrl url=new GlideUrl(HdojApi.CHECK_CODE, new Headers() {
 			@Override
 			public Map<String, String> getHeaders() {

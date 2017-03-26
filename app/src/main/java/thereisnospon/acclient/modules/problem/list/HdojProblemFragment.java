@@ -15,17 +15,24 @@ import java.util.List;
 import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.base.adapter.BasePullAdapter;
+import thereisnospon.acclient.base.fragment.BaseMvpSwipeFragment;
 import thereisnospon.acclient.base.fragment.BasePullFragment;
+import thereisnospon.acclient.base.mvp.MvpPullPresenter;
+import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
 import thereisnospon.acclient.data.HdojProblem;
 import thereisnospon.acclient.ui.adapter.HdojProblemAdapter;
 
 /**
+ * @author thereisnospon
+ * 首页题目 Fragment
  * Created by yzr on 16/6/5.
  */
-public final class HdojProblemFragment extends BasePullFragment<HdojProblem> implements  HdojContact.View{
+public final class HdojProblemFragment extends BaseMvpSwipeFragment<HdojProblem> implements  HdojContact.View{
     private static final int INDEX=-1;
     private HdojContact.Presenter presenter;
     private int page=INDEX;
+
+    private static final String SAVE_PAGE="SAVE_PAGE";
 
     public static  HdojProblemFragment newInstance(int page){
         HdojProblemFragment fragment= HdojProblemFragment.newInstance();
@@ -40,7 +47,7 @@ public final class HdojProblemFragment extends BasePullFragment<HdojProblem> imp
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("page", page);
+        outState.putInt(SAVE_PAGE, page);
     }
 
     @Override
@@ -49,18 +56,9 @@ public final class HdojProblemFragment extends BasePullFragment<HdojProblem> imp
         if(savedInstanceState == null){
             return;
         }
-        page = savedInstanceState.getInt("page");
+        page = savedInstanceState.getInt(SAVE_PAGE);
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_problem_list,container,false);
-        initRefreshViews(view, R.id.problem_list_swipe,R.id.problem_list_recycle);
-        presenter=new HdojPresenterImpl(this,page);
-        presenter.refresh();
-        return view;
-    }
 
 
     @Override
@@ -68,39 +66,15 @@ public final class HdojProblemFragment extends BasePullFragment<HdojProblem> imp
         return page==INDEX;
     }
 
+
     @Override
-    public void onSuccess(List<HdojProblem> list) {
-       notifyRefreshData(list);
+    public MvpPullPresenter createPresenter() {
+        presenter=new HdojPresenterImpl(this,page);
+        return presenter;
     }
 
     @Override
-    public void onFailure(String msg) {
-        Logger.d(msg);
-        enableLoadMore(false);
-    }
-
-    @Override
-    public void onMoreProblem(List<HdojProblem> list) {
-        notifyMoreData(list);
-    }
-
-    @Override
-    public BasePullAdapter<HdojProblem> createItemAdapter(List<HdojProblem> list) {
+    public BaseSwipeAdapter createAdapter(List list) {
         return new HdojProblemAdapter(list);
-    }
-
-    @Override
-    public RecyclerView.LayoutManager createLayoutManager() {
-        return new LinearLayoutManager(getActivity());
-    }
-
-    @Override
-    public void loadMore() {
-        presenter.loadMore();
-    }
-
-    @Override
-    public void refresh() {
-       presenter.refresh();
     }
 }

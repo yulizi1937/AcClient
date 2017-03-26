@@ -10,16 +10,18 @@ import rx.schedulers.Schedulers;
 import thereisnospon.acclient.data.SearchPeopleItem;
 
 /**
+ * @author thereisnospon
+ * 搜索用户 Presenter
  * Created by yzr on 16/6/16.
  */
-public class SearchPeoplePresenter implements SearchPeopleContact.Presenter {
+public class SearchUserPresenter implements SearchUserContact.Presenter {
 
-    private SearchPeopleContact.Model model;
-    private SearchPeopleContact.View  view;
+    private SearchUserContact.Model model;
+    private SearchUserContact.View  view;
 
-    public SearchPeoplePresenter(SearchPeopleContact.View view) {
+    public SearchUserPresenter(SearchUserContact.View view) {
        this.view=view;
-        this.model=new SearchPeopleModel();
+        this.model=new SearchUserModel();
     }
 
     @Override

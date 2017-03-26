@@ -10,11 +10,12 @@ import java.util.List;
 
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.base.adapter.NormalPullAdapter;
+import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
 import thereisnospon.acclient.data.NoteItem;
 import thereisnospon.acclient.databinding.ItemNoteBinding;
 
 
-public final class NoteAdapter extends NormalPullAdapter<NoteItem> {
+public final class NoteAdapter extends BaseSwipeAdapter<NoteItem,NoteAdapter.VH> {
 
 
 	private static final int ITEM_LAYOUT = R.layout.item_note;
@@ -24,14 +25,7 @@ public final class NoteAdapter extends NormalPullAdapter<NoteItem> {
 	}
 
 	@Override
-	public RecyclerView.ViewHolder createNormalViewHolder(ViewGroup parent, int viewType) {
-		Context cxt = parent.getContext();
-		ItemNoteBinding binding = DataBindingUtil.inflate(LayoutInflater.from(cxt), ITEM_LAYOUT, parent, false);
-		return new NoteAdapter.VH(binding);
-	}
-
-	@Override
-	public void bindNormalViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+	public void bindNormalViewHolder(VH viewHolder, int position) {
 		NoteItem noteItem = getItem(position);
 		VH vh = (VH) viewHolder;
 		vh.mBinding.noteTitle.setText(noteItem.getTitle());
@@ -40,6 +34,12 @@ public final class NoteAdapter extends NormalPullAdapter<NoteItem> {
 		vh.mBinding.executePendingBindings();
 	}
 
+	@Override
+	public VH createNormalViewHolder(ViewGroup parent, int viewType) {
+		Context cxt = parent.getContext();
+		ItemNoteBinding binding = DataBindingUtil.inflate(LayoutInflater.from(cxt), ITEM_LAYOUT, parent, false);
+		return new VH(binding);
+	}
 
 	static final class VH extends RecyclerView.ViewHolder {
 		private final ItemNoteBinding mBinding;

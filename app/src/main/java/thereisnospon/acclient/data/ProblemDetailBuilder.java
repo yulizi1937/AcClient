@@ -8,6 +8,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 /**
+ * @author thereisnospon
+ * 从 html 中抓取 问题详情
  * Created by yzr on 16/6/6.
  */
 public class ProblemDetailBuilder {

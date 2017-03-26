@@ -11,6 +11,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * @author thereisnospon
+ * 搜索到的问题项的Bean （与普通问题不同，额外处理)
  * Created by yzr on 16/6/5.
  */
 public class SearchPeopleItem

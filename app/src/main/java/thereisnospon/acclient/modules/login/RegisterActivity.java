@@ -1,4 +1,4 @@
-package thereisnospon.acclient.modules.hello;
+package thereisnospon.acclient.modules.login;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -22,13 +22,13 @@ import thereisnospon.acclient.R;
 import thereisnospon.acclient.databinding.RegisterActivityBinding;
 
 import static android.os.Bundle.EMPTY;
-import static thereisnospon.acclient.modules.hello.ErrorConstants.NO_EMPTY_PASSWORD;
-import static thereisnospon.acclient.modules.hello.ErrorConstants.NO_EMPTY_USERNAME;
-import static thereisnospon.acclient.modules.hello.ErrorConstants.PASSWORD_NOT_EQUAL;
-import static thereisnospon.acclient.modules.hello.ErrorConstants.PASSWORD_SHORT;
-import static thereisnospon.acclient.modules.hello.ErrorConstants.WRONG_EMAIL;
+import static thereisnospon.acclient.modules.login.ErrorConstants.NO_EMPTY_PASSWORD;
+import static thereisnospon.acclient.modules.login.ErrorConstants.NO_EMPTY_USERNAME;
+import static thereisnospon.acclient.modules.login.ErrorConstants.PASSWORD_NOT_EQUAL;
+import static thereisnospon.acclient.modules.login.ErrorConstants.PASSWORD_SHORT;
+import static thereisnospon.acclient.modules.login.ErrorConstants.WRONG_EMAIL;
 
-public final class RegisterActivity extends BaseActivity {
+public final class RegisterActivity extends BaseLoginRegisterActivity {
 
 	private static final int LAYOUT = R.layout.activity_register;
 	private RegisterActivityBinding mBinding;
@@ -39,9 +39,9 @@ public final class RegisterActivity extends BaseActivity {
 		ActivityCompat.startActivity(cxt, intent, EMPTY);
 	}
 
+
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+	public void initView(@Nullable Bundle savedInstanceState) {
 		setContentView(LAYOUT);
 		mBinding = DataBindingUtil.setContentView(this, R.layout.activity_register);
 		mBinding.registerButton.setOnClickListener(new View.OnClickListener() {
@@ -56,23 +56,26 @@ public final class RegisterActivity extends BaseActivity {
 				presenter.loadCheckCode();
 			}
 		});
-		presenter = new HelloPresenter(this);
+		presenter = new LoginRegisterPresenter(this);
 	}
+
+
+	@Override
+	public void initData(@Nullable Bundle savedInstanceState) {
+
+	}
+
 
 	private void register() {
 
-		String id = mBinding.registerId.getText()
-		                               .toString();
-		String email = mBinding.registerEmail.getText()
-		                                     .toString();
-		String pass = mBinding.registerPass1.getText()
-		                                    .toString();
-		String passch = mBinding.registerPass2.getText()
-		                                      .toString();
+		String id = mBinding.registerId.getText().toString();
+		String email = mBinding.registerEmail.getText().toString();
+		String pass = mBinding.registerPass1.getText().toString();
+		String passch = mBinding.registerPass2.getText().toString();
 		String check = null;
+
 		if (mBinding.check.getVisibility() == View.VISIBLE) {
-			check = mBinding.checkCodeText.getText()
-			                              .toString();
+			check = mBinding.checkCodeText.getText().toString();
 		}
 		presenter.register(id, email, pass, passch, check);
 	}
@@ -81,7 +84,7 @@ public final class RegisterActivity extends BaseActivity {
 	@Override
 	public void onRegisterSuccess(String userName) {
 		mLoadToast.success();
-		HelloUtil.showDialogFragment(getSupportFragmentManager(), AfterRegisterCloseFragment.newInstance(userName), "close");
+		LoginRegisterUtil.showDialogFragment(getSupportFragmentManager(), AfterRegisterCloseFragment.newInstance(userName), "close");
 	}
 
 
@@ -187,4 +190,7 @@ public final class RegisterActivity extends BaseActivity {
 		super.afterRegister();
 		updateUIWhenRegister(true);
 	}
+
+
+
 }

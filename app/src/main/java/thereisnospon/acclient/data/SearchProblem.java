@@ -15,6 +15,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * @author thereisnospon
+ * 搜索到的问题的 Bean
  * Created by yzr on 16/6/7.
  */
 public class SearchProblem extends ProblemItem

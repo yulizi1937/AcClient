@@ -12,14 +12,17 @@ import java.util.List;
 
 import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.base.adapter.BasePullAdapter;
+import thereisnospon.acclient.base.fragment.BaseMvpSwipeFragment;
 import thereisnospon.acclient.base.fragment.NormalPullFragment;
+import thereisnospon.acclient.base.mvp.MvpPullPresenter;
+import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
 import thereisnospon.acclient.data.RankItem;
 import thereisnospon.acclient.ui.adapter.RankItemAdapter;
 
 /**
  * Created by yzr on 16/8/27.
  */
-public class RankFragment extends NormalPullFragment implements RankContact.View{
+public class RankFragment extends BaseMvpSwipeFragment<RankItem> implements RankContact.View{
 
 
     RankContact.Presenter presenter;
@@ -28,49 +31,14 @@ public class RankFragment extends NormalPullFragment implements RankContact.View
         return (RankFragment) RankFragment.instantiate(AppApplication.context, RankFragment.class.getName());
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=normalView(inflater,container,savedInstanceState);
+    public MvpPullPresenter createPresenter() {
         presenter=new RankPresenter(this);
-        Logger.d("create viwe");
-        return view;
+        return presenter;
     }
 
     @Override
-    public BasePullAdapter createItemAdapter(List list) {
+    public BaseSwipeAdapter createAdapter(List list) {
         return new RankItemAdapter(list);
     }
-
-
-    @Override
-    public void loadMore() {
-        Logger.d("laod more");
-        presenter.moreRankItems();
-    }
-
-    @Override
-    public void refresh() {
-        Logger.d("refresh");
-        presenter.loadRankItems();
-    }
-
-
-    @Override
-    public void onRefreshRankSuccess(List<RankItem> list) {
-        Logger.d("refresh success");
-        notifyRefreshData(list);
-    }
-
-    @Override
-    public void onMoreRanks(List<RankItem> list) {
-        Logger.d("more ranks");
-        notifyMoreData(list);
-    }
-
-    @Override
-    public void onRankFailure(String msg) {
-        Logger.e(msg);
-    }
-
 }

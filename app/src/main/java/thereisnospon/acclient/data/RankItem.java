@@ -11,6 +11,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * @author thereisnospon
+ * 排名 Bean
  * Created by yzr on 16/6/5.
  */
 public class  RankItem

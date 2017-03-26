@@ -18,29 +18,6 @@ public class SubmitUtil {
 
 
 
-    public static final String CODE="import java.util.*;\n" +
-            "import java.math.*;\n" +
-            "import java.io.*;\n" +
-            "public class Main {\n" +
-            "\n" +
-            "    public static void main(String []args)\n" +
-            "    {\n" +
-            "        String sa,sb;\n" +
-            "        Scanner cin=new Scanner(System.in);\n" +
-            "        while(cin.hasNext())\n" +
-            "        {\n" +
-            "            sa=cin.next();\n" +
-            "            sb=cin.next();\n" +
-            "            BigInteger x=new BigInteger(sa);\n" +
-            "            BigInteger y=new BigInteger(sb);\n" +
-            "            System.out.println(x.add(y).toString());\n" +
-            "        }\n" +
-            "    }\n" +
-            "\n" +
-            "}";
-
-
-
     public static void submmit(
             final String problem, final String compiler,
             final String code, final StringCall call) {

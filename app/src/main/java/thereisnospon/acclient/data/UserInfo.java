@@ -11,6 +11,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * @author Threisnospon
+ * 用户信息 Bean
  * Created by yzr on 16/6/7.
  */
 public class UserInfo

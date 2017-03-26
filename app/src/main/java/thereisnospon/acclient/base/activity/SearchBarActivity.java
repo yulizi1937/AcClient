@@ -8,8 +8,9 @@ import android.view.MenuItem;
 import thereisnospon.acclient.R;
 
 /**
- * Created by yzr on 17/3/16.
+ * @author thereisnospon
  * 有搜索框的 Activity 基类。
+ * Created by yzr on 17/3/16.
  */
 
 public abstract class SearchBarActivity extends DrawerActivity implements  SearchView.OnQueryTextListener {

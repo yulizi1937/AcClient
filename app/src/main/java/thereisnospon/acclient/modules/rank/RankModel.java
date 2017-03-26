@@ -24,16 +24,6 @@ public class RankModel implements RankContact.Model {
         currentPage=1;
     }
 
-    @Override
-    public List<RankItem> loadRankItems() {
-        currentPage=1;
-        return getRanks(currentPage);
-    }
-
-    @Override
-    public List<RankItem> moreRankItems() {
-        return getRanks(currentPage);
-    }
 
 
     private List<RankItem>getRanks(int page){
@@ -61,5 +51,18 @@ public class RankModel implements RankContact.Model {
         }
         return null;
 
+    }
+
+
+    @Override
+    public List<RankItem> requestRefresh() {
+        currentPage=1;
+        return getRanks(currentPage);
+    }
+
+    @Override
+    public List<RankItem> requestMore() {
+
+        return getRanks(currentPage);
     }
 }

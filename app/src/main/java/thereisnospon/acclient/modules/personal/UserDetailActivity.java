@@ -12,6 +12,10 @@ import thereisnospon.acclient.R;
 import thereisnospon.acclient.base.activity.AppBarActivity;
 import thereisnospon.acclient.event.Arg;
 
+/**
+ * @author thereisnospon
+ * 用户详细信息 Activity
+ */
 public final class UserDetailActivity extends AppBarActivity {
 
 

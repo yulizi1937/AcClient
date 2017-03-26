@@ -1,6 +1,8 @@
 package thereisnospon.acclient.modules.problem.detail;
 
 /**
+ * @author thereisnospon
+ * 显示题目 mvp 契约类
  * Created by yzr on 16/6/6.
  */
 public interface ShowProblemContact {

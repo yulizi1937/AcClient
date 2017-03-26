@@ -12,6 +12,8 @@ import thereisnospon.acclient.utils.net.HttpUtil;
 import thereisnospon.acclient.utils.net.request.IRequest;
 
 /**
+ * @author therisnospon
+ * 讨论模块的 mvp 的 Model
  * Created by yzr on 16/9/9.
  */
 public class DiscussModel implements DiscussContact.Model {
@@ -67,7 +69,7 @@ public class DiscussModel implements DiscussContact.Model {
         request.addParameter("page",page+"");
         try{
             Response respons=request.execute();
-            String html=new String(respons.body().bytes(),"gb2312");
+            String html=new String(respons.body().bytes(), HdojApi.HTML_CHAR_SET);
             return html;
         }catch (IOException e){
             e.printStackTrace();

@@ -10,6 +10,10 @@ import java.util.List;
 import thereisnospon.acclient.R;
 
 /**
+ * @author thereisnospon
+ * 上拉加载下拉刷新View 的基础 Adapter。
+ * 存储数据类型的结构为 List
+ * 提供默认的 Footer
  * Created by yzr on 17/3/26.
  */
 
@@ -56,12 +60,14 @@ public abstract class BaseSwipeAdapter<T,VH extends  RecyclerView.ViewHolder> ex
         return datas.get(position);
     }
 
+    //更多数据，并且刷新ui
     @Override
     public void onMoreData(List<T> list) {
         datas.addAll(list);
         notifyDataSetChanged();
     }
 
+    //刷新数据，并且刷新ui
     @Override
     public void onRefreshData(List<T> list) {
         datas.clear();

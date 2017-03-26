@@ -9,13 +9,14 @@ import java.util.List;
 
 import thereisnospon.acclient.base.adapter.BasePullAdapter;
 import thereisnospon.acclient.base.fragment.NormalPullFragment;
+import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
+import thereisnospon.acclient.base.pullswipe.BasicSwpiePullFragment;
 import thereisnospon.acclient.data.SubmmitStatus;
 
 import thereisnospon.acclient.ui.adapter.SubmitStatusAdapter;
 
 
-public class SubmitFragment extends NormalPullFragment<SubmmitStatus>
-
+public class SubmitFragment extends BasicSwpiePullFragment
 implements  SubmitStatusContact.View{
 
     SubmitStatusContact.Presenter presenter;
@@ -29,36 +30,36 @@ implements  SubmitStatusContact.View{
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view=normalView(inflater,container,savedInstanceState);
+    public void start() {
+        super.start();
         presenter=new SubmitStatusPresenter(this);
-        return view;
     }
+
 
     @Override
     public void onMoreStatus(List<SubmmitStatus> statusList) {
-       notifyMoreData(statusList);
-
+            onMoreData(statusList);
     }
 
     @Override
     public void onRefreshStatus(List<SubmmitStatus> statusList) {
-      notifyRefreshData(statusList);
+        onRefreshData(statusList);
     }
-
 
     @Override
     public void onFailure(String err) {
-        enableLoadMore(false);
-        onRefreshCompleted();
+
     }
 
     @Override
-    public BasePullAdapter<SubmmitStatus> createItemAdapter(List<SubmmitStatus> list) {
+    public BaseSwipeAdapter createAdapter(List list) {
         return new SubmitStatusAdapter(list);
     }
 
+    @Override
+    public boolean hasMore() {
+        return true;
+    }
 
     @Override
     public void loadMore() {

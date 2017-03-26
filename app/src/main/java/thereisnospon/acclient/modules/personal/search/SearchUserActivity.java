@@ -6,10 +6,14 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import thereisnospon.acclient.R;
-import thereisnospon.acclient.base.activity.AppBarActivity;
 import thereisnospon.acclient.base.activity.SearchBarActivity;
 
-public final class SearchPeopleActivity extends SearchBarActivity {
+
+/**
+ * @author thereisnospon
+ * 搜索用户的 Activity
+ */
+public final class SearchUserActivity extends SearchBarActivity {
 	@Override
 	protected void setupContent(@NonNull FrameLayout contentLayout) {
 		TextView textView = new TextView(this);
@@ -27,7 +31,7 @@ public final class SearchPeopleActivity extends SearchBarActivity {
 
 	@Override
 	public boolean onQueryTextSubmit(String query) {
-		setupFragment(SearchPeopleFragment.newInstance(query));
+		setupFragment(SearchUserFragment.newInstance(query));
 		return false;
 	}
 }

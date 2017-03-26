@@ -20,6 +20,10 @@ import thereisnospon.acclient.event.Arg;
 import thereisnospon.acclient.event.Event;
 import thereisnospon.acclient.event.EventCode;
 
+/**
+ * @author thereisnospon
+ * 显示 代码的 Activity
+ */
 public final class CodeActivity extends AppBarActivity {
 
 
@@ -37,6 +41,7 @@ public final class CodeActivity extends AppBarActivity {
     }
 
 
+    //收到来自 CodeFragment 的消息，将代码拷贝到剪贴板
     @Subscribe
     public void onEvent(Event event){
         if(event.getEventCode()==EventCode.CLIP_CODE_RESPONSE){
@@ -60,16 +65,15 @@ public final class CodeActivity extends AppBarActivity {
         String id=intent.getStringExtra(Arg.SHOWCODE_ID);
         String code=intent.getStringExtra(Arg.SHOWCODE_CODE);
         Fragment fragment;
-        if(code!=null){
+        if(code!=null){//指定代码内容显示
             fragment=CodeFragment.newCodeInstance(code);
-        }else if(id !=null){
+        }else if(id !=null){//指定代码id，从网络加载显示
             fragment=CodeFragment.newInstance(id);
-        }else{
+        }else{//默认加载的代码id....
             fragment=CodeFragment.newInstance("17562992");
         }
         setupFragment(contentLayout.getId(), fragment);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

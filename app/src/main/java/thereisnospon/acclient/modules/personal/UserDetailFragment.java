@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +13,7 @@ import android.view.ViewGroup;
 import jp.wasabeef.recyclerview.animators.ScaleInAnimator;
 import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.R;
+import thereisnospon.acclient.base.fragment.BasicFragment;
 import thereisnospon.acclient.data.UserInfo;
 
 
@@ -25,9 +25,11 @@ import thereisnospon.acclient.modules.submit.status.SubmitStatusActivity;
 import thereisnospon.acclient.ui.adapter.ProblemNodeAdapter;
 
 /**
+ * @author thereisnospon
+ * 用户详细信息 Fragment
  * Created by yzr on 16/6/18.
  */
-public final class UserDetailFragment extends Fragment implements UserDetailContact.View {
+public final class UserDetailFragment extends BasicFragment implements UserDetailContact.View {
 	private static final String TAG = "UserDetailFragment";
 	private UserDetailContact.Presenter presenter;
 
@@ -41,46 +43,61 @@ public final class UserDetailFragment extends Fragment implements UserDetailCont
 		return fragment;
 	}
 
+
+	private static final String SAVE_ID="save_user_deatil_id";
+
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		outState.putString("id", id);
+		outState.putString(SAVE_ID, id);
 	}
+
 
 	@Override
 	public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
 		super.onViewStateRestored(savedInstanceState);
 		if (savedInstanceState != null) {
-			id = savedInstanceState.getString("id");
+			id = savedInstanceState.getString(SAVE_ID);
 		}
 	}
 
-	@Nullable
 	@Override
-	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		View view = inflater.inflate( R.layout.fragment_user_detail_wrapper, container, false);
+	public int getLayoutRes() {
+		return 0;
+	}
+
+	@Override
+	public View createView(ViewGroup container, Bundle savedInstanceState) {
+		View view = LayoutInflater.from(container.getContext()).
+				inflate( R.layout.fragment_user_detail_wrapper, container, false);
 		mBinding = DataBindingUtil.bind(view);
 		return view;
 	}
 
 	@Override
-	public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
+	public void initView(View view, Bundle savedInstanceState) {
 		presenter = new UserDetailPresenter(this);
 		presenter.loadUser(id);
 		mBinding.fragmentUserDetail.userCardSubmission.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				cl();
+				goToUserSubmmitInfoActivity();
 			}
 		});
 		mBinding.fragmentUserDetail.userCardAc.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				ac();
+				goToUserSummmitACActivity();
 			}
 		});
 	}
+
+	@Override
+	public void initData() {
+
+	}
+
+
 
 	@Override
 	public void onSuccess(UserInfo userInfo) {
@@ -104,8 +121,7 @@ public final class UserDetailFragment extends Fragment implements UserDetailCont
 		Log.d(TAG, "onError: " + err);
 	}
 
-
-	private void cl() {
+	private void goToUserSubmmitInfoActivity() {
 		Intent intent = new Intent(getActivity(), SubmitStatusActivity.class);
 		intent.putExtra(Arg.SUBMMIT_QUERY_USER, id);
 		intent.putExtra(Arg.SUBMMIT_QUERY_STATUS, SubmitQuery.Status.ALL.getValue());
@@ -113,7 +129,7 @@ public final class UserDetailFragment extends Fragment implements UserDetailCont
 	}
 
 
-	private void ac() {
+	private void goToUserSummmitACActivity() {
 		Intent intent = new Intent(getActivity(), SubmitStatusActivity.class);
 		intent.putExtra(Arg.SUBMMIT_QUERY_USER, id);
 		intent.putExtra(Arg.SUBMMIT_QUERY_STATUS, SubmitQuery.Status.AC.getValue());

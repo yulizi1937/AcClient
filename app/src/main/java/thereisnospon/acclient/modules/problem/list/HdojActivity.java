@@ -29,11 +29,14 @@ import thereisnospon.acclient.modules.problem.detail.ShowProblemActivity;
 import thereisnospon.acclient.modules.problem.list.search.SearchProblemFragment;
 import thereisnospon.acclient.modules.settings.Settings;
 import thereisnospon.acclient.utils.SpUtil;
+import thereisnospon.acclient.utils.net.request.PostRequest;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 import static android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP;
 
 /**
+ * @author  thereisnospon
+ * 显示首页
  * Created by yzr on 16/6/5.
  */
 public final class HdojActivity extends SearchBarActivity {
@@ -46,10 +49,12 @@ public final class HdojActivity extends SearchBarActivity {
 		ActivityCompat.startActivity(cxt, intent, Bundle.EMPTY);
 	}
 
+	private static String SAVE_FIRST="save_first";
+
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		outState.putBoolean("first", first);
+		outState.putBoolean(SAVE_FIRST, first);
 	}
 
 	@Override
@@ -58,23 +63,20 @@ public final class HdojActivity extends SearchBarActivity {
 		if (savedInstanceState == null) {
 			return;
 		}
-		first = savedInstanceState.getBoolean("first");
+		first = savedInstanceState.getBoolean(SAVE_FIRST);
 	}
-
 
 
 
 	@Override
 	protected void setupContent(@NonNull FrameLayout contentLayout) {
 		setupFragment(contentLayout.getId(), HdojProblemFragment.newInstance());
-
 		showMessageInfo();
 	}
 
 	private void showMessageInfo(){
 
 		if(SpUtil.getInstance().getBoolean(SpUtil.FIRST_VISIT)){
-
 		Handler handler=new Handler(Looper.getMainLooper());
 		handler.postDelayed(new Runnable() {
 			@Override
@@ -82,7 +84,6 @@ public final class HdojActivity extends SearchBarActivity {
 				showMessageDialog();
 			}
 		},1000);
-
 		SpUtil.getInstance().putBoolean(SpUtil.FIRST_VISIT,false);
 		}
 	}
@@ -213,6 +214,7 @@ public final class HdojActivity extends SearchBarActivity {
 	}
 
 
+
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 
@@ -228,7 +230,6 @@ public final class HdojActivity extends SearchBarActivity {
 				});
 				return true;
 			}
-
 		}
 		return super.onKeyDown(keyCode, event);
 	}

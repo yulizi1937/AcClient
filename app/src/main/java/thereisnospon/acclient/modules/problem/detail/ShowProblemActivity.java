@@ -15,16 +15,25 @@ import thereisnospon.acclient.modules.discuss.DiscussActivity;
 import thereisnospon.acclient.modules.submit.SubmitAnswerActivity;
 import thereisnospon.acclient.utils.AcClientAnimationUtils;
 
+
+/**
+ * @author  thereisnospon
+ * 显示 题目 Activity
+ */
 public final class ShowProblemActivity extends AppBarActivity {
 
 	private int id;
 	private Button mDiscussBtn;
 	private Button mAnswerBtn;
 
+
+
+	private static final String SAVE_ID="save_showprobelem_id";
+
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		id = outState.getInt("id");
+		outState.putInt(SAVE_ID,id);
 	}
 
 	@Override
@@ -33,7 +42,7 @@ public final class ShowProblemActivity extends AppBarActivity {
 		if (savedInstanceState == null) {
 			return;
 		}
-		id = savedInstanceState.getInt("id");
+		id = savedInstanceState.getInt(SAVE_ID);
 	}
 
 

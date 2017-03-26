@@ -13,6 +13,8 @@ import java.util.regex.Pattern;
 import thereisnospon.acclient.api.HdojApi;
 
 /**
+ * @author thereisnospon
+ * 讨论帖子的数据Bean
  * Created by yzr on 16/9/8.
  */
 public class DiscussItem{

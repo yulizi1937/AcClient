@@ -1,23 +1,23 @@
-package thereisnospon.acclient.modules.hello;
+package thereisnospon.acclient.modules.login;
 
 import android.graphics.Bitmap;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
-import android.widget.ListView;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
 import thereisnospon.acclient.R;
+import thereisnospon.acclient.base.activity.BasicActivity;
 
-import static thereisnospon.acclient.modules.hello.HelloUtil.createLoadToast;
+import static thereisnospon.acclient.modules.login.LoginRegisterUtil.createLoadToast;
 
 /**
  * Created by xzhao on 09.11.16.
  */
-public abstract class BaseActivity extends AppCompatActivity implements HelloContact.View {
+public abstract class BaseLoginRegisterActivity extends BasicActivity implements LoginRegisterContact.View {
 	@SuppressWarnings("WeakerAccess") protected LoadToast mLoadToast;
-	@SuppressWarnings("WeakerAccess") protected HelloContact.Presenter presenter;
+	@SuppressWarnings("WeakerAccess") protected LoginRegisterContact.Presenter presenter;
 
 	private void createToast() {
 
@@ -25,6 +25,7 @@ public abstract class BaseActivity extends AppCompatActivity implements HelloCon
 			mLoadToast = createLoadToast(this);
 		}
 	}
+
 
 	@Override
 	public void beforeLogin() {

@@ -12,13 +12,14 @@ import java.util.List;
 
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.base.adapter.NormalPullAdapter;
+import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
 import thereisnospon.acclient.data.SearchPeopleItem;
 import thereisnospon.acclient.databinding.ItemSearchPeopleBinding;
 import thereisnospon.acclient.event.Arg;
 import thereisnospon.acclient.modules.personal.UserDetailActivity;
 
 
-public final class SearchPeopleAdapter extends NormalPullAdapter<SearchPeopleItem> {
+public final class SearchPeopleAdapter extends BaseSwipeAdapter<SearchPeopleItem,SearchPeopleAdapter.ItemViewHolder> {
 
 	private static final int ITEM_LAYOUT = R.layout.item_search_people;
 
@@ -27,14 +28,7 @@ public final class SearchPeopleAdapter extends NormalPullAdapter<SearchPeopleIte
 	}
 
 	@Override
-	public RecyclerView.ViewHolder createNormalViewHolder(ViewGroup parent, int viewType) {
-		Context cxt = parent.getContext();
-		ItemSearchPeopleBinding binding = DataBindingUtil.inflate(LayoutInflater.from(cxt), ITEM_LAYOUT, parent, false);
-		return new SearchPeopleAdapter.ItemViewHolder(binding);
-	}
-
-	@Override
-	public void bindNormalViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+	public void bindNormalViewHolder(ItemViewHolder viewHolder, int position) {
 		final SearchPeopleItem people = getItem(position);
 		ItemViewHolder vh = (ItemViewHolder) viewHolder;
 		vh.mBinding.searchPeopleNickname.setText(people.getName());
@@ -47,6 +41,15 @@ public final class SearchPeopleAdapter extends NormalPullAdapter<SearchPeopleIte
 		});
 		vh.mBinding.executePendingBindings();
 	}
+
+	@Override
+	public ItemViewHolder createNormalViewHolder(ViewGroup parent, int viewType) {
+		Context cxt = parent.getContext();
+		ItemSearchPeopleBinding binding = DataBindingUtil.inflate(LayoutInflater.from(cxt), ITEM_LAYOUT, parent, false);
+		return new SearchPeopleAdapter.ItemViewHolder(binding);
+	}
+
+
 
 	private void goToDetail(Context context, String id) {
 		Intent intent = new Intent(context, UserDetailActivity.class);

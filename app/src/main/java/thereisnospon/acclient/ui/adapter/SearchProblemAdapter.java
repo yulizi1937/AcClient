@@ -12,6 +12,7 @@ import java.util.List;
 
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.base.adapter.NormalPullAdapter;
+import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
 import thereisnospon.acclient.data.ProblemItem;
 import thereisnospon.acclient.data.SearchProblem;
 import thereisnospon.acclient.databinding.ItemListProblemBinding;
@@ -20,7 +21,10 @@ import thereisnospon.acclient.modules.problem.detail.ShowProblemActivity;
 import thereisnospon.acclient.widget.Colors;
 
 
-public final class SearchProblemAdapter extends NormalPullAdapter<SearchProblem> {
+public final class SearchProblemAdapter extends BaseSwipeAdapter<SearchProblem,SearchProblemAdapter.VH> {
+
+
+
 
 
 	private static final int ITEM_LAYOUT = R.layout.item_list_problem;
@@ -30,14 +34,20 @@ public final class SearchProblemAdapter extends NormalPullAdapter<SearchProblem>
 	}
 
 	@Override
-	public RecyclerView.ViewHolder createNormalViewHolder(ViewGroup parent, int viewType) {
+	public VH createNormalViewHolder(ViewGroup parent, int viewType) {
 		Context cxt = parent.getContext();
 		ItemListProblemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(cxt), ITEM_LAYOUT, parent, false);
 		return new SearchProblemAdapter.VH(binding);
 	}
 
+	private void goToProblemDetail(Context context, int id) {
+		Intent intent = new Intent(context, ShowProblemActivity.class);
+		intent.putExtra(Arg.LOAD_PROBLEM_DETAIL, id);
+		context.startActivity(intent);
+	}
+
 	@Override
-	public void bindNormalViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+	public void bindNormalViewHolder(VH viewHolder, int position) {
 		VH vh = (VH) viewHolder;
 		final ProblemItem problem = getItem(position);
 		vh.mBinding.problemTitle.setOnClickListener(new View.OnClickListener() {
@@ -61,13 +71,6 @@ public final class SearchProblemAdapter extends NormalPullAdapter<SearchProblem>
 			vh.mBinding.problemId.setTextColor(Colors.GRAY);
 		}
 		vh.mBinding.executePendingBindings();
-	}
-
-
-	private void goToProblemDetail(Context context, int id) {
-		Intent intent = new Intent(context, ShowProblemActivity.class);
-		intent.putExtra(Arg.LOAD_PROBLEM_DETAIL, id);
-		context.startActivity(intent);
 	}
 
 	static final class VH extends RecyclerView.ViewHolder {

@@ -1,4 +1,4 @@
-package thereisnospon.acclient.modules.hello;
+package thereisnospon.acclient.modules.login;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,7 +9,7 @@ import android.widget.ImageView;
  * Created by yzr on 16/10/30.
  */
 
-interface HelloContact {
+interface LoginRegisterContact {
 
 
 	interface View {

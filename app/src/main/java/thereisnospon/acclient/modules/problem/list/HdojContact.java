@@ -2,28 +2,28 @@ package thereisnospon.acclient.modules.problem.list;
 
 import java.util.List;
 
+import thereisnospon.acclient.base.mvp.MvpPullPresenter;
+import thereisnospon.acclient.base.mvp.MvpPullView;
+import thereisnospon.acclient.base.mvp.MvpSwipeModel;
 import thereisnospon.acclient.data.HdojProblem;
 
 /**
+ * @author thereisnospon
+ * 显示首页 mvp 契约类
  * Created by yzr on 16/6/5.
  */
 
 public interface HdojContact {
 
-    public interface View{
-        void onMoreProblem(List<HdojProblem>list);
-        public void  onSuccess(List<HdojProblem> list);
-        public void  onFailure(String msg);
+    public interface View extends MvpPullView<HdojProblem>{
+
     }
 
-    public interface Presenter{
-        public void  loadMore();
-        public void  refresh();
+    public interface Presenter extends MvpPullPresenter<HdojProblem>{
         public void  loadPage(int page);
     }
-    public interface Model{
-        public List<HdojProblem>loadMore() ;
+
+    public interface Model extends MvpSwipeModel<HdojProblem>{
         public List<HdojProblem>loadPage(int page);
-        public List<HdojProblem>refresh();
     }
 }

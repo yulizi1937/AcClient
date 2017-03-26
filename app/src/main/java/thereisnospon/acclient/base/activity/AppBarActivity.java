@@ -16,8 +16,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.SearchView;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -30,7 +28,7 @@ import thereisnospon.acclient.R;
 import thereisnospon.acclient.databinding.DrawerActivityLayoutBinding;
 
 import thereisnospon.acclient.modules.discuss.DiscussActivity;
-import thereisnospon.acclient.modules.hello.LoginActivity;
+import thereisnospon.acclient.modules.login.LoginActivity;
 import thereisnospon.acclient.modules.personal.UserDetailActivity;
 import thereisnospon.acclient.modules.problem.list.HdojActivity;
 import thereisnospon.acclient.modules.rank.RankActivity;
@@ -38,15 +36,10 @@ import thereisnospon.acclient.modules.settings.SettingActivity;
 import thereisnospon.acclient.utils.AcClientActivityCompat;
 import thereisnospon.acclient.utils.SpUtil;
 
-
 /**
- * Created by xzhao on 11.11.16.
- */
-
-
-
-/**
+ * @author thereisnospon
  *  侧滑 Activity 基类
+ *  Created by xzhao on 11.11.16.
  */
 public abstract class AppBarActivity extends BasicActivity
 		implements NavigationView.OnNavigationItemSelectedListener{

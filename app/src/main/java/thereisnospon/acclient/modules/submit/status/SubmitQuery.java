@@ -1,6 +1,8 @@
 package thereisnospon.acclient.modules.submit.status;
 
 /**
+ * @author thereisnospon
+ * 提交状态查询命令类
  * Created by yzr on 16/7/30.
  */
 public class SubmitQuery {

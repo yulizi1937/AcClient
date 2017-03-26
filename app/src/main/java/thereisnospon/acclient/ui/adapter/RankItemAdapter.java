@@ -12,13 +12,18 @@ import java.util.List;
 
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.base.adapter.NormalPullAdapter;
+import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
 import thereisnospon.acclient.data.RankItem;
 import thereisnospon.acclient.databinding.ItemSearchPeopleBinding;
 import thereisnospon.acclient.event.Arg;
 import thereisnospon.acclient.modules.personal.UserDetailActivity;
 
 
-public final class RankItemAdapter extends NormalPullAdapter<RankItem> {
+/**
+ * @author threisnospon
+ * 排名模块 adapter
+ */
+public final class RankItemAdapter extends BaseSwipeAdapter<RankItem,RankItemAdapter.VH> {
 
 	private static final int ITEM_LAYOUT = R.layout.item_search_people;
 
@@ -27,27 +32,11 @@ public final class RankItemAdapter extends NormalPullAdapter<RankItem> {
 	}
 
 	@Override
-	public RecyclerView.ViewHolder createNormalViewHolder(ViewGroup parent, int viewType) {
+	public VH createNormalViewHolder(ViewGroup parent, int viewType) {
 		Context cxt = parent.getContext();
 		ItemSearchPeopleBinding binding = DataBindingUtil.inflate(LayoutInflater.from(cxt), ITEM_LAYOUT, parent, false);
 		return new RankItemAdapter.VH(binding);
 	}
-
-	@Override
-	public void bindNormalViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
-		VH vh = (VH) viewHolder;
-		final RankItem item = getItem(position);
-		vh.mBinding.searchPeopleNickname.setText(item.getName());
-		vh.mBinding.searchPeopleAc.setText(String.valueOf(item.getSolved()));
-		vh.mBinding.searchPeopleNickname.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				goToDetail(v.getContext(), item.getId());
-			}
-		});
-		vh.mBinding.executePendingBindings();
-	}
-
 
 	private void goToDetail(Context context, String id) {
 		Intent intent = new Intent(context, UserDetailActivity.class);
@@ -63,5 +52,20 @@ public final class RankItemAdapter extends NormalPullAdapter<RankItem> {
 			super(binding.getRoot());
 			mBinding = binding;
 		}
+	}
+
+	@Override
+	public void bindNormalViewHolder(VH viewHolder, int position) {
+		VH vh = (VH) viewHolder;
+		final RankItem item = getItem(position);
+		vh.mBinding.searchPeopleNickname.setText(item.getName());
+		vh.mBinding.searchPeopleAc.setText(String.valueOf(item.getSolved()));
+		vh.mBinding.searchPeopleNickname.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				goToDetail(v.getContext(), item.getId());
+			}
+		});
+		vh.mBinding.executePendingBindings();
 	}
 }

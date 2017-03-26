@@ -20,7 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".modules.hello.LoginActivity"
+            android:name=".modules.login.LoginActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.Hello">
             <intent-filter>
@@ -37,7 +37,7 @@
             android:name=".modules.problem.detail.ShowProblemActivity"
             android:launchMode="singleTask"/>
         <activity
-            android:name=".modules.personal.search.SearchPeopleActivity"
+            android:name=".modules.personal.search.SearchUserActivity"
             android:launchMode="singleTask"/>
         <activity
             android:name=".modules.personal.UserDetailActivity"
@@ -76,7 +76,7 @@
             android:label="@string/navi_notice"
             android:launchMode="singleTask"/>
         <activity
-            android:name=".modules.hello.RegisterActivity"
+            android:name=".modules.login.RegisterActivity"
             android:label="@string/navi_register"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.Hello"

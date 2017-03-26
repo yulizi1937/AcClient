@@ -10,6 +10,8 @@ import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
 import thereisnospon.acclient.base.pullswipe.BasicSwpiePullFragment;
 
 /**
+ * @author thereisnospon
+ * mvp 模式下具有上拉加载下拉刷新公共功能的 Fragment
  * Created by yzr on 17/3/26.
  */
 
@@ -23,7 +25,6 @@ public abstract class BaseMvpSwipeFragment<T>  extends BasicSwpiePullFragment im
     public void start() {
         presenter=createPresenter();
     }
-
 
     @Override
     public void loadMore() {

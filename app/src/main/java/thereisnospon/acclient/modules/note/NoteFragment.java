@@ -12,14 +12,19 @@ import java.util.List;
 
 import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.base.adapter.BasePullAdapter;
+import thereisnospon.acclient.base.fragment.BaseMvpSwipeFragment;
 import thereisnospon.acclient.base.fragment.NormalPullFragment;
+import thereisnospon.acclient.base.mvp.MvpPullPresenter;
+import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
 import thereisnospon.acclient.data.NoteItem;
 import thereisnospon.acclient.ui.adapter.NoteAdapter;
 
 /**
+ * @author thereisnospon
+ * @// TODO: 17/3/26
  * Created by yzr on 16/9/9.
  */
-public final class NoteFragment extends NormalPullFragment<NoteItem> implements NoteContact.View {
+public final class NoteFragment extends BaseMvpSwipeFragment<NoteItem> implements NoteContact.View {
 
 
     private NoteContact.Presenter presenter;
@@ -28,41 +33,14 @@ public final class NoteFragment extends NormalPullFragment<NoteItem> implements 
          return (NoteFragment) NoteFragment.instantiate(AppApplication.context, NoteFragment.class.getName());
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=normalView(inflater,container,savedInstanceState);
+    public MvpPullPresenter createPresenter() {
         presenter=new NotePresenter(this);
-        return view;
+        return presenter;
     }
 
     @Override
-    public BasePullAdapter<NoteItem> createItemAdapter(List<NoteItem> list) {
+    public BaseSwipeAdapter createAdapter(List list) {
         return new NoteAdapter(list);
-    }
-
-    @Override
-    public void loadMore() {
-        presenter.moreNotes();
-    }
-
-    @Override
-    public void refresh() {
-        presenter.refreshNotes();
-    }
-
-    @Override
-    public void onRefreshNotes(List<NoteItem> noteItemList) {
-        notifyRefreshData(noteItemList);
-    }
-
-    @Override
-    public void onMoreNotes(List<NoteItem> noteItems) {
-        notifyMoreData(noteItems);
-    }
-
-    @Override
-    public void onFailure(String msg) {
-        Logger.d(msg);
     }
 }

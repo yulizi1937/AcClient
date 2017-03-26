@@ -8,6 +8,8 @@ import rx.schedulers.Schedulers;
 import thereisnospon.acclient.data.UserInfo;
 
 /**
+ * @author thereisnospon
+ * 用户详细信息 Presenter
  * Created by yzr on 16/6/18.
  */
 public class UserDetailPresenter implements UserDetailContact.Presenter {

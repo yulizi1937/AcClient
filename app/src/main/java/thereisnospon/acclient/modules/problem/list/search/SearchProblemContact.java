@@ -5,6 +5,8 @@ import java.util.List;
 import thereisnospon.acclient.data.SearchProblem;
 
 /**
+ * @author thereisnospon
+ * 搜索题目 mvp 契约类
  * Created by yzr on 16/6/10.
  */
 public interface SearchProblemContact {

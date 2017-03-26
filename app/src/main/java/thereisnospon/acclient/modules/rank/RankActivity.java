@@ -3,16 +3,13 @@ package thereisnospon.acclient.modules.rank;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.widget.FrameLayout;
 
-import thereisnospon.acclient.R;
-import thereisnospon.acclient.base.activity.AppBarActivity;
 import thereisnospon.acclient.base.activity.SearchBarActivity;
-import thereisnospon.acclient.modules.personal.search.SearchPeopleFragment;
+import thereisnospon.acclient.modules.personal.search.SearchUserFragment;
 
 /**
  * Created by yzr on 16/8/27.
@@ -40,7 +37,7 @@ public final class RankActivity extends SearchBarActivity {
 
 	@Override
 	public boolean onQueryTextSubmit(String query) {
-		Fragment fragment = SearchPeopleFragment.newInstance(query);
+		Fragment fragment = SearchUserFragment.newInstance(query);
 		setupFragment(fragment);
 		return true;
 	}

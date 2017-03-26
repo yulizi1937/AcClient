@@ -20,12 +20,18 @@ import android.webkit.WebViewClient;
 
 import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.R;
+import thereisnospon.acclient.api.HdojApi;
+import thereisnospon.acclient.base.fragment.BasicFragment;
 import thereisnospon.acclient.databinding.FragmentProblemDetailBinding;
 
 /**
+ * @author thereisnospon
+ * i题目 Fragment,View
  * Created by yzr on 16/6/6.
  */
-public final class ShowProblemFragment extends Fragment implements ShowProblemContact.View,SwipeRefreshLayout.OnRefreshListener {
+public final class ShowProblemFragment extends BasicFragment implements ShowProblemContact.View,
+		SwipeRefreshLayout.OnRefreshListener {
+
 	private static final @LayoutRes int LAYOUT = R.layout.fragment_problem_detail;
 	private int id;
 	private FragmentProblemDetailBinding mBinding;
@@ -48,34 +54,20 @@ public final class ShowProblemFragment extends Fragment implements ShowProblemCo
 		presenter.loadProblemDetail(id);
 	}
 
+
 	@Override
-	public void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-		outState.putInt("id", id);
+	public int getLayoutRes() {
+		return 0;
 	}
 
 	@Override
-	public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
-		super.onViewStateRestored(savedInstanceState);
-		if (savedInstanceState == null) {
-			return;
-		}
-		id = savedInstanceState.getInt("id");
-	}
-
-	@Nullable
-	@Override
-	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		mBinding = DataBindingUtil.inflate(inflater, LAYOUT, container, false);
+	public View createView(ViewGroup container, Bundle savedInstanceState) {
+		mBinding = DataBindingUtil.inflate(LayoutInflater.from(container.getContext()), LAYOUT, container, false);
 		return mBinding.getRoot();
 	}
 
-
-	SwipeRefreshLayout mSwipeRefreshLayout;
 	@Override
-	public void onViewCreated(View view, Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
-
+	public void initView(View view, Bundle savedInstanceState) {
 
 		mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
 		mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary, R.color.colorPrimaryDark, R.color.colorAccent, R.color.colorGreen);
@@ -128,7 +120,6 @@ public final class ShowProblemFragment extends Fragment implements ShowProblemCo
 			@Override
 			public void onPageStarted(WebView view, String url, Bitmap favicon) {
 				super.onPageStarted(view, url, favicon);
-				//showPb();
 			}
 
 			@Override
@@ -143,13 +134,38 @@ public final class ShowProblemFragment extends Fragment implements ShowProblemCo
 				}, 500);
 			}
 		});
-
-
 	}
 
 	@Override
+	public void initData() {
+
+	}
+
+	private static final String SAVE_ID="save_probel_id";
+
+
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putInt(SAVE_ID, id);
+	}
+
+	@Override
+	public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+		super.onViewStateRestored(savedInstanceState);
+		if (savedInstanceState == null) {
+			return;
+		}
+		id = savedInstanceState.getInt(SAVE_ID);
+	}
+
+
+	SwipeRefreshLayout mSwipeRefreshLayout;
+
+
+	@Override
 	public void onSuccess(String html) {
-		mBinding.webView.loadDataWithBaseURL(null, html, "text/html", "gb2312", null);
+		mBinding.webView.loadDataWithBaseURL(null, html, "text/html", HdojApi.HTML_CHAR_SET, null);
 	}
 
 	@Override

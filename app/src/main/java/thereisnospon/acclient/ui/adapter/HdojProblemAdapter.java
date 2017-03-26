@@ -12,6 +12,7 @@ import java.util.List;
 
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.base.adapter.NormalPullAdapter;
+import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
 import thereisnospon.acclient.data.HdojProblem;
 import thereisnospon.acclient.data.ProblemItem;
 import thereisnospon.acclient.databinding.ItemListProblemBinding;
@@ -19,7 +20,12 @@ import thereisnospon.acclient.event.Arg;
 import thereisnospon.acclient.modules.problem.detail.ShowProblemActivity;
 import thereisnospon.acclient.widget.Colors;
 
-public final class HdojProblemAdapter extends NormalPullAdapter<HdojProblem> {
+
+/**
+ * @author thereisnospon
+ * 显示首页界面的 Adapter
+ */
+public final class HdojProblemAdapter extends BaseSwipeAdapter<HdojProblem,HdojProblemAdapter.VH> {
 
 	private static final int ITEM_LAYOUT = R.layout.item_list_problem;
 
@@ -28,14 +34,29 @@ public final class HdojProblemAdapter extends NormalPullAdapter<HdojProblem> {
 	}
 
 	@Override
-	public RecyclerView.ViewHolder createNormalViewHolder(ViewGroup parent, int viewType) {
+	public VH createNormalViewHolder(ViewGroup parent, int viewType) {
 		Context cxt = parent.getContext();
 		ItemListProblemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(cxt), ITEM_LAYOUT, parent, false);
 		return new HdojProblemAdapter.VH(binding);
 	}
 
+	private void goToProblemDetail(Context context, int id) {
+		Intent intent = new Intent(context, ShowProblemActivity.class);
+		intent.putExtra(Arg.LOAD_PROBLEM_DETAIL, id);
+		context.startActivity(intent);
+	}
+
+	static final class VH extends RecyclerView.ViewHolder {
+		private final ItemListProblemBinding mBinding;
+
+		private VH(ItemListProblemBinding binding) {
+			super(binding.getRoot());
+			mBinding = binding;
+		}
+	}
+
 	@Override
-	public void bindNormalViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+	public void bindNormalViewHolder(VH viewHolder, int position) {
 		VH vh = (VH) viewHolder;
 		final ProblemItem problem = getItem(position);
 		vh.itemView.setOnClickListener(new View.OnClickListener() {
@@ -59,20 +80,5 @@ public final class HdojProblemAdapter extends NormalPullAdapter<HdojProblem> {
 			vh.mBinding.problemId.setTextColor(Colors.GRAY);
 		}
 		vh.mBinding.executePendingBindings();
-	}
-
-	private void goToProblemDetail(Context context, int id) {
-		Intent intent = new Intent(context, ShowProblemActivity.class);
-		intent.putExtra(Arg.LOAD_PROBLEM_DETAIL, id);
-		context.startActivity(intent);
-	}
-
-	static final class VH extends RecyclerView.ViewHolder {
-		private final ItemListProblemBinding mBinding;
-
-		private VH(ItemListProblemBinding binding) {
-			super(binding.getRoot());
-			mBinding = binding;
-		}
 	}
 }

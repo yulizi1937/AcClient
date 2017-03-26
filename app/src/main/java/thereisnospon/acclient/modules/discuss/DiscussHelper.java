@@ -17,6 +17,8 @@ import rx.schedulers.Schedulers;
 import thereisnospon.acclient.utils.net.HttpUtil;
 
 /**
+ * @author therisnospon
+ * 辅助类: 前往查看指定 url 处的讨论区内容
  * Created by yzr on 16/11/3.
  */
 
@@ -26,6 +28,8 @@ public class DiscussHelper {
         void onSuccess(String code);
         void onFailure(String err);
     }
+
+
 
     public static void toDiscuss(final String url, final DiscussCall call){
         Observable.just(url)

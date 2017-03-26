@@ -8,6 +8,8 @@ import thereisnospon.acclient.data.ProblemDetailBuilder;
 import thereisnospon.acclient.utils.net.HttpUtil;
 
 /**
+ * @author thereisnospon
+ * 显示题目 Model
  * Created by yzr on 16/6/6.
  */
 public class ShowProblemModel implements ShowProblemContact.Model {

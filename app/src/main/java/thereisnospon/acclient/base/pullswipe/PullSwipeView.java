@@ -18,6 +18,9 @@ import java.util.List;
 import jp.wasabeef.recyclerview.adapters.AnimationAdapter;
 
 /**
+ * @author thereisnospon
+ * 上拉加载下拉刷新View
+ * 通过组合 SwipeRefreshLayout 与 RecycleView 实现
  * Created by yzr on 17/3/26.
  */
 
@@ -77,6 +80,7 @@ public class PullSwipeView extends FrameLayout implements SwipeRefreshLayout.OnR
         }
     }
 
+    // 刷新，加载，和判断是否需要加载的 回调
     public interface  PullSwipeListener {
         public void  loadMore();
         public void  refresh();
@@ -93,6 +97,8 @@ public class PullSwipeView extends FrameLayout implements SwipeRefreshLayout.OnR
         initInner(swipeRefreshLayout,recyclerView);
     }
 
+    //可以自己提供 RecycleView 和 SwipeRefreshLayout
+    //使用前先把它们的 child, parent 清理
     public void init(SwipeRefreshLayout swipeRefreshLayout, RecyclerView recyclerView){
         swipeRefreshLayout.removeAllViews();
         ViewGroup viewParent=(ViewGroup)recyclerView.getParent();
@@ -109,6 +115,7 @@ public class PullSwipeView extends FrameLayout implements SwipeRefreshLayout.OnR
         mSwipeRefreshLayout.addView(mRecyclerView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         this.addView(mSwipeRefreshLayout, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
+        //SwipeRefresLayout 圆形进度条的颜色
         mSwipeRefreshLayout.setColorSchemeColors(
                 Color.parseColor("#3F51B5"),
                 Color.parseColor("#303F9F"),
@@ -128,9 +135,11 @@ public class PullSwipeView extends FrameLayout implements SwipeRefreshLayout.OnR
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+                //已经拉到了最底部并且还在上拉且有更多数据
                 if (dy>0&&mCurrentState == ACTION_IDLE&&
                         isLoadMoreEnabled && checkIfNeedLoadMore()&&hasMore()) {
                     mCurrentState = ACTION_LOAD_MORE;
+                    //通知 adapter 改变状态
                     mSwipeAdapter.onLoadMoreStateChange(true);
                     mSwipeRefreshLayout.setEnabled(false);
                     if(mListener!=null)
@@ -140,13 +149,15 @@ public class PullSwipeView extends FrameLayout implements SwipeRefreshLayout.OnR
         });
     }
 
-
-
+    //判断是否需要加载
     private boolean checkIfNeedLoadMore() {
+        //找到当前可见的最后的 item 的位置
         int lastVisibleItemPosition = findLastVisibleItem(mLayoutManager);
         int totalCount = mLayoutManager.getItemCount();
+        //如果滑到了最后的一个
         return totalCount - lastVisibleItemPosition < 2;
     }
+
 
     int findLastVisibleItem(RecyclerView.LayoutManager laoutManager){
         if(laoutManager instanceof LinearLayoutManager){
@@ -220,8 +231,6 @@ public class PullSwipeView extends FrameLayout implements SwipeRefreshLayout.OnR
                 mListener.refresh();
         }
     }
-
-
 
     public void onRefreshCompleted() {
         switch (mCurrentState) {

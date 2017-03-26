@@ -1,4 +1,4 @@
-package thereisnospon.acclient.modules.hello;
+package thereisnospon.acclient.modules.login;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.transition.AutoTransition;
 import android.support.transition.Scene;
@@ -31,10 +32,16 @@ import thereisnospon.acclient.widget.TransitionListenerAdapter;
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 import static android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP;
 import static android.os.Bundle.EMPTY;
-import static thereisnospon.acclient.modules.hello.ErrorConstants.NO_EMPTY_PASSWORD;
-import static thereisnospon.acclient.modules.hello.ErrorConstants.NO_EMPTY_USERNAME;
+import static thereisnospon.acclient.modules.login.ErrorConstants.NO_EMPTY_PASSWORD;
+import static thereisnospon.acclient.modules.login.ErrorConstants.NO_EMPTY_USERNAME;
 
-public final class LoginActivity extends BaseActivity {
+
+
+/**
+ * @author thereisnospon,xzhao
+ * 登陆 Activity
+ */
+public final class LoginActivity extends BaseLoginRegisterActivity {
 	private static final int LAYOUT = R.layout.activity_hello;
 	private static final int DURATION = 500;
 	private Scene login;
@@ -56,14 +63,22 @@ public final class LoginActivity extends BaseActivity {
 		ActivityCompat.startActivity(cxt, intent, EMPTY);
 	}
 
+
+	private static final String SAVE_ID="login_saved_id";
+	private static final String SAVE_PASS="login_saved_pass";
+	private static final String SAVE_NICK="longin_saved_nick";
+	private static final String SAVE_REMEMBER="login_saved_remember";
+	private static final String SAVE_SHOWLOGIN="login_saved_showlogin";
+
+
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		outState.putString("id", id);
-		outState.putString("pass", pass);
-		outState.putString("nickname", nickname);
-		outState.putBoolean("rememberPas", rememberPas);
-		outState.putBoolean("isShowLoginUI", isShowLoginUI);
+		outState.putString(SAVE_ID, id);
+		outState.putString(SAVE_PASS, pass);
+		outState.putString(SAVE_NICK, nickname);
+		outState.putBoolean(SAVE_REMEMBER, rememberPas);
+		outState.putBoolean(SAVE_SHOWLOGIN, isShowLoginUI);
 	}
 
 	@Override
@@ -72,28 +87,13 @@ public final class LoginActivity extends BaseActivity {
 		if (savedInstanceState == null) {
 			return;
 		}
-		id = savedInstanceState.getString("id");
-		pass = savedInstanceState.getString("pass");
-		nickname = savedInstanceState.getString("nickname");
-		rememberPas = savedInstanceState.getBoolean("rememberPas");
-		isShowLoginUI = savedInstanceState.getBoolean("isShowLoginUI");
+		id = savedInstanceState.getString(SAVE_ID);
+		pass = savedInstanceState.getString(SAVE_PASS);
+		nickname = savedInstanceState.getString(SAVE_NICK);
+		rememberPas = savedInstanceState.getBoolean(SAVE_PASS);
+		isShowLoginUI = savedInstanceState.getBoolean(SAVE_SHOWLOGIN);
 	}
 
-
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		mBinding = DataBindingUtil.setContentView(this, LAYOUT);
-		presenter = new HelloPresenter(this);
-		initScene();
-		initView();
-		Intent intent = getIntent();
-		if (intent.hasExtra(Arg.RE_LOGIN)) {
-			reLogin();
-		} else {
-			tryLogin();
-		}
-	}
 
 	private void initScene() {
 		Scene.getSceneForLayout(mBinding.sceneRoot, R.layout.activity_hello_scene_index, this);
@@ -113,7 +113,7 @@ public final class LoginActivity extends BaseActivity {
 	}
 
 
-	private void initView() {
+	private void initUi() {
 		mLoginBinding.registerButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -156,9 +156,11 @@ public final class LoginActivity extends BaseActivity {
 		handler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
+				//是否已经记住密码
 				if (checkRemembered()) {
 					presenter.login(id, pass);
 				} else {
+					//显示登陆的ui
 					showLoginUI();
 				}
 			}
@@ -170,6 +172,7 @@ public final class LoginActivity extends BaseActivity {
 	}
 
 
+	//查看是否已经记住密码
 	private boolean checkRemembered() {
 		SpUtil sp = SpUtil.getInstance();
 		id = sp.getString(SpUtil.NAME);
@@ -180,6 +183,7 @@ public final class LoginActivity extends BaseActivity {
 	}
 
 
+	//显示登陆界面的Ui
 	private void showLoginUI() {
 		isShowLoginUI = true;
 		TransitionSet transitionSet = new TransitionSet();
@@ -189,7 +193,7 @@ public final class LoginActivity extends BaseActivity {
 			@Override
 			public void onTransitionEnd(Transition transition) {
 				super.onTransitionEnd(transition);
-				initView();
+				initUi();
 			}
 		});
 		TransitionManager.go(login, transitionSet);
@@ -269,5 +273,26 @@ public final class LoginActivity extends BaseActivity {
 	public void afterLogin() {
 		super.afterLogin();
 		updateUIWhenLogin(true);
+	}
+
+
+	@Override
+	public void initView(@Nullable Bundle savedInstanceState) {
+		mBinding = DataBindingUtil.setContentView(this, LAYOUT);
+		presenter = new LoginRegisterPresenter(this);
+		initScene();
+		initUi();
+		Intent intent = getIntent();
+
+		if (intent.hasExtra(Arg.RE_LOGIN)) {
+			reLogin();//重新登陆
+		} else {
+			tryLogin();//尝试登陆
+		}
+	}
+
+	@Override
+	public void initData(@Nullable Bundle savedInstanceState) {
+
 	}
 }

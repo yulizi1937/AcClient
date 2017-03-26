@@ -13,7 +13,7 @@
         android:alpha="1"
         android:background="@color/colorPrimary"
         android:orientation="vertical"
-        tools:context="thereisnospon.acclient.modules.hello.LoginActivity">
+        tools:context="thereisnospon.acclient.modules.login.LoginActivity">
 
         <ImageView
             style="@style/HelloLogo"/>

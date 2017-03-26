@@ -17,9 +17,11 @@ import thereisnospon.acclient.utils.net.HttpUtil;
 import thereisnospon.acclient.utils.net.request.IRequest;
 
 /**
+ * @author thereisnospon
+ * 搜索用户 Model
  * Created by yzr on 16/6/16.
  */
-public class SearchPeopleModel implements SearchPeopleContact.Model {
+public class SearchUserModel implements SearchUserContact.Model {
 
     public static final int PRE_PAGE_NUM=30;
     private List<SearchPeopleItem> peopleItems;

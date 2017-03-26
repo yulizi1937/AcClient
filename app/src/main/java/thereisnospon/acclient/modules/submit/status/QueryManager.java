@@ -6,6 +6,8 @@ import thereisnospon.acclient.api.HdojApi;
 import thereisnospon.acclient.data.SubmmitStatus;
 
 /**
+ * @author thereisnospon
+ * 管理提交状态查询
  * Created by yzr on 16/8/2.
  */
 public class QueryManager {

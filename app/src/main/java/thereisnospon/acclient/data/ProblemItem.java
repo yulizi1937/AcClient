@@ -1,9 +1,10 @@
 package thereisnospon.acclient.data;
 
 /**
+ * @author thereisnospon
+ * 问题 Bean
  * Created by yzr on 16/6/10.
  */
-
 
 public class ProblemItem {
     @Override

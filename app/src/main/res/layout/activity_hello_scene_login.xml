@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:alpha="1"
             android:orientation="vertical"
-            tools:context="thereisnospon.acclient.modules.hello.LoginActivity">
+            tools:context="thereisnospon.acclient.modules.login.LoginActivity">
 
             <ImageView
                 style="@style/HelloLogo"/>

@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * @author thereisnospon
+ * 笔记 Bean
+ * @// TODO: 17/3/26
  * Created by yzr on 16/9/9.
  */
 public class NoteItem
