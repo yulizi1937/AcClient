@@ -3,7 +3,6 @@ package thereisnospon.acclient.ui.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +11,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import thereisnospon.acclient.R;
-import thereisnospon.acclient.base.adapter.NormalSwipeAdapter;
+import thereisnospon.acclient.base.adapter.NormalPullAdapter;
 import thereisnospon.acclient.data.HdojProblem;
 import thereisnospon.acclient.data.ProblemItem;
 import thereisnospon.acclient.databinding.ItemListProblemBinding;
@@ -20,7 +19,7 @@ import thereisnospon.acclient.event.Arg;
 import thereisnospon.acclient.modules.problem.detail.ShowProblemActivity;
 import thereisnospon.acclient.widget.Colors;
 
-public final class HdojProblemAdapter extends NormalSwipeAdapter<HdojProblem> {
+public final class HdojProblemAdapter extends NormalPullAdapter<HdojProblem> {
 
 	private static final int ITEM_LAYOUT = R.layout.item_list_problem;
 

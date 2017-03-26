@@ -32,22 +32,21 @@ public class DiscussPresenter implements DiscussContact.Presenter {
     }
 
 
-
     @Override
-    public void refreshDiscuss() {
+    public void requestRefresh() {
         Observable.just(1)
                 .observeOn(Schedulers.io())
                 .map(new Func1<Integer, List<DiscussItem>>() {
                     @Override
                     public List<DiscussItem> call(Integer integer) {
-                        return model.refreshDiscuss();
+                        return model.requestRefresh();
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new LoadListCallback<List<DiscussItem>>() {
                     @Override
                     public void onSuccess(List<DiscussItem> discussItems) {
-                        view.onRefreshDiscuss(discussItems);
+                        view.onRefreshSuccess(discussItems);
                     }
                     @Override
                     public void onFailure(String err) {
@@ -57,20 +56,20 @@ public class DiscussPresenter implements DiscussContact.Presenter {
     }
 
     @Override
-    public void moreDiscuss() {
+    public void requestMore() {
         Observable.just(1)
                 .observeOn(Schedulers.io())
                 .map(new Func1<Integer, List<DiscussItem>>() {
                     @Override
                     public List<DiscussItem> call(Integer integer) {
-                        return model.moreDisucss();
+                        return model.requestMore();
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new LoadListCallback<List<DiscussItem>>() {
                     @Override
                     public void onSuccess(List<DiscussItem> discussItems) {
-                        view.onMoreDiscuss(discussItems);
+                        view.onMoreSuccess(discussItems);
                     }
                     @Override
                     public void onFailure(String err) {
@@ -78,4 +77,6 @@ public class DiscussPresenter implements DiscussContact.Presenter {
                     }
                 });
     }
+
+
 }

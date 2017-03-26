@@ -11,15 +11,15 @@ import com.orhanobut.logger.Logger;
 import java.util.List;
 
 import thereisnospon.acclient.AppApplication;
-import thereisnospon.acclient.base.adapter.BaseSwipeAdapter;
-import thereisnospon.acclient.base.fragment.NormalSwipeFragment;
+import thereisnospon.acclient.base.adapter.BasePullAdapter;
+import thereisnospon.acclient.base.fragment.NormalPullFragment;
 import thereisnospon.acclient.data.NoteItem;
 import thereisnospon.acclient.ui.adapter.NoteAdapter;
 
 /**
  * Created by yzr on 16/9/9.
  */
-public final class NoteFragment extends NormalSwipeFragment<NoteItem> implements NoteContact.View {
+public final class NoteFragment extends NormalPullFragment<NoteItem> implements NoteContact.View {
 
 
     private NoteContact.Presenter presenter;
@@ -37,7 +37,7 @@ public final class NoteFragment extends NormalSwipeFragment<NoteItem> implements
     }
 
     @Override
-    public BaseSwipeAdapter<NoteItem> createItemAdapter(List<NoteItem> list) {
+    public BasePullAdapter<NoteItem> createItemAdapter(List<NoteItem> list) {
         return new NoteAdapter(list);
     }
 
@@ -53,12 +53,12 @@ public final class NoteFragment extends NormalSwipeFragment<NoteItem> implements
 
     @Override
     public void onRefreshNotes(List<NoteItem> noteItemList) {
-        onRefreshData(noteItemList);
+        notifyRefreshData(noteItemList);
     }
 
     @Override
     public void onMoreNotes(List<NoteItem> noteItems) {
-        onMoreData(noteItems);
+        notifyMoreData(noteItems);
     }
 
     @Override

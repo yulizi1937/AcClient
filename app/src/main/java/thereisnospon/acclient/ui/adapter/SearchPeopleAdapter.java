@@ -11,14 +11,14 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import thereisnospon.acclient.R;
-import thereisnospon.acclient.base.adapter.NormalSwipeAdapter;
+import thereisnospon.acclient.base.adapter.NormalPullAdapter;
 import thereisnospon.acclient.data.SearchPeopleItem;
 import thereisnospon.acclient.databinding.ItemSearchPeopleBinding;
 import thereisnospon.acclient.event.Arg;
 import thereisnospon.acclient.modules.personal.UserDetailActivity;
 
 
-public final class SearchPeopleAdapter extends NormalSwipeAdapter<SearchPeopleItem> {
+public final class SearchPeopleAdapter extends NormalPullAdapter<SearchPeopleItem> {
 
 	private static final int ITEM_LAYOUT = R.layout.item_search_people;
 

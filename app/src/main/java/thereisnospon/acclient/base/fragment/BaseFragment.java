@@ -12,12 +12,5 @@ import thereisnospon.acclient.event.Event;
  */
 public abstract class BaseFragment extends Fragment{
 
-    public void observerEvent(){
-        EventBus.getDefault().register(this);
-    }
 
-    @Subscribe
-    public void onEvent(Event event){
-
-    }
 }

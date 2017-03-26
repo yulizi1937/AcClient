@@ -24,8 +24,8 @@ public final class CodeActivity extends AppBarActivity {
 
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void beforeCreate() {
+        super.beforeCreate();
         EventBus.getDefault().register(this);
     }
 

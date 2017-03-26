@@ -9,15 +9,15 @@ import android.view.ViewGroup;
 import java.util.List;
 
 
-import thereisnospon.acclient.base.adapter.BaseSwipeAdapter;
-import thereisnospon.acclient.base.fragment.NormalSwipeFragment;
+import thereisnospon.acclient.base.adapter.BasePullAdapter;
+import thereisnospon.acclient.base.fragment.NormalPullFragment;
 import thereisnospon.acclient.data.SearchProblem;
 import thereisnospon.acclient.ui.adapter.SearchProblemAdapter;
 
 /**
  * Created by yzr on 16/6/10.
  */
-public class SearchProblemFragment extends NormalSwipeFragment<SearchProblem>
+public class SearchProblemFragment extends NormalPullFragment<SearchProblem>
         implements SearchProblemContact.View{
 
     SearchProblemContact.Presenter presenter;
@@ -45,12 +45,12 @@ public class SearchProblemFragment extends NormalSwipeFragment<SearchProblem>
 
     @Override
     public void loadSccess(List<SearchProblem> list) {
-       onMoreData(list);
+       notifyMoreData(list);
     }
 
     @Override
     public void refreshSuccess(List<SearchProblem> list) {
-       onRefreshData(list);
+       notifyRefreshData(list);
     }
 
     @Override
@@ -59,7 +59,7 @@ public class SearchProblemFragment extends NormalSwipeFragment<SearchProblem>
     }
 
     @Override
-    public BaseSwipeAdapter<SearchProblem> createItemAdapter(List<SearchProblem> list) {
+    public BasePullAdapter<SearchProblem> createItemAdapter(List<SearchProblem> list) {
         return new SearchProblemAdapter(list);
     }
 

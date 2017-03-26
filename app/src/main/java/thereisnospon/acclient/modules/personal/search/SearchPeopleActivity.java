@@ -7,8 +7,9 @@ import android.widget.TextView;
 
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.base.activity.AppBarActivity;
+import thereisnospon.acclient.base.activity.SearchBarActivity;
 
-public final class SearchPeopleActivity extends AppBarActivity {
+public final class SearchPeopleActivity extends SearchBarActivity {
 	@Override
 	protected void setupContent(@NonNull FrameLayout contentLayout) {
 		TextView textView = new TextView(this);
@@ -18,9 +19,10 @@ public final class SearchPeopleActivity extends AppBarActivity {
 		params.gravity = Gravity.CENTER;
 	}
 
+
 	@Override
-	protected boolean supportSearch() {
-		return true;
+	public boolean onQueryTextChange(String newText) {
+		return false;
 	}
 
 	@Override

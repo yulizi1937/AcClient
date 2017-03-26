@@ -22,6 +22,7 @@ import com.orhanobut.logger.Logger;
 
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.base.activity.AppBarActivity;
+import thereisnospon.acclient.base.activity.SearchBarActivity;
 import thereisnospon.acclient.event.Arg;
 import thereisnospon.acclient.modules.problem.detail.ShowProblemActivity;
 import thereisnospon.acclient.modules.problem.list.search.SearchProblemFragment;
@@ -35,7 +36,7 @@ import static android.os.Bundle.EMPTY;
 /**
  * Created by yzr on 16/6/5.
  */
-public final class HdojActivity extends AppBarActivity {
+public final class HdojActivity extends SearchBarActivity {
 	private static final String TAG = "HdojActivity";
 	private boolean first = true;
 
@@ -97,10 +98,7 @@ public final class HdojActivity extends AppBarActivity {
 		getMenuInflater().inflate(R.menu.problem_list_menu, menu);
 	}
 
-	@Override
-	protected boolean supportSearch() {
-		return true;
-	}
+
 
 
 	private void showPageDialog() {
@@ -159,6 +157,11 @@ public final class HdojActivity extends AppBarActivity {
 		}
 	}
 
+
+	@Override
+	public boolean onQueryTextChange(String newText) {
+		return false;
+	}
 
 	private void showIdDialog() {
 

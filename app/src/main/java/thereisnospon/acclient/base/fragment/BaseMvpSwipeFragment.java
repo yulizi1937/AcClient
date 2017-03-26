@@ -1,0 +1,59 @@
+package thereisnospon.acclient.base.fragment;
+
+import android.util.Log;
+
+import java.util.List;
+
+import thereisnospon.acclient.base.mvp.MvpPullPresenter;
+import thereisnospon.acclient.base.mvp.MvpPullView;
+import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
+import thereisnospon.acclient.base.pullswipe.BasicSwpiePullFragment;
+
+/**
+ * Created by yzr on 17/3/26.
+ */
+
+public abstract class BaseMvpSwipeFragment<T>  extends BasicSwpiePullFragment implements MvpPullView<T> {
+
+    MvpPullPresenter presenter;
+
+    public abstract MvpPullPresenter createPresenter();
+
+    @Override
+    public void start() {
+        presenter=createPresenter();
+    }
+
+
+    @Override
+    public void loadMore() {
+        presenter.requestMore();
+    }
+
+    @Override
+    public void refresh() {
+        presenter.requestRefresh();
+    }
+
+    @Override
+    public boolean hasMore() {
+        return true;
+    }
+
+    @Override
+    public void onFailure(String msg) {
+        Log.e("ERROR",msg);
+    }
+
+    @Override
+    public void onMoreSuccess(List<T> list) {
+        onMoreData(list);
+    }
+
+    @Override
+    public void onRefreshSuccess(List<T> list) {
+        onRefreshData(list);
+    }
+
+
+}

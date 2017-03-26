@@ -1,17 +1,19 @@
-package thereisnospon.acclient.base.adapter;
+package thereisnospon.acclient.base.pullswipe;
 
+import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import thereisnospon.acclient.R;
+import java.util.List;
 
 /**
- * Created by yzr on 16/8/20.
+ * Created by yzr on 17/3/26.
  */
-public abstract class BaseSwipeAdapter<T>
+
+public abstract class AbstractSwipeAdapter<T,VH extends RecyclerView.ViewHolder>
         extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static final int FOOTER_TYPE=1000;
@@ -32,7 +34,7 @@ public abstract class BaseSwipeAdapter<T>
         if(isShowFooter&&position==getItemCount()-1){
             bindFooterViewHolder(holder);
         }else {
-            bindNormalViewHolder(holder,position);
+            bindNormalViewHolder((VH)holder,position);
         }
     }
 
@@ -53,31 +55,19 @@ public abstract class BaseSwipeAdapter<T>
     public abstract int getNormalItemViewType(int position);
     public abstract int getNormalItemCount();
 
+    public abstract RecyclerView.ViewHolder createFooterViewHolder(ViewGroup parent);
+    public abstract void  bindFootViewHolder(RecyclerView.ViewHolder holder);
 
-
-    private static class FooterViewHolder extends RecyclerView.ViewHolder{
-        public FooterViewHolder(View itemView) {
-            super(itemView);
-        }
-    }
-
-    RecyclerView.ViewHolder createFooterViewHolder(ViewGroup parent){
-        View view= LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_footer,parent,false);
-        return new FooterViewHolder(view);
-    }
-
-
-    void bindFooterViewHolder(RecyclerView.ViewHolder holder){
+    private void bindFooterViewHolder(RecyclerView.ViewHolder holder){
         if (holder.itemView.getLayoutParams() instanceof StaggeredGridLayoutManager.LayoutParams) {
             StaggeredGridLayoutManager.LayoutParams params = (StaggeredGridLayoutManager.LayoutParams) holder.itemView.getLayoutParams();
             params.setFullSpan(true);
         }
     }
 
-    public abstract RecyclerView.ViewHolder createNormalViewHolder(ViewGroup parent,int viewType);
+    public abstract VH  createNormalViewHolder(ViewGroup parent, int viewType);
 
-    public abstract void bindNormalViewHolder(RecyclerView.ViewHolder viewHolder,int position);
+    public abstract void bindNormalViewHolder(VH viewHolder,int position);
 
     public boolean isFooter(int position){
         return isShowFooter&&position==getItemCount()-1;
@@ -91,5 +81,12 @@ public abstract class BaseSwipeAdapter<T>
             notifyItemRemoved(getItemCount());
         }
     }
+
+    public<T extends View> T inflateView(ViewGroup parent, @LayoutRes int res){
+        return(T) LayoutInflater.from(parent.getContext()).inflate(res,parent,false);
+    }
+
+    public abstract void  onMoreData(List<T> list);
+    public abstract void  onRefreshData(List<T> list);
 
 }

@@ -9,13 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import thereisnospon.acclient.R;
-import thereisnospon.acclient.base.fragment.BaseSwipeFragment;
 
 /**
  * Created by yzr on 16/8/20.
+ * 实现了基本功能的 下拉刷新，上拉加载的 Fragment 基类
  */
-public abstract class NormalSwipeFragment<T>extends BaseSwipeFragment<T> {
 
+public abstract class NormalPullFragment<T>extends BasePullFragment<T> {
 
 
     public View normalView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -24,7 +24,6 @@ public abstract class NormalSwipeFragment<T>extends BaseSwipeFragment<T> {
         initRefreshViews(view,R.id.normal_list_swipe,R.id.normal_list_recycle);
         return view;
     }
-
 
     @Nullable
     @Override
@@ -36,6 +35,5 @@ public abstract class NormalSwipeFragment<T>extends BaseSwipeFragment<T> {
     public RecyclerView.LayoutManager createLayoutManager() {
         return new LinearLayoutManager(getActivity());
     }
-
 
 }

@@ -10,16 +10,18 @@ import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
-import thereisnospon.acclient.base.adapter.BaseSwipeAdapter;
-import thereisnospon.acclient.base.fragment.NormalSwipeFragment;
+import thereisnospon.acclient.base.adapter.BasePullAdapter;
+import thereisnospon.acclient.base.fragment.BaseMvpSwipeFragment;
+import thereisnospon.acclient.base.fragment.NormalPullFragment;
+import thereisnospon.acclient.base.mvp.MvpPullPresenter;
+import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
 import thereisnospon.acclient.data.DiscussItem;
 import thereisnospon.acclient.ui.adapter.DiscussItemAdapter;
 
 /**
  * Created by yzr on 16/9/9.
  */
-public final class DiscussFragment extends NormalSwipeFragment<DiscussItem> implements DiscussContact.View{
-
+public final class DiscussFragment extends BaseMvpSwipeFragment<DiscussItem> implements DiscussContact.View{
 
 	private DiscussContact.Presenter presenter;
 	private String pid;
@@ -33,6 +35,7 @@ public final class DiscussFragment extends NormalSwipeFragment<DiscussItem> impl
         fragment.pid=problemid;
         return fragment;
     }
+
 
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
@@ -48,40 +51,14 @@ public final class DiscussFragment extends NormalSwipeFragment<DiscussItem> impl
 		}
 	}
 
-	@Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public MvpPullPresenter createPresenter() {
         presenter=new DiscussPresenter(this,pid);
-        return normalView(inflater,container,savedInstanceState);
+        return presenter;
     }
 
     @Override
-    public BaseSwipeAdapter<DiscussItem> createItemAdapter(List<DiscussItem> list) {
+    public BaseSwipeAdapter createAdapter(List list) {
         return new DiscussItemAdapter(list);
-    }
-
-    @Override
-    public void loadMore() {
-        presenter.moreDiscuss();
-    }
-
-    @Override
-    public void refresh() {
-        presenter.refreshDiscuss();
-    }
-
-    @Override
-    public void onRefreshDiscuss(List<DiscussItem> discussItems) {
-        onRefreshData(discussItems);
-    }
-
-    @Override
-    public void onMoreDiscuss(List<DiscussItem> discussItems) {
-        onMoreData(discussItems);
-    }
-
-    @Override
-    public void onFailure(String err) {
-        Logger.d(err);
     }
 }

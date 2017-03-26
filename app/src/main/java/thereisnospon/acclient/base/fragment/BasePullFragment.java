@@ -14,17 +14,18 @@ import java.util.List;
 
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
 import thereisnospon.acclient.R;
-import thereisnospon.acclient.base.adapter.BaseSwipeAdapter;
+import thereisnospon.acclient.base.adapter.BasePullAdapter;
 
 /**
  * Created by yzr on 16/8/20.
+ * 需要 下拉刷新，上拉加载，进入自动初始化加载的功能的 Fragment 的基础类
  */
-public abstract class BaseSwipeFragment<T> extends Fragment
+public abstract class BasePullFragment<T> extends BaseFragment
         implements SwipeRefreshLayout.OnRefreshListener{
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
-    private BaseSwipeAdapter<T> mSwipeAdapter;
+    private BasePullAdapter<T> mSwipeAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private List<T> mDataList;
 
@@ -36,6 +37,15 @@ public abstract class BaseSwipeFragment<T> extends Fragment
 
     private boolean isLoadMoreEnabled = true;
     private boolean isPullToRefreshEnabled = true;
+
+    // 子类实现 RecycleView 显示的 Adapter
+    public abstract BasePullAdapter<T> createItemAdapter(List<T>list);
+    public abstract RecyclerView.LayoutManager createLayoutManager();
+
+    //需要加载更多数据时回调
+    public abstract void loadMore();
+    //需要刷新数据时回调
+    public abstract void refresh();
 
 
     public void initRefreshViews(View parent, @IdRes int swiperRefreshLayout,
@@ -98,7 +108,7 @@ public abstract class BaseSwipeFragment<T> extends Fragment
     }
 
 
-    public void setAdapter(BaseSwipeAdapter<T>adapter) {
+    public void setAdapter(BasePullAdapter<T> adapter) {
         this.mSwipeAdapter = adapter;
         mRecyclerView.setAdapter(new ScaleInAnimationAdapter(adapter));
     }
@@ -114,10 +124,10 @@ public abstract class BaseSwipeFragment<T> extends Fragment
     }
 
     private class FooterSpanSizeLookup extends GridLayoutManager.SpanSizeLookup {
-        private BaseSwipeAdapter<?> adapter;
+        private BasePullAdapter<?> adapter;
         private int spanCount;
 
-        public FooterSpanSizeLookup(BaseSwipeAdapter<?> adapter, int spanCount) {
+        public FooterSpanSizeLookup(BasePullAdapter<?> adapter, int spanCount) {
             this.adapter = adapter;
             this.spanCount = spanCount;
         }
@@ -139,14 +149,10 @@ public abstract class BaseSwipeFragment<T> extends Fragment
         mSwipeRefreshLayout.setEnabled(enable);
     }
 
-    public abstract   BaseSwipeAdapter<T> createItemAdapter(List<T>list);
-    public abstract   RecyclerView.LayoutManager createLayoutManager();
-
-
-
     public boolean hasMore(){
         return true;
     }
+
 
     @Override
     final public void onRefresh() {
@@ -157,16 +163,15 @@ public abstract class BaseSwipeFragment<T> extends Fragment
         }
     }
 
-    public abstract void loadMore();
-    public abstract void refresh();
 
-    final public void onMoreData(List<T>list){
+
+    final public void notifyMoreData(List<T>list){
         mDataList.addAll(list);
         mSwipeAdapter.notifyDataSetChanged();
         onRefreshCompleted();
     }
 
-    final public void onRefreshData(List<T>list){
+    final public void notifyRefreshData(List<T>list){
         mDataList.clear();
         mDataList.addAll(list);
         mSwipeAdapter.notifyDataSetChanged();
@@ -188,6 +193,7 @@ public abstract class BaseSwipeFragment<T> extends Fragment
         }
         mCurrentState = ACTION_IDLE;
     }
+
 
     public void setRefreshing() {
         mSwipeRefreshLayout.post(new Runnable() {

@@ -29,7 +29,7 @@ public class DiscussModel implements DiscussContact.Model {
     }
 
     @Override
-    public List<DiscussItem> refreshDiscuss() {
+    public List<DiscussItem> requestRefresh() {
         currentpage=1;
         List<DiscussItem>list=getList(getHtml(currentpage));
         if(list!=null&&list.size()>0){
@@ -38,20 +38,22 @@ public class DiscussModel implements DiscussContact.Model {
         return list;
     }
 
-
-    private List<DiscussItem>getList(String html){
-       return html==null?null:DiscussItem.Builder.parse(html);
-    }
-
-
     @Override
-    public List<DiscussItem> moreDisucss() {
+    public List<DiscussItem> requestMore() {
         List<DiscussItem>list=getList(getHtml(currentpage+1));
         if(list!=null&&list.size()>0){
             currentpage++;
         }
         return list;
     }
+
+
+
+
+    private List<DiscussItem>getList(String html){
+       return html==null?null:DiscussItem.Builder.parse(html);
+    }
+
 
     private String getHtml(int page){
 

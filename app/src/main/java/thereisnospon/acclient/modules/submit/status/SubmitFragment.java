@@ -7,14 +7,14 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import thereisnospon.acclient.base.adapter.BaseSwipeAdapter;
-import thereisnospon.acclient.base.fragment.NormalSwipeFragment;
+import thereisnospon.acclient.base.adapter.BasePullAdapter;
+import thereisnospon.acclient.base.fragment.NormalPullFragment;
 import thereisnospon.acclient.data.SubmmitStatus;
 
 import thereisnospon.acclient.ui.adapter.SubmitStatusAdapter;
 
 
-public class SubmitFragment extends NormalSwipeFragment<SubmmitStatus>
+public class SubmitFragment extends NormalPullFragment<SubmmitStatus>
 
 implements  SubmitStatusContact.View{
 
@@ -38,13 +38,13 @@ implements  SubmitStatusContact.View{
 
     @Override
     public void onMoreStatus(List<SubmmitStatus> statusList) {
-       onMoreData(statusList);
+       notifyMoreData(statusList);
 
     }
 
     @Override
     public void onRefreshStatus(List<SubmmitStatus> statusList) {
-      onRefreshData(statusList);
+      notifyRefreshData(statusList);
     }
 
 
@@ -55,7 +55,7 @@ implements  SubmitStatusContact.View{
     }
 
     @Override
-    public BaseSwipeAdapter<SubmmitStatus> createItemAdapter(List<SubmmitStatus> list) {
+    public BasePullAdapter<SubmmitStatus> createItemAdapter(List<SubmmitStatus> list) {
         return new SubmitStatusAdapter(list);
     }
 

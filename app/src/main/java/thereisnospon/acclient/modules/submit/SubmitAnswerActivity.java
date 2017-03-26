@@ -175,7 +175,7 @@ public final class SubmitAnswerActivity extends AppBarActivity implements View.O
 		params.gravity = GravityCompat.END | Gravity.BOTTOM ;
 
 		mBinding.submitCode.setOnFocusChangeListener(this);
-		mBinding.scrollView.setOnScrollChangeListener(this);
+		//mBinding.scrollView.setOnScrollChangeListener(this);
 	}
 
 	@Override

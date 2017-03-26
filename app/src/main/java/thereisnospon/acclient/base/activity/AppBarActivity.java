@@ -26,6 +26,7 @@ import android.widget.TextView;
 import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.databinding.AppBarLayoutBinding;
+import thereisnospon.acclient.databinding.DrawerActivityLayoutBinding;
 import thereisnospon.acclient.event.Arg;
 import thereisnospon.acclient.modules.discuss.DiscussActivity;
 import thereisnospon.acclient.modules.hello.LoginActivity;
@@ -39,14 +40,35 @@ import thereisnospon.acclient.utils.SpUtil;
 /**
  * Created by xzhao on 11.11.16.
  */
-public abstract class AppBarActivity extends ThemeActivity implements NavigationView.OnNavigationItemSelectedListener,
-                                                                      SearchView.OnQueryTextListener {
 
-	private static final @LayoutRes int LAYOUT = R.layout.activity_appbar;
+/**
+ *  侧滑 Activity 基类
+ */
+public abstract class AppBarActivity extends BasicActivity
+		implements NavigationView.OnNavigationItemSelectedListener{
+
+	private static final @LayoutRes int LAYOUT = R.layout.activity_abstract_drawer;
+
 	private String id;
 	private String nickname;
-	private AppBarLayoutBinding mBinding;
+	private DrawerActivityLayoutBinding mBinding;
 	private boolean mPaused;
+
+
+	//子类 Activity 设置自己的布局
+	protected abstract void setupContent(@NonNull FrameLayout contentLayout);
+
+
+	protected final void setupFragment(@IdRes int container, @NonNull Fragment fragment) {
+		getSupportFragmentManager().beginTransaction()
+				.replace(container, fragment)
+				.commit();
+	}
+
+	protected final void setupFragment(@NonNull Fragment fragment) {
+		setupFragment(R.id.appbar_content, fragment);
+	}
+
 
 	@Override
 	protected void onPause() {
@@ -54,11 +76,13 @@ public abstract class AppBarActivity extends ThemeActivity implements Navigation
 		mPaused = true;
 	}
 
+
 	@Override
 	protected void onResume() {
 		super.onResume();
 		mPaused = false;
 	}
+
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
@@ -77,43 +101,53 @@ public abstract class AppBarActivity extends ThemeActivity implements Navigation
 		nickname = savedInstanceState.getString("nickname");
 	}
 
+
 	@Override
-	protected void onCreate(@Nullable Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+	final  public void initView(@Nullable Bundle savedInstanceState) {
 		mBinding = DataBindingUtil.setContentView(this, LAYOUT);
-		setupMain();
+		setupContent(mBinding.appbarContent);
+		setupActionBar();
+		mBinding.navigation.navView.setNavigationItemSelectedListener(this);
+		setupDrawerHeader();
 		setupContent(mBinding.appbarContent);
 	}
 
-	private void setupMain() {
+
+	@Override
+	final public void initData(@Nullable Bundle savedInstanceState) {
 		SpUtil util = SpUtil.getInstance();
 		this.id = util.getString(SpUtil.NAME);
 		this.nickname = util.getString(SpUtil.PASS);
+	}
+
+	private void setupDrawerHeader(){
+
+		View headerView = mBinding.navigation.navView.getHeaderView(0);
+		TextView textView = (TextView) headerView.findViewById(R.id.drawer_header_name);
+		textView.setText(SpUtil.getInstance().getString(SpUtil.NICKNAME));
+		headerView.findViewById(R.id.btn_logout)
+				.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						if (mPaused) {
+							return;
+						}
+						SpUtil.getInstance().putString(SpUtil.PASS, null, new SharedPreferences.OnSharedPreferenceChangeListener() {
+							@Override
+							public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+								AcClientActivityCompat.finishAffinityCompat(AppBarActivity.this, AppApplication.context.activityStack);
+								LoginActivity.showInstance(AppBarActivity.this, true);
+							}
+						});
+					}
+				});
+	}
+
+	private void setupActionBar(){
 		setSupportActionBar(mBinding.appbar.toolbar);
 		ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mBinding.drawerLayout, mBinding.appbar.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 		mBinding.drawerLayout.addDrawerListener(toggle);
 		toggle.syncState();
-		mBinding.navigation.navView.setNavigationItemSelectedListener(this);
-
-		View headerView = mBinding.navigation.navView.getHeaderView(0);
-		TextView textView = (TextView) headerView.findViewById(R.id.drawer_header_name);
-		textView.setText(util.getString(SpUtil.NICKNAME));
-		headerView.findViewById(R.id.btn_logout)
-		          .setOnClickListener(new View.OnClickListener() {
-			          @Override
-			          public void onClick(View view) {
-				          if (mPaused) {
-					          return;
-				          }
-				          SpUtil.getInstance().putString(SpUtil.PASS, null, new SharedPreferences.OnSharedPreferenceChangeListener() {
-					          @Override
-					          public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
-						          AcClientActivityCompat.finishAffinityCompat(AppBarActivity.this, AppApplication.context.activityStack);
-						          LoginActivity.showInstance(AppBarActivity.this, true);
-					          }
-				          });
-			          }
-		          });
 	}
 
 
@@ -138,16 +172,9 @@ public abstract class AppBarActivity extends ThemeActivity implements Navigation
 			case R.id.menu_share:
 				share();
 				break;
-			/*case R.id.menu_about:
-				Intent intent1 = new Intent(this, AboutActivity.class);
-				startActivity(intent1);
-				break;*/
 			case R.id.menu_setting:
 				SettingActivity.showInstance(this);
 				break;
-            /*case R.id.menu_note:
-                intent=new Intent(this, NoteActivity.class);
-                break;*/
 		}
 		mBinding.drawerLayout.closeDrawer(GravityCompat.START);
 		if (intent != null) {
@@ -155,6 +182,8 @@ public abstract class AppBarActivity extends ThemeActivity implements Navigation
 		}
 		return true;
 	}
+
+
 
 	private void share() {
 		Intent intent = new Intent(Intent.ACTION_SEND);
@@ -165,91 +194,49 @@ public abstract class AppBarActivity extends ThemeActivity implements Navigation
 		startActivity(Intent.createChooser(intent, getString(R.string.share_app)));
 	}
 
-	protected abstract void setupContent(@NonNull FrameLayout contentLayout);
-
-	protected final void setupFragment(@IdRes int container, @NonNull Fragment fragment) {
-		getSupportFragmentManager().beginTransaction()
-		                           .replace(container, fragment)
-		                           .commit();
-	}
-
-
-	protected final void setupFragment(@NonNull Fragment fragment) {
-		setupFragment(R.id.appbar_content, fragment);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		if (supportSearch()) {
-			inflateSearchMenu(menu);
-			initSearch(menu);
-		}
-		return super.onCreateOptionsMenu(menu);
-	}
-
-	private void initSearch(Menu menu) {
-		final MenuItem searchItem = menu.findItem(R.id.ab_search);
-		SearchView searchview = (SearchView) searchItem.getActionView();
-		searchview.setOnQueryTextListener(this);
-	}
-
 	protected void addViewToCoordinatorLayout(View addView) {
 		mBinding.coordinatorLayout.addView(addView);
 	}
 
-	@Override
-	public boolean onQueryTextChange(String newText) {
-		return false;
-	}
-
-	protected boolean supportSearch() {
-		return false;
-	}
-
-	protected void inflateSearchMenu(@NonNull  Menu menu) {
-		getMenuInflater().inflate(R.menu.toolbar_menu, menu);
-	}
-	@Override
-	public boolean onQueryTextSubmit(String query) {
-		return false;
-	}
 
 	protected void showShortSnackbar(@StringRes int message, @StringRes int buttonLabel, @NonNull View.OnClickListener clickListener) {
 		Snackbar.make(mBinding.drawerLayout, message, Snackbar.LENGTH_SHORT)
-		        .setAction(buttonLabel, clickListener)
-		        .show();
+				.setAction(buttonLabel, clickListener)
+				.show();
 	}
 
 	protected void showShortSnackbar(@StringRes int message ) {
 		Snackbar.make(mBinding.drawerLayout, message, Snackbar.LENGTH_SHORT)
-		        .show();
+				.show();
 	}
 
 
 	protected void showLongSnackbar(@StringRes int message, @StringRes int buttonLabel, @NonNull View.OnClickListener clickListener) {
 		Snackbar.make(mBinding.drawerLayout, message, Snackbar.LENGTH_LONG)
-		        .setAction(buttonLabel, clickListener)
-		        .show();
+				.setAction(buttonLabel, clickListener)
+				.show();
 	}
 
 	protected void showLongSnackbar(@StringRes int message ) {
 		Snackbar.make(mBinding.drawerLayout, message, Snackbar.LENGTH_LONG)
-		        .show();
+				.show();
 	}
-
 
 	protected void showIndefiniteSnackbar(@StringRes int message, @StringRes int buttonLabel, @NonNull View.OnClickListener clickListener) {
 		Snackbar.make(mBinding.drawerLayout, message, Snackbar.LENGTH_INDEFINITE)
-		        .setAction(buttonLabel, clickListener)
-		        .show();
+				.setAction(buttonLabel, clickListener)
+				.show();
 	}
 
 	protected void showIndefiniteSnackbar(@StringRes int message ) {
 		Snackbar.make(mBinding.drawerLayout, message, Snackbar.LENGTH_LONG)
-		        .show();
+				.show();
 	}
 
 	protected void setActivityBackgroundColor(@ColorRes int colorRes) {
 		mBinding.coordinatorLayout.setBackgroundColor(ResourcesCompat.getColor(getResources(),colorRes, getTheme()));
 	}
+
+
+
 }

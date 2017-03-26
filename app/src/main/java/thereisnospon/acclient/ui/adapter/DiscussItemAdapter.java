@@ -12,7 +12,8 @@ import android.widget.Toast;
 import java.util.List;
 
 import thereisnospon.acclient.R;
-import thereisnospon.acclient.base.adapter.NormalSwipeAdapter;
+import thereisnospon.acclient.base.adapter.NormalPullAdapter;
+import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
 import thereisnospon.acclient.data.DiscussItem;
 import thereisnospon.acclient.databinding.ItemDiscussBinding;
 import thereisnospon.acclient.event.Arg;
@@ -20,7 +21,7 @@ import thereisnospon.acclient.modules.discuss.DiscussHelper;
 import thereisnospon.acclient.modules.code.CodeActivity;
 
 
-public final class DiscussItemAdapter extends NormalSwipeAdapter<DiscussItem> {
+public final class DiscussItemAdapter extends BaseSwipeAdapter<DiscussItem,DiscussItemAdapter.VH> {
 
 	private static final int ITEM_LAYOUT = R.layout.item_discuss;
 
@@ -28,15 +29,17 @@ public final class DiscussItemAdapter extends NormalSwipeAdapter<DiscussItem> {
 		super(list);
 	}
 
+
 	@Override
-	public RecyclerView.ViewHolder createNormalViewHolder(ViewGroup parent, int viewType) {
+	public VH createNormalViewHolder(ViewGroup parent, int viewType) {
 		Context cxt = parent.getContext();
 		ItemDiscussBinding binding = DataBindingUtil.inflate(LayoutInflater.from(cxt), ITEM_LAYOUT, parent, false);
 		return new VH(binding);
 	}
 
+
 	@Override
-	public void bindNormalViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+	public void bindNormalViewHolder(VH viewHolder, int position) {
 		final DiscussItem discussItem = getItem(position);
 		final VH vh = (VH) viewHolder;
 		vh.mBinding.discussPid.setText(discussItem.getPid());
@@ -51,6 +54,7 @@ public final class DiscussItemAdapter extends NormalSwipeAdapter<DiscussItem> {
 		});
 		vh.mBinding.executePendingBindings();
 	}
+
 
 	private void toDiscuss(final Context context, String url) {
 

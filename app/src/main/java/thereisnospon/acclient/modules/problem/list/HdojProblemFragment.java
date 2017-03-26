@@ -14,15 +14,15 @@ import java.util.List;
 
 import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.R;
-import thereisnospon.acclient.base.adapter.BaseSwipeAdapter;
-import thereisnospon.acclient.base.fragment.BaseSwipeFragment;
+import thereisnospon.acclient.base.adapter.BasePullAdapter;
+import thereisnospon.acclient.base.fragment.BasePullFragment;
 import thereisnospon.acclient.data.HdojProblem;
 import thereisnospon.acclient.ui.adapter.HdojProblemAdapter;
 
 /**
  * Created by yzr on 16/6/5.
  */
-public final class HdojProblemFragment extends BaseSwipeFragment<HdojProblem> implements  HdojContact.View{
+public final class HdojProblemFragment extends BasePullFragment<HdojProblem> implements  HdojContact.View{
     private static final int INDEX=-1;
     private HdojContact.Presenter presenter;
     private int page=INDEX;
@@ -70,7 +70,7 @@ public final class HdojProblemFragment extends BaseSwipeFragment<HdojProblem> im
 
     @Override
     public void onSuccess(List<HdojProblem> list) {
-       onRefreshData(list);
+       notifyRefreshData(list);
     }
 
     @Override
@@ -81,11 +81,11 @@ public final class HdojProblemFragment extends BaseSwipeFragment<HdojProblem> im
 
     @Override
     public void onMoreProblem(List<HdojProblem> list) {
-        onMoreData(list);
+        notifyMoreData(list);
     }
 
     @Override
-    public BaseSwipeAdapter<HdojProblem> createItemAdapter(List<HdojProblem> list) {
+    public BasePullAdapter<HdojProblem> createItemAdapter(List<HdojProblem> list) {
         return new HdojProblemAdapter(list);
     }
 

@@ -9,12 +9,12 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import thereisnospon.acclient.R;
-import thereisnospon.acclient.base.adapter.NormalSwipeAdapter;
+import thereisnospon.acclient.base.adapter.NormalPullAdapter;
 import thereisnospon.acclient.data.NoteItem;
 import thereisnospon.acclient.databinding.ItemNoteBinding;
 
 
-public final class NoteAdapter extends NormalSwipeAdapter<NoteItem> {
+public final class NoteAdapter extends NormalPullAdapter<NoteItem> {
 
 
 	private static final int ITEM_LAYOUT = R.layout.item_note;

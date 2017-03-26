@@ -11,15 +11,15 @@ import com.orhanobut.logger.Logger;
 import java.util.List;
 
 import thereisnospon.acclient.AppApplication;
-import thereisnospon.acclient.base.adapter.BaseSwipeAdapter;
-import thereisnospon.acclient.base.fragment.NormalSwipeFragment;
+import thereisnospon.acclient.base.adapter.BasePullAdapter;
+import thereisnospon.acclient.base.fragment.NormalPullFragment;
 import thereisnospon.acclient.data.RankItem;
 import thereisnospon.acclient.ui.adapter.RankItemAdapter;
 
 /**
  * Created by yzr on 16/8/27.
  */
-public class RankFragment extends NormalSwipeFragment  implements RankContact.View{
+public class RankFragment extends NormalPullFragment implements RankContact.View{
 
 
     RankContact.Presenter presenter;
@@ -38,7 +38,7 @@ public class RankFragment extends NormalSwipeFragment  implements RankContact.Vi
     }
 
     @Override
-    public BaseSwipeAdapter createItemAdapter(List list) {
+    public BasePullAdapter createItemAdapter(List list) {
         return new RankItemAdapter(list);
     }
 
@@ -59,13 +59,13 @@ public class RankFragment extends NormalSwipeFragment  implements RankContact.Vi
     @Override
     public void onRefreshRankSuccess(List<RankItem> list) {
         Logger.d("refresh success");
-        onRefreshData(list);
+        notifyRefreshData(list);
     }
 
     @Override
     public void onMoreRanks(List<RankItem> list) {
         Logger.d("more ranks");
-        onMoreData(list);
+        notifyMoreData(list);
     }
 
     @Override

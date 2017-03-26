@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.view.MotionEvent;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 
@@ -14,6 +15,7 @@ import thereisnospon.acclient.base.activity.AppBarActivity;
 
 public final class AboutActivity extends AppBarActivity {
 
+	
 
 	private static final String ABOUT = "<!DOCTYPE html>\n" +
 			"<html>\n" +

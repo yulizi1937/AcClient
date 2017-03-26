@@ -27,6 +27,7 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
         </activity>
         <activity
             android:name=".modules.problem.list.HdojActivity"
@@ -84,6 +85,10 @@
             android:name=".modules.licenses.LicensesActivity"
             android:label="@string/navi_software_licenses"
             android:launchMode="singleTask"/>
+
+        <activity android:name=".base.activity.DemoActivity">
+
+        </activity>
     </application>
 
 </manifest>

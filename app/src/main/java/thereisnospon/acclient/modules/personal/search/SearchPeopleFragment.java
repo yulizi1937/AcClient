@@ -14,15 +14,15 @@ import java.util.List;
 
 import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.R;
-import thereisnospon.acclient.base.adapter.BaseSwipeAdapter;
-import thereisnospon.acclient.base.fragment.BaseSwipeFragment;
+import thereisnospon.acclient.base.adapter.BasePullAdapter;
+import thereisnospon.acclient.base.fragment.BasePullFragment;
 import thereisnospon.acclient.data.SearchPeopleItem;
 import thereisnospon.acclient.ui.adapter.SearchPeopleAdapter;
 
 /**
  * Created by yzr on 16/6/16.
  */
-public class SearchPeopleFragment extends BaseSwipeFragment<SearchPeopleItem>
+public class SearchPeopleFragment extends BasePullFragment<SearchPeopleItem>
         implements  SearchPeopleContact.View{
 
     private static final String TAG="SearchPeopleContact";
@@ -62,7 +62,7 @@ public class SearchPeopleFragment extends BaseSwipeFragment<SearchPeopleItem>
     }
 
     @Override
-    public BaseSwipeAdapter<SearchPeopleItem> createItemAdapter(List<SearchPeopleItem> list) {
+    public BasePullAdapter<SearchPeopleItem> createItemAdapter(List<SearchPeopleItem> list) {
         return new SearchPeopleAdapter(list);
     }
 
@@ -86,13 +86,13 @@ public class SearchPeopleFragment extends BaseSwipeFragment<SearchPeopleItem>
     @Override
     public void refreshPeople(List<SearchPeopleItem> list) {
         Logger.d("refresh people");
-        onRefreshData(list);
+        notifyRefreshData(list);
     }
 
     @Override
     public void loadMorePeople(List<SearchPeopleItem> list) {
         Logger.d("load more people");
-        onMoreData(list);
+        notifyMoreData(list);
     }
 
     @Override

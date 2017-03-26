@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
@@ -19,6 +20,7 @@ public abstract class BaseActivity extends AppCompatActivity implements HelloCon
 	@SuppressWarnings("WeakerAccess") protected HelloContact.Presenter presenter;
 
 	private void createToast() {
+
 		if (mLoadToast == null) {
 			mLoadToast = createLoadToast(this);
 		}
