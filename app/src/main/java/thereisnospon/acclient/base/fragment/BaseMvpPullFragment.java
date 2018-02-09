@@ -6,8 +6,7 @@ import java.util.List;
 
 import thereisnospon.acclient.base.mvp.MvpPullPresenter;
 import thereisnospon.acclient.base.mvp.MvpPullView;
-import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
-import thereisnospon.acclient.base.pullswipe.BasicSwpiePullFragment;
+import thereisnospon.acclient.base.pullswipe.BasePullFragment;
 
 /**
  * @author thereisnospon
@@ -15,7 +14,7 @@ import thereisnospon.acclient.base.pullswipe.BasicSwpiePullFragment;
  * Created by yzr on 17/3/26.
  */
 
-public abstract class BaseMvpSwipeFragment<T>  extends BasicSwpiePullFragment implements MvpPullView<T> {
+public abstract class BaseMvpPullFragment<T>  extends BasePullFragment implements MvpPullView<T> {
 
     MvpPullPresenter presenter;
 

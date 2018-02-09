@@ -10,6 +10,7 @@ import okhttp3.Cookie;
 /**
  * Created by yzr on 16/6/5.
  */
+
 public class SerializableHttpCookie implements Serializable {
     private transient final Cookie cookies;
     private transient Cookie clientCookies;

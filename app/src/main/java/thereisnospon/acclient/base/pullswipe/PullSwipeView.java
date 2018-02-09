@@ -28,7 +28,7 @@ public class PullSwipeView extends FrameLayout implements SwipeRefreshLayout.OnR
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
-    private AbstractSwipeAdapter mSwipeAdapter;
+    private AbsPullAdapter mSwipeAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
     private PullSwipeListener mListener;
@@ -59,14 +59,14 @@ public class PullSwipeView extends FrameLayout implements SwipeRefreshLayout.OnR
         return mRecyclerView;
     }
 
-    public void setAdapter(AbstractSwipeAdapter adapter){
+    public void setAdapter(AbsPullAdapter adapter){
         mSwipeAdapter=adapter;
         mRecyclerView.setAdapter(mSwipeAdapter);
     }
 
 
     public void setAnimationAdapter (AnimationAdapter adapter){
-        AbstractSwipeAdapter innerAdapter=(AbstractSwipeAdapter) adapter.getWrappedAdapter();
+        AbsPullAdapter innerAdapter=(AbsPullAdapter) adapter.getWrappedAdapter();
         mSwipeAdapter=innerAdapter;
         mRecyclerView.setAdapter(adapter);
     }
@@ -178,10 +178,10 @@ public class PullSwipeView extends FrameLayout implements SwipeRefreshLayout.OnR
 
 
     private class FooterSpanSizeLookup extends GridLayoutManager.SpanSizeLookup {
-        private AbstractSwipeAdapter adapter;
+        private AbsPullAdapter adapter;
         private int spanCount;
 
-        public FooterSpanSizeLookup(AbstractSwipeAdapter adapter, int spanCount) {
+        public FooterSpanSizeLookup(AbsPullAdapter adapter, int spanCount) {
             this.adapter = adapter;
             this.spanCount = spanCount;
         }

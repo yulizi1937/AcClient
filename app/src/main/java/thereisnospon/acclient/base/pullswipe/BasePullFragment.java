@@ -9,11 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
-import retrofit.http.PUT;
 import thereisnospon.acclient.R;
-import thereisnospon.acclient.base.fragment.BasicFragment;
-import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
-import thereisnospon.acclient.base.pullswipe.PullSwipeView;
+import thereisnospon.acclient.base.fragment.BaseFragment;
 
 /**
  * @author thereisnospon
@@ -21,11 +18,11 @@ import thereisnospon.acclient.base.pullswipe.PullSwipeView;
  * Created by yzr on 17/3/26.
  */
 
-public abstract class BasicSwpiePullFragment extends BasicFragment implements PullSwipeView.PullSwipeListener{
+public abstract class BasePullFragment extends BaseFragment implements PullSwipeView.PullSwipeListener{
 
     PullSwipeView pullSwipeView;
     private List list;
-    private BaseSwipeAdapter adapter;
+    private BasePullAdapter adapter;
 
     @Override
     public int getLayoutRes() {
@@ -33,7 +30,7 @@ public abstract class BasicSwpiePullFragment extends BasicFragment implements Pu
     }
 
     //子类提供 Adapter
-    public abstract BaseSwipeAdapter createAdapter(List list);
+    public abstract BasePullAdapter createAdapter(List list);
 
 
     @Override

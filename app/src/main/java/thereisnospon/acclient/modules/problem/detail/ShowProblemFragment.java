@@ -7,13 +7,10 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -21,7 +18,7 @@ import android.webkit.WebViewClient;
 import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.R;
 import thereisnospon.acclient.api.HdojApi;
-import thereisnospon.acclient.base.fragment.BasicFragment;
+import thereisnospon.acclient.base.fragment.BaseFragment;
 import thereisnospon.acclient.databinding.FragmentProblemDetailBinding;
 
 /**
@@ -29,7 +26,7 @@ import thereisnospon.acclient.databinding.FragmentProblemDetailBinding;
  * i题目 Fragment,View
  * Created by yzr on 16/6/6.
  */
-public final class ShowProblemFragment extends BasicFragment implements ShowProblemContact.View,
+public final class ShowProblemFragment extends BaseFragment implements ShowProblemContact.View,
 		SwipeRefreshLayout.OnRefreshListener {
 
 	private static final @LayoutRes int LAYOUT = R.layout.fragment_problem_detail;

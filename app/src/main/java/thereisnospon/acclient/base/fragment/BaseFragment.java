@@ -21,7 +21,7 @@ import thereisnospon.acclient.base.util.SavedField;
  * Created by yzr on 17/3/26.
  */
 
-public  abstract class BasicFragment  extends Fragment{
+public  abstract class BaseFragment extends Fragment{
 
 
     @Nullable

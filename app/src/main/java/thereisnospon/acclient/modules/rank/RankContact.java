@@ -1,11 +1,8 @@
 package thereisnospon.acclient.modules.rank;
 
-import java.util.List;
-
-import thereisnospon.acclient.base.mvp.MvpModel;
 import thereisnospon.acclient.base.mvp.MvpPullPresenter;
 import thereisnospon.acclient.base.mvp.MvpPullView;
-import thereisnospon.acclient.base.mvp.MvpSwipeModel;
+import thereisnospon.acclient.base.mvp.MvpPullModel;
 import thereisnospon.acclient.data.RankItem;
 
 /**
@@ -20,7 +17,7 @@ public interface RankContact {
 
     }
 
-    interface Model extends MvpSwipeModel<RankItem> {
+    interface Model extends MvpPullModel<RankItem> {
 
     }
 

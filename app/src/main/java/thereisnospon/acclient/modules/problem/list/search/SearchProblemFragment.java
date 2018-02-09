@@ -1,18 +1,13 @@
 package thereisnospon.acclient.modules.problem.list.search;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import java.util.List;
 
 
-import thereisnospon.acclient.base.adapter.BasePullAdapter;
-import thereisnospon.acclient.base.fragment.NormalPullFragment;
-import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
-import thereisnospon.acclient.base.pullswipe.BasicSwpiePullFragment;
+
+import thereisnospon.acclient.base.pullswipe.BasePullAdapter;
+import thereisnospon.acclient.base.pullswipe.BasePullFragment;
 import thereisnospon.acclient.data.SearchProblem;
 import thereisnospon.acclient.ui.adapter.SearchProblemAdapter;
 
@@ -21,7 +16,7 @@ import thereisnospon.acclient.ui.adapter.SearchProblemAdapter;
  * 搜索题目 Fragment
  * Created by yzr on 16/6/10.
  */
-public class SearchProblemFragment extends BasicSwpiePullFragment
+public class SearchProblemFragment extends BasePullFragment
         implements SearchProblemContact.View{
 
     SearchProblemContact.Presenter presenter;
@@ -85,7 +80,7 @@ public class SearchProblemFragment extends BasicSwpiePullFragment
 
 
     @Override
-    public BaseSwipeAdapter createAdapter(List list) {
+    public BasePullAdapter createAdapter(List list) {
         return new SearchProblemAdapter(list);
     }
 

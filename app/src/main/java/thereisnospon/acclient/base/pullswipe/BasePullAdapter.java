@@ -17,14 +17,14 @@ import thereisnospon.acclient.R;
  * Created by yzr on 17/3/26.
  */
 
-public abstract class BaseSwipeAdapter<T,VH extends  RecyclerView.ViewHolder> extends AbstractSwipeAdapter<T,VH> {
+public abstract class BasePullAdapter<T,VH extends  RecyclerView.ViewHolder> extends AbsPullAdapter<T,VH> {
 
     List<T> datas;
 
     @LayoutRes
     private static final int DEFAULT_FOOTVIEW_ID= R.layout.lib_pullswipe_default_footview;
 
-    public BaseSwipeAdapter(List<T> datas) {
+    public BasePullAdapter(List<T> datas) {
         this.datas = datas;
     }
 

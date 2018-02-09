@@ -12,8 +12,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import thereisnospon.acclient.R;
-import thereisnospon.acclient.base.adapter.NormalPullAdapter;
-import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
+import thereisnospon.acclient.base.pullswipe.BasePullAdapter;
 import thereisnospon.acclient.data.SubmmitStatus;
 import thereisnospon.acclient.databinding.ItemSubmmitStatusBinding;
 import thereisnospon.acclient.event.Arg;
@@ -21,7 +20,7 @@ import thereisnospon.acclient.modules.code.CodeActivity;
 import thereisnospon.acclient.utils.SpUtil;
 
 
-public final class SubmitStatusAdapter extends BaseSwipeAdapter<SubmmitStatus,SubmitStatusAdapter.ItemViewHolder> {
+public final class SubmitStatusAdapter extends BasePullAdapter<SubmmitStatus,SubmitStatusAdapter.ItemViewHolder> {
 
 
 	private static final int ITEM_LAYOUT = R.layout.item_submmit_status;

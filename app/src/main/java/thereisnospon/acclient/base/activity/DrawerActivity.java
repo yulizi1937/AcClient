@@ -37,7 +37,7 @@ import thereisnospon.acclient.utils.SpUtil;
  *  侧滑 Activity 基类
  *  Created by xzhao on 11.11.16.
  */
-public abstract class DrawerActivity extends BasicActivity
+public abstract class DrawerActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
     private static final @LayoutRes int LAYOUT = R.layout.activity_abstract_drawer;

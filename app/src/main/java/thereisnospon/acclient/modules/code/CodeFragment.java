@@ -13,7 +13,7 @@ import org.greenrobot.eventbus.Subscribe;
 
 import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.R;
-import thereisnospon.acclient.base.fragment.BasicFragment;
+import thereisnospon.acclient.base.fragment.BaseFragment;
 import thereisnospon.acclient.databinding.FragmentShowcodeBinding;
 import thereisnospon.acclient.event.Event;
 import thereisnospon.acclient.event.EventCode;
@@ -27,7 +27,7 @@ import thereisnospon.codeview.CodeViewTheme;
  * 可以指定本地 代码内容 String 格式
  * 可以指定网站上 id 代表的 代码内容
  */
-public final class CodeFragment extends BasicFragment implements CodeContact.View {
+public final class CodeFragment extends BaseFragment implements CodeContact.View {
 
 
 	private CodeContact.Presenter presenter;

@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import thereisnospon.acclient.R;
-import thereisnospon.acclient.base.adapter.NormalPullAdapter;
-import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
+
+import thereisnospon.acclient.base.pullswipe.BasePullAdapter;
 import thereisnospon.acclient.data.HdojProblem;
 import thereisnospon.acclient.data.ProblemItem;
 import thereisnospon.acclient.databinding.ItemListProblemBinding;
@@ -25,7 +25,7 @@ import thereisnospon.acclient.widget.Colors;
  * @author thereisnospon
  * 显示首页界面的 Adapter
  */
-public final class HdojProblemAdapter extends BaseSwipeAdapter<HdojProblem,HdojProblemAdapter.VH> {
+public final class HdojProblemAdapter extends BasePullAdapter<HdojProblem,HdojProblemAdapter.VH> {
 
 	private static final int ITEM_LAYOUT = R.layout.item_list_problem;
 

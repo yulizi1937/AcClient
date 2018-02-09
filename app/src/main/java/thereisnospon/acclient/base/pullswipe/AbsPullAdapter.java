@@ -16,7 +16,7 @@ import java.util.List;
  * Created by yzr on 17/3/26.
  */
 
-public abstract class AbstractSwipeAdapter<T,VH extends RecyclerView.ViewHolder>
+public abstract class AbsPullAdapter<T,VH extends RecyclerView.ViewHolder>
         extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static final int FOOTER_TYPE=1000;

@@ -1,10 +1,8 @@
 package thereisnospon.acclient.modules.note;
 
-import java.util.List;
-
 import thereisnospon.acclient.base.mvp.MvpPullPresenter;
 import thereisnospon.acclient.base.mvp.MvpPullView;
-import thereisnospon.acclient.base.mvp.MvpSwipeModel;
+import thereisnospon.acclient.base.mvp.MvpPullModel;
 import thereisnospon.acclient.data.NoteItem;
 
 /**
@@ -21,7 +19,7 @@ public interface NoteContact {
 
     }
 
-    interface Model extends MvpSwipeModel<NoteItem>{
+    interface Model extends MvpPullModel<NoteItem> {
 
     }
 }

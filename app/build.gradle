@@ -44,7 +44,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false// when true:generate signed apk will failed
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 

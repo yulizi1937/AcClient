@@ -23,6 +23,7 @@
             android:name=".modules.login.LoginActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.Hello">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -84,11 +85,10 @@
         <activity
             android:name=".modules.licenses.LicensesActivity"
             android:label="@string/navi_software_licenses"
-            android:launchMode="singleTask"/>
-
-        <activity android:name=".base.activity.DemoActivity">
+            android:launchMode="singleTask">
 
         </activity>
+
     </application>
 
 </manifest>

@@ -6,8 +6,8 @@ import android.support.annotation.Nullable;
 import java.util.List;
 
 import thereisnospon.acclient.AppApplication;
-import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
-import thereisnospon.acclient.base.pullswipe.BasicSwpiePullFragment;
+import thereisnospon.acclient.base.pullswipe.BasePullAdapter;
+import thereisnospon.acclient.base.pullswipe.BasePullFragment;
 import thereisnospon.acclient.data.SearchPeopleItem;
 import thereisnospon.acclient.ui.adapter.SearchPeopleAdapter;
 
@@ -16,14 +16,14 @@ import thereisnospon.acclient.ui.adapter.SearchPeopleAdapter;
  * 搜索用户 Fragment
  * Created by yzr on 16/6/16.
  */
-public class SearchUserFragment extends BasicSwpiePullFragment
+public class SearchUserFragment extends BasePullFragment
         implements  SearchUserContact.View{
 
 
 
 
     @Override
-    public BaseSwipeAdapter createAdapter(List list) {
+    public BasePullAdapter createAdapter(List list) {
         return new SearchPeopleAdapter(list);
     }
 

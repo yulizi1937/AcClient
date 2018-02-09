@@ -4,7 +4,7 @@ import java.util.List;
 
 import thereisnospon.acclient.base.mvp.MvpPullPresenter;
 import thereisnospon.acclient.base.mvp.MvpPullView;
-import thereisnospon.acclient.base.mvp.MvpSwipeModel;
+import thereisnospon.acclient.base.mvp.MvpPullModel;
 import thereisnospon.acclient.data.HdojProblem;
 
 /**
@@ -23,7 +23,7 @@ public interface HdojContact {
         public void  loadPage(int page);
     }
 
-    public interface Model extends MvpSwipeModel<HdojProblem>{
+    public interface Model extends MvpPullModel<HdojProblem> {
         public List<HdojProblem>loadPage(int page);
     }
 }

@@ -11,8 +11,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import thereisnospon.acclient.R;
-import thereisnospon.acclient.base.adapter.NormalPullAdapter;
-import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
+import thereisnospon.acclient.base.pullswipe.BasePullAdapter;
 import thereisnospon.acclient.data.ProblemItem;
 import thereisnospon.acclient.data.SearchProblem;
 import thereisnospon.acclient.databinding.ItemListProblemBinding;
@@ -21,7 +20,7 @@ import thereisnospon.acclient.modules.problem.detail.ShowProblemActivity;
 import thereisnospon.acclient.widget.Colors;
 
 
-public final class SearchProblemAdapter extends BaseSwipeAdapter<SearchProblem,SearchProblemAdapter.VH> {
+public final class SearchProblemAdapter extends BasePullAdapter<SearchProblem,SearchProblemAdapter.VH> {
 
 
 

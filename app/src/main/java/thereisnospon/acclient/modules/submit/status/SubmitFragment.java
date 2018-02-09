@@ -1,22 +1,16 @@
 package thereisnospon.acclient.modules.submit.status;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import java.util.List;
 
-import thereisnospon.acclient.base.adapter.BasePullAdapter;
-import thereisnospon.acclient.base.fragment.NormalPullFragment;
-import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
-import thereisnospon.acclient.base.pullswipe.BasicSwpiePullFragment;
+
+import thereisnospon.acclient.base.pullswipe.BasePullAdapter;
+import thereisnospon.acclient.base.pullswipe.BasePullFragment;
 import thereisnospon.acclient.data.SubmmitStatus;
 
 import thereisnospon.acclient.ui.adapter.SubmitStatusAdapter;
 
 
-public class SubmitFragment extends BasicSwpiePullFragment
+public class SubmitFragment extends BasePullFragment
 implements  SubmitStatusContact.View{
 
     SubmitStatusContact.Presenter presenter;
@@ -52,7 +46,7 @@ implements  SubmitStatusContact.View{
     }
 
     @Override
-    public BaseSwipeAdapter createAdapter(List list) {
+    public BasePullAdapter createAdapter(List list) {
         return new SubmitStatusAdapter(list);
     }
 

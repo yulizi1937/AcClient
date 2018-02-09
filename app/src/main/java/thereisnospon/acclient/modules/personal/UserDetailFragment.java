@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import jp.wasabeef.recyclerview.animators.ScaleInAnimator;
 import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.R;
-import thereisnospon.acclient.base.fragment.BasicFragment;
+import thereisnospon.acclient.base.fragment.BaseFragment;
 import thereisnospon.acclient.data.UserInfo;
 
 
@@ -29,7 +29,7 @@ import thereisnospon.acclient.ui.adapter.ProblemNodeAdapter;
  * 用户详细信息 Fragment
  * Created by yzr on 16/6/18.
  */
-public final class UserDetailFragment extends BasicFragment implements UserDetailContact.View {
+public final class UserDetailFragment extends BaseFragment implements UserDetailContact.View {
 	private static final String TAG = "UserDetailFragment";
 	private UserDetailContact.Presenter presenter;
 

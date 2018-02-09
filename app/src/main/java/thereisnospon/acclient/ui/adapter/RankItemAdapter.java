@@ -11,8 +11,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import thereisnospon.acclient.R;
-import thereisnospon.acclient.base.adapter.NormalPullAdapter;
-import thereisnospon.acclient.base.pullswipe.BaseSwipeAdapter;
+import thereisnospon.acclient.base.pullswipe.BasePullAdapter;
 import thereisnospon.acclient.data.RankItem;
 import thereisnospon.acclient.databinding.ItemSearchPeopleBinding;
 import thereisnospon.acclient.event.Arg;
@@ -23,7 +22,7 @@ import thereisnospon.acclient.modules.personal.UserDetailActivity;
  * @author threisnospon
  * 排名模块 adapter
  */
-public final class RankItemAdapter extends BaseSwipeAdapter<RankItem,RankItemAdapter.VH> {
+public final class RankItemAdapter extends BasePullAdapter<RankItem,RankItemAdapter.VH> {
 
 	private static final int ITEM_LAYOUT = R.layout.item_search_people;
 

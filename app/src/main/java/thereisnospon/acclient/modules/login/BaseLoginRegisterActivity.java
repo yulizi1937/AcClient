@@ -2,20 +2,19 @@ package thereisnospon.acclient.modules.login;
 
 import android.graphics.Bitmap;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
 import thereisnospon.acclient.R;
-import thereisnospon.acclient.base.activity.BasicActivity;
+import thereisnospon.acclient.base.activity.BaseActivity;
 
 import static thereisnospon.acclient.modules.login.LoginRegisterUtil.createLoadToast;
 
 /**
  * Created by xzhao on 09.11.16.
  */
-public abstract class BaseLoginRegisterActivity extends BasicActivity implements LoginRegisterContact.View {
+public abstract class BaseLoginRegisterActivity extends BaseActivity implements LoginRegisterContact.View {
 	@SuppressWarnings("WeakerAccess") protected LoadToast mLoadToast;
 	@SuppressWarnings("WeakerAccess") protected LoginRegisterContact.Presenter presenter;
 

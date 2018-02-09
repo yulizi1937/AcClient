@@ -1,6 +1,10 @@
 package thereisnospon.acclient.utils.net;
 
+import java.io.IOException;
+
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Response;
 import thereisnospon.acclient.AppApplication;
 import thereisnospon.acclient.utils.net.cookie.CookiesManager;
 import thereisnospon.acclient.utils.net.request.GetAuthRequest;
@@ -19,6 +23,9 @@ public final class HttpUtil {
 
     private CookiesManager cookiesManager;
 
+    private static class Holder{
+        private static HttpUtil instance=new HttpUtil();
+    }
 
     public CookiesManager getCookiesManager() {
         return cookiesManager;
@@ -27,16 +34,19 @@ public final class HttpUtil {
     private HttpUtil(){
 
         cookiesManager=new CookiesManager(AppApplication.context);
-//        Log.d("NetActivityXXX","UTIL THRAD"+Thread.currentThread().getName());
         client=new OkHttpClient.Builder()
+                .addInterceptor(new Interceptor() {
+                    @Override
+                    public Response intercept(Chain chain) throws IOException {
+
+                        return null;
+                    }
+                })
                 .cookieJar(cookiesManager).build();
     }
 
     public static HttpUtil getInstance(){
-        if(instance==null){
-            instance=new HttpUtil();
-        }
-        return  instance;
+       return Holder.instance;
     }
 
     public  OkHttpClient.Builder newBuilder(){
@@ -53,7 +63,6 @@ public final class HttpUtil {
 
 
     public PostRequest post(String url){
-
         //Log.d("NetActivityXXX","POST THREAD"+Thread.currentThread().getName());
         return new PostRequest(url,client);}
 }
